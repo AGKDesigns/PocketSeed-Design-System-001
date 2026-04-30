@@ -1,0 +1,161 @@
+/* PocketSeed Design System — Typography
+ * Two ramps: ".ps-h-*" for slide-scale, ".ps-web-*" for everyday screens.
+ * Pair with serif italic emphasis (.ps-serif) and mono micro-type (.ps-mono).
+ */
+
+/* ── Slide-scale ramp (1920×1080 stage) ────────────────────── */
+
+.ps-h-mega {
+  font-size: var(--ps-fs-mega);
+  line-height: 0.9;
+  font-weight: var(--ps-w-bold);
+  letter-spacing: -0.045em;
+  color: var(--ps-ink);
+  font-feature-settings: var(--ps-features-tnum);
+}
+
+.ps-h-display {
+  font-size: var(--ps-fs-display);
+  line-height: 0.95;
+  font-weight: var(--ps-w-bold);
+  letter-spacing: -0.035em;
+  color: var(--ps-ink);
+}
+
+.ps-h-title {
+  font-size: var(--ps-fs-title);
+  line-height: 1.02;
+  font-weight: var(--ps-w-bold);
+  letter-spacing: -0.025em;
+  color: var(--ps-ink);
+  text-wrap: balance;
+}
+
+.ps-h-section {
+  font-size: var(--ps-fs-section);
+  line-height: 1.05;
+  font-weight: var(--ps-w-semibold);
+  letter-spacing: -0.018em;
+  color: var(--ps-ink);
+  text-wrap: balance;
+}
+
+.ps-h-subtitle {
+  font-size: var(--ps-fs-subtitle);
+  line-height: 1.2;
+  font-weight: var(--ps-w-medium);
+  letter-spacing: -0.012em;
+  color: var(--ps-ink-soft);
+  text-wrap: pretty;
+}
+
+.ps-lead {
+  font-size: var(--ps-fs-lead);
+  line-height: 1.35;
+  font-weight: var(--ps-w-regular);
+  color: var(--ps-ink-soft);
+  text-wrap: pretty;
+}
+
+.ps-body-lg {
+  font-size: var(--ps-fs-body-lg);
+  line-height: 1.45;
+  color: var(--ps-ink-soft);
+}
+
+.ps-body {
+  font-size: var(--ps-fs-body);
+  line-height: 1.5;
+  color: var(--ps-ink-soft);
+}
+
+.ps-small {
+  font-size: var(--ps-fs-small);
+  line-height: 1.5;
+  color: var(--ps-muted);
+}
+
+/* Eyebrow / kicker — sits above headlines */
+.ps-eyebrow {
+  font-size: var(--ps-fs-eyebrow);
+  font-weight: var(--ps-w-medium);
+  color: var(--ps-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-feature-settings: var(--ps-features-tnum);
+}
+
+.ps-eyebrow.ps-muted { color: var(--ps-muted); }
+
+/* ── Web-scale ramp (everyday product screens) ─────────────── */
+
+.ps-web-display {
+  font-size: var(--ps-web-display);
+  line-height: 1.02;
+  font-weight: var(--ps-w-bold);
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.ps-web-title {
+  font-size: var(--ps-web-title);
+  line-height: 1.05;
+  font-weight: var(--ps-w-bold);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.ps-web-section {
+  font-size: var(--ps-web-section);
+  line-height: 1.15;
+  font-weight: var(--ps-w-semibold);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.ps-web-subtitle {
+  font-size: var(--ps-web-subtitle);
+  line-height: 1.25;
+  font-weight: var(--ps-w-medium);
+  color: var(--ps-ink-soft);
+  text-wrap: pretty;
+}
+.ps-web-lead {
+  font-size: var(--ps-web-lead);
+  line-height: 1.45;
+  color: var(--ps-ink-soft);
+  text-wrap: pretty;
+}
+.ps-web-body {
+  font-size: var(--ps-web-body);
+  line-height: 1.55;
+  color: var(--ps-ink-soft);
+}
+.ps-web-small {
+  font-size: var(--ps-web-small);
+  line-height: 1.5;
+  color: var(--ps-muted);
+}
+
+/* ── Decorative type modifiers ─────────────────────────────── */
+
+.ps-serif {
+  font-family: var(--ps-font-serif);
+  font-style: italic;
+  font-weight: var(--ps-w-regular);
+  letter-spacing: -0.02em;
+}
+
+.ps-mono {
+  font-family: var(--ps-font-mono);
+  letter-spacing: -0.01em;
+  font-feature-settings: var(--ps-features-tnum);
+}
+
+/* Quick text-color helpers */
+.ps-text-ink     { color: var(--ps-ink); }
+.ps-text-soft    { color: var(--ps-ink-soft); }
+.ps-text-muted   { color: var(--ps-muted); }
+.ps-text-paper   { color: var(--ps-paper); }
+.ps-text-accent  { color: var(--ps-accent); }
+.ps-text-teal    { color: var(--ps-teal); }
+.ps-text-green   { color: var(--ps-green-deep); }
+.ps-uppercase    { text-transform: uppercase; }
+.ps-text-center  { text-align: center; }

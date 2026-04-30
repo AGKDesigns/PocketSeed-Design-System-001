@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Components · PocketSeed Design System</title>
+<link rel="stylesheet" href="../css/pocketseed.css" />
+<link rel="stylesheet" href="_specimen.css" />
+<style>
+  .demo-grid { display: grid; gap: 24px; margin-top: 24px; }
+  .demo-grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); }
+  .demo-grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .demo-label { font-family: var(--ps-font-mono); font-size: 12px; color: var(--ps-muted); margin-bottom: 12px; }
+</style>
+</head>
+<body>
+<main class="spec-shell">
+  <a class="spec-back" href="../index.html">← Back to system</a>
+  <div class="spec-title">
+    <span class="ps-eyebrow" style="font-size: 12px;">Specimen 03</span>
+    <h1 class="ps-web-title">Components</h1>
+    <p class="ps-web-lead" style="max-width: 720px;">The reusable building blocks. Every component is a class — drop the class on a div, render anything you need around it.</p>
+  </div>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Pills</span>
+    <h2>Tags, badges, status</h2>
+    <div class="spec-frame" style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+      <span class="ps-pill">Default</span>
+      <span class="ps-pill ps-pill-solid">Solid</span>
+      <span class="ps-pill ps-pill-accent"><span class="ps-dot-mini"></span>Accent · Live</span>
+      <span class="ps-pill ps-pill-sm">Small</span>
+      <span class="ps-pill ps-pill-xs">Tiny</span>
+      <span class="ps-pill"><span class="ps-dot-mini" style="background: var(--ps-green);"></span>Verified</span>
+      <span class="ps-pill ps-accent-blue ps-pill-accent"><span class="ps-dot-mini"></span>Blue accent</span>
+      <span class="ps-pill ps-accent-green ps-pill-accent"><span class="ps-dot-mini"></span>Green accent</span>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Buttons</span>
+    <h2>App scale (default)</h2>
+    <p class="spec-desc">Compact, rounded-square. Use everywhere inside a product UI: forms, modals, toolbars, menus.</p>
+    <div class="spec-frame" style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+      <button class="ps-btn">Default</button>
+      <button class="ps-btn ps-btn-primary">Primary</button>
+      <button class="ps-btn ps-btn-accent">Accent</button>
+      <button class="ps-btn ps-btn-ghost">Ghost</button>
+      <button class="ps-btn ps-btn-danger">Danger</button>
+      <button class="ps-btn ps-btn-sm">Small</button>
+      <button class="ps-btn ps-btn-icon" aria-label="More">⋯</button>
+      <button class="ps-btn" disabled>Disabled</button>
+    </div>
+
+    <h2 style="margin-top: 40px;">CTA scale (marketing)</h2>
+    <p class="spec-desc">Add <code class="ps-mono">.ps-btn-cta</code> to any button to bump it to pill-shape, larger type, with a lift on hover. Use on landing pages and hero CTAs.</p>
+    <div class="spec-frame" style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+      <a class="ps-btn ps-btn-cta ps-btn-primary" href="#">Get a demo</a>
+      <a class="ps-btn ps-btn-cta ps-btn-ghost" href="#">See it in action →</a>
+      <a class="ps-btn ps-btn-lg ps-btn-primary" href="#">Large primary →</a>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Cards</span>
+    <h2>Surface containers</h2>
+    <div class="demo-grid cols-3">
+      <div class="ps-card">
+        <span class="ps-numarker">.ps-card</span>
+        <h3 style="font-size: 24px; font-weight: 600; margin: 8px 0;">Default card</h3>
+        <p class="ps-web-body">White surface, line border, generous padding. The workhorse.</p>
+      </div>
+      <div class="ps-card ps-card-tight">
+        <span class="ps-numarker">.ps-card .ps-card-tight</span>
+        <h3 style="font-size: 20px; font-weight: 600; margin: 8px 0;">Tight card</h3>
+        <p class="ps-web-body">Smaller padding and radius for dense lists.</p>
+      </div>
+      <div class="ps-card ps-card-bare">
+        <span class="ps-numarker">.ps-card .ps-card-bare</span>
+        <h3 style="font-size: 20px; font-weight: 600; margin: 8px 0;">Bare card</h3>
+        <p class="ps-web-body">Border-only, transparent background. Use against busy surfaces.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <div class="demo-label">.ps-feature-card — three-up grid pattern</div>
+      <div class="demo-grid cols-3">
+        <div class="ps-feature-card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="ps-num">01</span>
+            <span class="ps-pill ps-pill-sm">Build trust</span>
+          </div>
+          <h3>Credentials</h3>
+          <p>Tamper-proof, digitally signed packages that back claims with evidence.</p>
+        </div>
+        <div class="ps-feature-card ps-accent-blue">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="ps-num">02</span>
+            <span class="ps-pill ps-pill-sm">Show the work</span>
+          </div>
+          <h3>Products</h3>
+          <p>Verifiable product pages for every SKU, backed by evidence and insight.</p>
+        </div>
+        <div class="ps-feature-card ps-accent-green">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="ps-num">03</span>
+            <span class="ps-pill ps-pill-sm">Activate impact</span>
+          </div>
+          <h3>Campaigns</h3>
+          <p>Real-world impact, attributed to real customer interactions, evidenced end-to-end.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Bullets</span>
+    <h2>Quiet list pattern</h2>
+    <div class="demo-grid cols-2">
+      <div class="ps-card">
+        <span class="ps-eyebrow" style="font-size: 12px;">Light surface</span>
+        <ul class="ps-bullets" style="margin-top: 16px;">
+          <li>Tamper-proof and signed, so claims can't be quietly edited</li>
+          <li>Evidence travels with the claim, not in a Dropbox</li>
+          <li>AI chat lets recipients engage with the evidence</li>
+          <li>Share privately or publicly · embed anywhere</li>
+        </ul>
+      </div>
+      <div class="ps-card ps-card-ink">
+        <span class="ps-eyebrow" style="font-size: 12px;">On ink</span>
+        <ul class="ps-bullets" style="margin-top: 16px;">
+          <li>Tamper-proof and signed, so claims can't be quietly edited</li>
+          <li>Evidence travels with the claim, not in a Dropbox</li>
+          <li>AI chat lets recipients engage with the evidence</li>
+          <li>Share privately or publicly · embed anywhere</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Brand mark</span>
+    <h2>Mark & brandmark</h2>
+    <p class="spec-desc">The icon-only mark for compact contexts (favicons, app icons, hero accents, places where the wordmark would be too much). The full lockup pairs the mark with the wordmark as a single PNG.</p>
+    <div class="spec-frame" style="margin-top: 24px; display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
+      <img class="ps-mark" src="../assets/pocketseed-mark.png" alt="PocketSeed mark" style="--ps-mark-size: 24px;" />
+      <img class="ps-mark" src="../assets/pocketseed-mark.png" alt="PocketSeed mark" />
+      <img class="ps-mark" src="../assets/pocketseed-mark.png" alt="PocketSeed mark" style="--ps-mark-size: 64px;" />
+      <div class="ps-brandmark"><img src="../assets/pocketseed-logo.png" alt="PocketSeed" /></div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Browser frame</span>
+    <h2>Mockup containers</h2>
+    <p class="spec-desc">The browser frame is how we present credential and product pages in marketing material. URL is monospace, lights are warm-coded so they don't scream "macOS".</p>
+    <div class="ps-browser" style="max-width: 540px; margin-top: 24px;">
+      <div class="ps-browser-bar">
+        <span class="ps-light" style="background: #e8a8a8;"></span>
+        <span class="ps-light" style="background: #e8d68a;"></span>
+        <span class="ps-light" style="background: #a8d6a0;"></span>
+        <span class="ps-url">pocketseed.io/c/cf-2026-acme</span>
+      </div>
+      <div style="padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span class="ps-mono" style="font-size: 12px; color: var(--ps-muted);">CREDENTIAL · CF-2026-ACME</span>
+          <span class="ps-pill ps-pill-accent ps-pill-xs"><span class="ps-dot-mini"></span>Verified</span>
+        </div>
+        <div style="font-size: 22px; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em;">2026 Carbon Footprint</div>
+        <p style="font-size: 14px; color: var(--ps-ink-soft); line-height: 1.5; margin: 0;">Acme's verified 2026 carbon footprint. Total emissions of <strong style="color: var(--ps-ink); font-weight: 600;">37,453 tCO₂e</strong> across Scope 1, 2 and 3.</p>
+        <hr class="ps-rule" />
+        <div class="ps-ask-bar">Ask a question about this credential…</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Stats</span>
+    <h2>Tabular figures</h2>
+    <div class="ps-card" style="margin-top: 24px;">
+      <div class="ps-grid-3">
+        <div class="ps-stat">
+          <span class="ps-stat-label">Tokens minted</span>
+          <span class="ps-stat-value">1,000</span>
+        </div>
+        <div class="ps-stat">
+          <span class="ps-stat-label">Spent so far</span>
+          <span class="ps-stat-value ps-text-green">347</span>
+        </div>
+        <div class="ps-stat">
+          <span class="ps-stat-label">Conversion lift</span>
+          <span class="ps-stat-value ps-text-accent">+18%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Quote</span>
+    <h2>Pull-quote on ink</h2>
+    <div class="ps-quote" style="margin-top: 24px;">
+      <span class="ps-quote-mark">"</span>
+      <p>You're used to ending a campaign with a PDF certificate. We give you a credential, a tamper-proof record you can plug into every report, every campaign, every claim, forever.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,14 @@
+/* Shared layout for specimen pages — not part of the design system itself */
+
+.spec-shell { max-width: 1200px; margin: 0 auto; padding: 64px 48px 120px; }
+.spec-back { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ps-muted); margin-bottom: 32px; }
+.spec-back:hover { color: var(--ps-ink); }
+.spec-title { display: flex; flex-direction: column; gap: 12px; margin-bottom: 56px; padding-bottom: 32px; border-bottom: 1px solid var(--ps-line); }
+.spec-section { margin: 56px 0 24px; padding-top: 16px; }
+.spec-section-title { font-size: 14px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ps-muted); font-weight: 500; }
+.spec-section h2 { font-size: 32px; font-weight: 600; letter-spacing: -0.018em; margin-top: 4px; }
+.spec-section p.spec-desc { font-size: 16px; color: var(--ps-ink-soft); line-height: 1.55; max-width: 640px; margin-top: 8px; }
+.spec-grid { display: grid; gap: 16px; }
+.spec-frame { padding: 32px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-lg); }
+.spec-frame.dark { background: var(--ps-ink); color: var(--ps-paper); border-color: var(--ps-ink); }
+.spec-code { font-family: var(--ps-font-mono); font-size: 12px; color: var(--ps-muted); margin-top: 12px; word-break: break-all; }

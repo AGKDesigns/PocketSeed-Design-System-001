@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PocketSeed Design System</title>
+<link rel="stylesheet" href="css/pocketseed.css" />
+<style>
+  body { background: var(--ps-paper); }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 80px 48px 120px; }
+  .hero { display: flex; flex-direction: column; gap: 24px; margin-bottom: 80px; }
+  .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .nav-card { display: flex; flex-direction: column; gap: 12px; padding: 32px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-2xl); transition: transform var(--ps-dur-base) var(--ps-ease), box-shadow var(--ps-dur-base) var(--ps-ease); }
+  .nav-card:hover { transform: translateY(-2px); box-shadow: var(--ps-shadow-soft); }
+  .nav-card .num { color: var(--ps-accent); font-family: var(--ps-font-mono); font-size: 14px; letter-spacing: 0.06em; }
+  .nav-card h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.015em; }
+  .nav-card p { font-size: 16px; color: var(--ps-ink-soft); line-height: 1.5; }
+  .nav-card .arrow { margin-top: 8px; color: var(--ps-accent); font-size: 18px; }
+  footer { margin-top: 120px; padding-top: 40px; border-top: 1px solid var(--ps-line); display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: var(--ps-muted); }
+  footer img { height: 20px; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="hero">
+    <img src="assets/pocketseed-logo.png" alt="PocketSeed" style="height: 32px; width: auto; align-self: flex-start;" />
+    <span class="ps-eyebrow" style="font-size: 14px;">Design System · v1</span>
+    <h1 class="ps-web-display">The visual language behind PocketSeed.</h1>
+    <p class="ps-web-lead" style="max-width: 720px;">Tokens, type, and components extracted from the v1 sales deck. Drop-in ready for any project: decks, web apps, marketing pages, internal tools.</p>
+    <div class="ps-flex ps-gap-12" style="margin-top: 16px;">
+      <a class="ps-btn ps-btn-cta ps-btn-primary" href="specimens/colors.html">Explore the system</a>
+      <a class="ps-btn ps-btn-cta ps-btn-ghost" href="#how-to-use">How to use →</a>
+    </div>
+  </div>
+
+  <h2 class="ps-web-section" style="margin-bottom: 32px;">Specimens</h2>
+  <div class="nav-grid">
+    <a class="nav-card" href="specimens/colors.html">
+      <span class="num">01</span>
+      <h3>Colors</h3>
+      <p>Ink, paper, brand teal/blue/green, accent presets, and on-ink alpha layers.</p>
+      <span class="arrow">→</span>
+    </a>
+    <a class="nav-card" href="specimens/typography.html">
+      <span class="num">02</span>
+      <h3>Typography</h3>
+      <p>Inter for UI, Instrument Serif for editorial accents, JetBrains Mono for micro-type. Two ramps: slide and web.</p>
+      <span class="arrow">→</span>
+    </a>
+    <a class="nav-card" href="specimens/components.html">
+      <span class="num">03</span>
+      <h3>Components</h3>
+      <p>Cards, pills, bullets, the orb, the browser frame, the ask-bar, buttons, stats and more.</p>
+      <span class="arrow">→</span>
+    </a>
+    <a class="nav-card" href="specimens/patterns.html">
+      <span class="num">04</span>
+      <h3>Patterns</h3>
+      <p>Slide chrome, hero treatments, feature grids, the dark "on ink" surface, quote callouts.</p>
+      <span class="arrow">→</span>
+    </a>
+    <a class="nav-card" href="specimens/slide-template.html">
+      <span class="num">05</span>
+      <h3>Slide template</h3>
+      <p>A 1920×1080 slide stage scaled to fit any container — copy-paste starting point for new decks.</p>
+      <span class="arrow">→</span>
+    </a>
+    <a class="nav-card" href="specimens/web-page.html">
+      <span class="num">06</span>
+      <h3>Web page</h3>
+      <p>The same language applied to a marketing landing page — proves it scales beyond decks.</p>
+      <span class="arrow">→</span>
+    </a>
+    <a class="nav-card" href="specimens/forms.html">
+      <span class="num">07</span>
+      <h3>Forms & web app</h3>
+      <p>Inputs, selects, checkboxes, dropdowns, alerts, modals, avatars, tabs. The product UI starter kit.</p>
+      <span class="arrow">→</span>
+    </a>
+    <a class="nav-card" href="specimens/login.html">
+      <span class="num">08</span>
+      <h3>Login</h3>
+      <p>Sign-in screen with side-by-side dark pitch panel. The auth pattern, ready to lift.</p>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <section id="how-to-use" style="margin-top: 96px;">
+    <h2 class="ps-web-section" style="margin-bottom: 24px;">How to use</h2>
+    <div class="ps-card ps-card-bare" style="background: var(--ps-card);">
+      <h3 class="ps-web-subtitle" style="font-weight: 600; margin-bottom: 12px;">In one line</h3>
+      <p class="ps-web-body">Add this to the &lt;head&gt; of any page:</p>
+      <pre class="ps-mono" style="margin-top: 16px; padding: 20px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-lg); font-size: 14px; overflow-x: auto;">&lt;link rel="stylesheet" href="path/to/pocketseed-design-system/css/pocketseed.css" /&gt;</pre>
+      <p class="ps-web-body" style="margin-top: 24px;">Then use the classes — every component is prefixed <code class="ps-mono">.ps-</code> to avoid clashing with anything else in the host project.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="ps-flex ps-items-center ps-gap-12">
+      <img src="assets/pocketseed-logo.png" alt="PocketSeed" />
+      <span>Design System v1 · 2026</span>
+    </div>
+    <span class="ps-mono" style="font-size: 12px;">pocketseed.io</span>
+  </footer>
+</main>
+</body>
+</html>

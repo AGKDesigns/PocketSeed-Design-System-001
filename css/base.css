@@ -1,0 +1,40 @@
+/* PocketSeed Design System — Base
+ * Resets + element defaults that pair with tokens.css.
+ * Load order:  tokens.css → base.css → components.css
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: var(--ps-font-sans);
+  color: var(--ps-ink);
+  background: var(--ps-paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: var(--ps-features-default);
+}
+
+body { line-height: 1.5; }
+
+img, svg, video { display: block; max-width: 100%; height: auto; }
+button { font: inherit; color: inherit; cursor: pointer; background: none; border: 0; }
+a { color: inherit; text-decoration: none; }
+
+/* Selection */
+::selection { background: var(--ps-accent); color: var(--ps-paper); }
+
+/* Default focus ring — accessible, on-brand */
+:focus-visible {
+  outline: 2px solid var(--ps-accent);
+  outline-offset: 2px;
+  border-radius: var(--ps-radius-sm);
+}
+
+/* When a section/page is "on ink" (dark surface), invert text defaults */
+.ps-on-ink, .ps-on-ink * { color: var(--ps-paper); }

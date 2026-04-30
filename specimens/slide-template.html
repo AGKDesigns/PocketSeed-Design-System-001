@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Slide template · PocketSeed Design System</title>
+<link rel="stylesheet" href="../css/pocketseed.css" />
+<link rel="stylesheet" href="_specimen.css" />
+<style>
+  /* Slide gallery — each .stage-frame holds 16:9 aspect; the inner .stage
+   * stays at native 1920×1080 and is transform-scaled to fill its parent. */
+  body { background: #0e1218; min-height: 100vh; margin: 0; }
+  .meta { position: fixed; top: 16px; left: 16px; right: 16px; display: flex; justify-content: space-between; align-items: center; font-family: var(--ps-font-mono); font-size: 12px; color: rgba(247,244,236,0.6); pointer-events: none; z-index: 10; }
+  .meta a { pointer-events: auto; color: rgba(247,244,236,0.6); border: 1px solid rgba(247,244,236,0.2); padding: 6px 10px; border-radius: 6px; }
+  .meta a:hover { color: var(--ps-paper); }
+
+  .gallery { max-width: 1280px; margin: 0 auto; padding: 80px 32px 120px; display: flex; flex-direction: column; gap: 48px; }
+  .gallery-intro { color: var(--ps-paper); }
+  .gallery-intro h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.018em; margin-bottom: 8px; }
+  .gallery-intro p { color: rgba(247,244,236,0.65); font-size: 14px; line-height: 1.55; max-width: 640px; }
+
+  .slide-card { display: flex; flex-direction: column; gap: 12px; }
+  .slide-label { display: flex; gap: 12px; align-items: baseline; color: rgba(247,244,236,0.7); font-family: var(--ps-font-mono); font-size: 12px; letter-spacing: 0.06em; }
+  .slide-label .name { color: var(--ps-paper); font-weight: 500; letter-spacing: 0; font-family: var(--ps-font-sans); font-size: 14px; }
+
+  .stage-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    box-shadow: 0 40px 100px -40px rgba(0,0,0,0.6);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .stage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    transform-origin: top left;
+  }
+</style>
+<script>
+  function fitStages() {
+    document.querySelectorAll('.stage-frame').forEach(frame => {
+      const stage = frame.querySelector('.stage');
+      if (!stage) return;
+      stage.style.transform = `scale(${frame.clientWidth / 1920})`;
+    });
+  }
+  window.addEventListener('load', fitStages);
+  window.addEventListener('resize', fitStages);
+</script>
+</head>
+<body>
+<div class="meta">
+  <span>SLIDE TEMPLATES · 1920×1080 stage</span>
+  <a href="../index.html">← Back to system</a>
+</div>
+
+<main class="gallery">
+  <header class="gallery-intro">
+    <h1>Slide templates</h1>
+    <p>Two starting points: a light "title + content" slide for the day-to-day, and a dark "list + headline" slide for moments that need weight. Both are 1920×1080 — copy the inner block into your own deck.</p>
+  </header>
+
+  <!-- ─────────── Slide 01 · Light · Title + content split ─────────── -->
+  <section class="slide-card">
+    <div class="slide-label">
+      <span>01 · LIGHT</span>
+      <span class="name">Title + content split</span>
+    </div>
+    <div class="stage-frame">
+      <div class="stage">
+        <div class="ps-slide ps-bg-paper ps-relative">
+          <div class="ps-grain"></div>
+          <header class="ps-chrome">
+            <img class="ps-chrome-logo" src="../assets/pocketseed-logo.png" alt="PocketSeed" />
+            <div class="ps-chrome-meta">
+              <span>Section name</span>
+              <span>Audience tagline</span>
+              <span class="ps-mono">01 / 10</span>
+            </div>
+          </header>
+          <div style="margin-top: 160px; display: grid; grid-template-columns: 1.15fr 1fr; gap: 80px; flex: 1; align-items: center;">
+            <div>
+              <span class="ps-eyebrow">Eyebrow goes here</span>
+              <h2 class="ps-h-title" style="margin-top: 28px; font-size: 92px;">
+                Your headline, with a <span class="ps-serif" style="color: var(--ps-accent);">soft accent.</span>
+              </h2>
+              <p class="ps-lead" style="margin-top: 32px; max-width: 720px;">
+                One short, declarative paragraph. Set the stage. Don't over-explain. The next slide does the rest.
+              </p>
+              <ul class="ps-bullets" style="margin-top: 36px;">
+                <li>A bullet that lands a single idea</li>
+                <li>Use sentence case · not title case</li>
+                <li>Three is the sweet spot</li>
+              </ul>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center;">
+              <div class="ps-card" style="width: 100%; max-width: 640px; height: 540px; align-items: center; justify-content: center; text-align: center;">
+                <span class="ps-numarker">YOUR VISUAL HERE</span>
+                <p class="ps-text-muted" style="margin-top: 12px;">Image, mockup, diagram, chart.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── Slide 02 · Dark · Headline + list ─────────── -->
+  <section class="slide-card">
+    <div class="slide-label">
+      <span>02 · DARK</span>
+      <span class="name">Headline + list of items</span>
+    </div>
+    <div class="stage-frame">
+      <div class="stage">
+        <div class="ps-slide ps-bg-ink ps-relative">
+          <div class="ps-grain"></div>
+          <header class="ps-chrome">
+            <img class="ps-chrome-logo" src="../assets/pocketseed-logo-white.png" alt="PocketSeed" />
+            <div class="ps-chrome-meta">
+              <span>Section name</span>
+              <span>Audience tagline</span>
+              <span class="ps-mono">02 / 10</span>
+            </div>
+          </header>
+          <div style="margin-top: 140px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; flex: 1; align-items: center;">
+            <div>
+              <span class="ps-eyebrow">Eyebrow</span>
+              <h2 class="ps-h-title" style="margin-top: 28px; font-size: 80px;">
+                A weighty headline <span class="ps-serif" style="color: var(--ps-accent);">that lands.</span>
+              </h2>
+              <p class="ps-lead" style="margin-top: 32px; max-width: 700px;">
+                The supporting paragraph. Use this when the right column is a list of items that the headline frames — the &ldquo;chain of authority&rdquo; pattern.
+              </p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <!-- Repeating list-item card pattern -->
+              <div class="ps-list-item">
+                <span class="ps-list-icon">✦</span>
+                <div style="flex: 1;">
+                  <div class="ps-list-title">Item heading</div>
+                  <div class="ps-list-sub">A short description of the item</div>
+                </div>
+              </div>
+              <div class="ps-list-item">
+                <span class="ps-list-icon">✦</span>
+                <div style="flex: 1;">
+                  <div class="ps-list-title">Another item</div>
+                  <div class="ps-list-sub">Another short description that fits in two lines</div>
+                </div>
+              </div>
+              <div class="ps-list-item">
+                <span class="ps-list-icon">✦</span>
+                <div style="flex: 1;">
+                  <div class="ps-list-title">A third item</div>
+                  <div class="ps-list-sub">Keep them parallel — same shape, same length</div>
+                </div>
+              </div>
+              <div class="ps-list-item">
+                <span class="ps-list-icon">✦</span>
+                <div style="flex: 1;">
+                  <div class="ps-list-title">Item four</div>
+                  <div class="ps-list-sub">Four to five items is the sweet spot</div>
+                </div>
+              </div>
+              <div class="ps-list-item">
+                <span class="ps-list-icon">✦</span>
+                <div style="flex: 1;">
+                  <div class="ps-list-title">Item five</div>
+                  <div class="ps-list-sub">After five, switch to a smaller layout</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

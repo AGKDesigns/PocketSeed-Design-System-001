@@ -1,0 +1,13 @@
+/* PocketSeed Design System — All-in-one entry
+ *
+ * One link tag. Everything in.
+ *   <link rel="stylesheet" href="css/pocketseed.css">
+ *
+ * If you want to load only what you need, import the parts directly instead.
+ */
+
+@import url('./tokens.css');
+@import url('./base.css');
+@import url('./type.css');
+@import url('./components.css');
+@import url('./webapp.css');

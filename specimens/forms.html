@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Forms & Web App · PocketSeed Design System</title>
+<link rel="stylesheet" href="../css/pocketseed.css" />
+<link rel="stylesheet" href="_specimen.css" />
+<style>
+  .demo-grid { display: grid; gap: 16px; }
+  .two-col { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .modal-host { position: relative; min-height: 360px; padding: 24px; background: var(--ps-paper-warm); border: var(--ps-border); border-radius: var(--ps-radius-lg); overflow: hidden; }
+  .modal-host .ps-modal-overlay { position: absolute; inset: 0; }
+</style>
+</head>
+<body>
+<main class="spec-shell">
+  <a class="spec-back" href="../index.html">← Back to system</a>
+  <div class="spec-title">
+    <span class="ps-eyebrow" style="font-size: 12px;">Specimen 07</span>
+    <h1 class="ps-web-title">Forms & web app</h1>
+    <p class="ps-web-lead" style="max-width: 720px;">Inputs, selects, checkboxes, dropdowns, alerts, modals, avatars, tabs. The starter kit for any product UI built on the PocketSeed system.</p>
+  </div>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Inputs</span>
+    <h2>Text fields</h2>
+    <div class="spec-frame demo-grid two-col" style="margin-top: 24px;">
+      <div class="ps-field">
+        <label class="ps-label" for="ex-email">Email <span class="ps-label-hint">required</span></label>
+        <input class="ps-input" id="ex-email" type="email" placeholder="you@company.com" />
+        <span class="ps-helper">We never share your email.</span>
+      </div>
+      <div class="ps-field">
+        <label class="ps-label" for="ex-pw">Password</label>
+        <input class="ps-input" id="ex-pw" type="password" placeholder="••••••••" />
+      </div>
+      <div class="ps-field">
+        <label class="ps-label" for="ex-search">Search</label>
+        <div class="ps-input-group">
+          <span class="ps-input-prefix">⌕</span>
+          <input class="ps-input" id="ex-search" type="search" placeholder="Search credentials, products…" />
+          <span class="ps-input-suffix ps-mono">⌘K</span>
+        </div>
+      </div>
+      <div class="ps-field">
+        <label class="ps-label" for="ex-amt">Amount</label>
+        <div class="ps-input-group">
+          <span class="ps-input-prefix">$</span>
+          <input class="ps-input" id="ex-amt" type="number" placeholder="0" />
+          <span class="ps-input-suffix">USD</span>
+        </div>
+      </div>
+      <div class="ps-field" style="grid-column: 1 / -1;">
+        <label class="ps-label" for="ex-bio">Tell us what you're building</label>
+        <textarea class="ps-textarea" id="ex-bio" placeholder="A few sentences is fine…"></textarea>
+      </div>
+      <div class="ps-field">
+        <label class="ps-label" for="ex-err">Field with error</label>
+        <input class="ps-input" id="ex-err" type="text" aria-invalid="true" value="ac.me" />
+        <span class="ps-helper ps-error">That doesn't look like a valid domain.</span>
+      </div>
+      <div class="ps-field">
+        <label class="ps-label" for="ex-disabled">Disabled</label>
+        <input class="ps-input" id="ex-disabled" type="text" value="Read-only value" disabled />
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Select</span>
+    <h2>Native select with custom chevron</h2>
+    <div class="spec-frame demo-grid two-col" style="margin-top: 24px;">
+      <div class="ps-field">
+        <label class="ps-label" for="ex-sel">Plan</label>
+        <select class="ps-select" id="ex-sel">
+          <option>Starter — $0/mo</option>
+          <option selected>Team — $49/mo</option>
+          <option>Business — $199/mo</option>
+        </select>
+      </div>
+      <div class="ps-field">
+        <label class="ps-label" for="ex-region">Region</label>
+        <select class="ps-select" id="ex-region">
+          <option>EU (Frankfurt)</option>
+          <option>US (Virginia)</option>
+          <option>AU (Sydney)</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Choice</span>
+    <h2>Checkboxes, radios, switches</h2>
+    <div class="demo-grid two-col" style="margin-top: 24px;">
+      <div class="spec-frame">
+        <div class="ps-mono" style="font-size: 12px; color: var(--ps-muted); margin-bottom: 12px;">.ps-check-row + .ps-checkbox</div>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <label class="ps-check-row">
+            <input class="ps-checkbox" type="checkbox" checked />
+            <span class="ps-check-content">
+              <span class="ps-check-label">Send me product updates</span>
+              <span class="ps-check-helper">Roughly one email per month, no fluff.</span>
+            </span>
+          </label>
+          <label class="ps-check-row">
+            <input class="ps-checkbox" type="checkbox" />
+            <span class="ps-check-content">
+              <span class="ps-check-label">Notify my team about new credentials</span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="spec-frame">
+        <div class="ps-mono" style="font-size: 12px; color: var(--ps-muted); margin-bottom: 12px;">.ps-check-row + .ps-radio</div>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <label class="ps-check-row">
+            <input class="ps-radio" type="radio" name="visibility" checked />
+            <span class="ps-check-content">
+              <span class="ps-check-label">Public</span>
+              <span class="ps-check-helper">Anyone with the link can view.</span>
+            </span>
+          </label>
+          <label class="ps-check-row">
+            <input class="ps-radio" type="radio" name="visibility" />
+            <span class="ps-check-content">
+              <span class="ps-check-label">Private</span>
+              <span class="ps-check-helper">Only invited collaborators.</span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="spec-frame" style="grid-column: 1 / -1;">
+        <div class="ps-mono" style="font-size: 12px; color: var(--ps-muted); margin-bottom: 16px;">.ps-switch</div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <label class="ps-switch">
+            <input type="checkbox" checked />
+            <span class="ps-switch-track"></span>
+            <span style="font-size: 14px;">Auto-publish credentials when signed</span>
+          </label>
+          <label class="ps-switch">
+            <input type="checkbox" />
+            <span class="ps-switch-track"></span>
+            <span style="font-size: 14px;">Email me when a viewer asks the AI a question</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Dropdown</span>
+    <h2>No-JS dropdown menu</h2>
+    <p class="spec-desc">Built on <code class="ps-mono">&lt;details&gt;</code> + <code class="ps-mono">&lt;summary&gt;</code> — no JavaScript required. For richer behavior (keyboard nav, click-outside-to-close), wire up your own.</p>
+    <div class="spec-frame" style="margin-top: 24px; display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap;">
+      <details class="ps-dropdown">
+        <summary class="ps-btn">Account ▾</summary>
+        <div class="ps-menu">
+          <div class="ps-menu-label">Signed in as alex@pocketseed.io</div>
+          <button class="ps-menu-item">Profile <span class="ps-menu-shortcut">⌘P</span></button>
+          <button class="ps-menu-item">Team settings</button>
+          <button class="ps-menu-item">Billing</button>
+          <div class="ps-menu-divider"></div>
+          <button class="ps-menu-item">Documentation ↗</button>
+          <button class="ps-menu-item">Keyboard shortcuts <span class="ps-menu-shortcut">?</span></button>
+          <div class="ps-menu-divider"></div>
+          <button class="ps-menu-item ps-menu-danger">Sign out</button>
+        </div>
+      </details>
+
+      <details class="ps-dropdown">
+        <summary class="ps-btn ps-btn-ghost">Filter ▾</summary>
+        <div class="ps-menu">
+          <button class="ps-menu-item">All credentials</button>
+          <button class="ps-menu-item">Verified only</button>
+          <button class="ps-menu-item">Drafts</button>
+          <div class="ps-menu-divider"></div>
+          <div class="ps-menu-label">Tags</div>
+          <button class="ps-menu-item">Carbon</button>
+          <button class="ps-menu-item">Lab results</button>
+          <button class="ps-menu-item">Audit</button>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Alerts</span>
+    <h2>Banners</h2>
+    <div class="demo-grid" style="margin-top: 24px;">
+      <div class="ps-alert ps-alert-info">
+        <span class="ps-alert-icon"></span>
+        <div class="ps-alert-body">
+          <div class="ps-alert-title">Heads up — your trial ends in 7 days</div>
+          Add a payment method to keep your credentials live and shareable.
+        </div>
+      </div>
+      <div class="ps-alert ps-alert-success">
+        <span class="ps-alert-icon"></span>
+        <div class="ps-alert-body">
+          <div class="ps-alert-title">Credential signed</div>
+          The 2026 Carbon Footprint credential is now live at pocketseed.io/c/cf-2026-acme.
+        </div>
+      </div>
+      <div class="ps-alert ps-alert-warn">
+        <span class="ps-alert-icon"></span>
+        <div class="ps-alert-body">
+          <div class="ps-alert-title">Evidence expiring</div>
+          Lab Results · Batch 042 expires on 30 Jun 2026. Renew to keep the credential verifiable.
+        </div>
+      </div>
+      <div class="ps-alert ps-alert-error">
+        <span class="ps-alert-icon"></span>
+        <div class="ps-alert-body">
+          <div class="ps-alert-title">Couldn't publish</div>
+          Two evidence files failed to upload. Retry or remove them to continue.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Modal</span>
+    <h2>Dialog</h2>
+    <p class="spec-desc">Render the markup conditionally and pop the overlay over your app. The card has header / body / footer slots.</p>
+    <div class="modal-host" style="margin-top: 24px;">
+      <div class="ps-modal-overlay">
+        <div class="ps-modal-card">
+          <header class="ps-modal-header">
+            <h3>Publish credential?</h3>
+            <button class="ps-modal-close" aria-label="Close">✕</button>
+          </header>
+          <div class="ps-modal-body">
+            <p>Once published, this credential gets a permanent URL and can be shared publicly. The signed evidence cannot be modified after publishing — only revoked.</p>
+            <div style="margin-top: 16px;">
+              <label class="ps-check-row">
+                <input class="ps-checkbox" type="checkbox" />
+                <span class="ps-check-content">
+                  <span class="ps-check-label">Notify co-signers by email</span>
+                </span>
+              </label>
+            </div>
+          </div>
+          <footer class="ps-modal-footer">
+            <button class="ps-btn ps-btn-ghost">Cancel</button>
+            <button class="ps-btn ps-btn-primary">Publish</button>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Avatars</span>
+    <h2>People & teams</h2>
+    <div class="spec-frame" style="margin-top: 24px; display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+      <span class="ps-avatar" style="--ps-avatar-size: 24px;">AC</span>
+      <span class="ps-avatar">AC</span>
+      <span class="ps-avatar" style="--ps-avatar-size: 48px;">AC</span>
+      <span class="ps-avatar" style="--ps-avatar-size: 64px;">AC</span>
+      <div class="ps-avatar-stack">
+        <span class="ps-avatar">AC</span>
+        <span class="ps-avatar" style="background: var(--ps-grad-leaf);">SM</span>
+        <span class="ps-avatar" style="background: linear-gradient(135deg, var(--ps-purple), var(--ps-blue));">JR</span>
+        <span class="ps-avatar" style="background: var(--ps-ink); color: var(--ps-paper);">+4</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Tabs</span>
+    <h2>Tabbed navigation</h2>
+    <div class="spec-frame" style="margin-top: 24px;">
+      <div class="ps-tabs" role="tablist">
+        <button class="ps-tab" role="tab" aria-selected="true">Overview</button>
+        <button class="ps-tab" role="tab" aria-selected="false">Evidence</button>
+        <button class="ps-tab" role="tab" aria-selected="false">Co-signers</button>
+        <button class="ps-tab" role="tab" aria-selected="false">Activity</button>
+        <button class="ps-tab" role="tab" aria-selected="false">Settings</button>
+      </div>
+      <div style="padding: 24px 0; color: var(--ps-ink-soft); font-size: 14px;">Tab panel content goes here.</div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Table</span>
+    <h2>Basic data table</h2>
+    <div class="spec-frame" style="margin-top: 24px; padding: 0; overflow: hidden;">
+      <table class="ps-table">
+        <thead>
+          <tr>
+            <th>Credential</th>
+            <th>Status</th>
+            <th>Signers</th>
+            <th>Issued</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2026 Carbon Footprint</td>
+            <td><span class="ps-pill ps-pill-accent ps-pill-sm"><span class="ps-dot-mini"></span>Verified</span></td>
+            <td>2</td>
+            <td>Mar 12 · 2026</td>
+            <td><button class="ps-btn ps-btn-ghost ps-btn-sm">Open ↗</button></td>
+          </tr>
+          <tr>
+            <td>Lab Results · Batch 118</td>
+            <td><span class="ps-pill ps-pill-accent ps-pill-sm"><span class="ps-dot-mini"></span>Verified</span></td>
+            <td>1</td>
+            <td>Mar 02 · 2026</td>
+            <td><button class="ps-btn ps-btn-ghost ps-btn-sm">Open ↗</button></td>
+          </tr>
+          <tr>
+            <td>Scope 3 Supplier Audit</td>
+            <td><span class="ps-pill ps-pill-sm"><span class="ps-dot-mini" style="background: #c69f1d;"></span>Pending</span></td>
+            <td>4</td>
+            <td>—</td>
+            <td><button class="ps-btn ps-btn-ghost ps-btn-sm">Open ↗</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+</body>
+</html>

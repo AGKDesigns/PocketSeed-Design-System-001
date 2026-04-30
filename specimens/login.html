@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login · PocketSeed Design System</title>
+<link rel="stylesheet" href="../css/pocketseed.css" />
+<style>
+  body { background: var(--ps-paper); }
+  .back { position: fixed; top: 24px; left: 24px; font-size: 13px; color: var(--ps-muted); }
+  .back:hover { color: var(--ps-ink); }
+  .switch-row { display: inline-flex; gap: 4px; align-items: center; padding: 4px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-pill); margin-bottom: 32px; }
+  .switch-row a { padding: 8px 18px; border-radius: var(--ps-radius-pill); font-size: 13px; color: var(--ps-muted); transition: color var(--ps-dur-fast) var(--ps-ease); }
+  .switch-row a:hover { color: var(--ps-ink); }
+  .switch-row a.active { background: var(--ps-paper); color: var(--ps-ink); font-weight: 500; }
+  .stage { display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 80px 32px; }
+  .auth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; width: 100%; max-width: 960px; align-items: stretch; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-3xl); overflow: hidden; box-shadow: var(--ps-shadow-soft); }
+  .auth-pane { padding: 48px 40px; display: flex; flex-direction: column; gap: 32px; }
+  .auth-pane .ps-btn { width: 100%; }
+  .auth-pane.dark { background: linear-gradient(150deg, #1f2c3f 0%, var(--ps-ink) 55%, #0e1520 100%); color: var(--ps-paper); position: relative; overflow: hidden; }
+  .auth-pane.dark::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 700px 500px at 80% 15%, rgba(45,173,199,0.14), transparent 65%), radial-gradient(ellipse 600px 400px at 15% 90%, rgba(76,175,80,0.08), transparent 70%); pointer-events: none; }
+  .auth-pane.dark h2 { font-size: 28px; font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; color: var(--ps-paper); }
+  .auth-pane.dark p { font-size: 14px; line-height: 1.55; color: var(--ps-on-ink-soft); }
+  .auth-pane .ps-eyebrow { font-size: 11px; }
+  @media (max-width: 720px) {
+    .auth-grid { grid-template-columns: 1fr; }
+    .auth-pane.dark { display: none; }
+  }
+</style>
+</head>
+<body>
+<a class="back" href="../index.html">← Back to system</a>
+
+<div class="stage">
+  <div class="switch-row">
+    <a href="login.html" class="active">Sign in</a>
+    <a href="login.html?signup=1">Create account</a>
+  </div>
+
+  <div class="auth-grid">
+    <div class="auth-pane">
+      <img src="../assets/pocketseed-logo.png" alt="PocketSeed" style="height: 28px; width: auto; align-self: flex-start;" />
+
+      <div>
+        <span class="ps-eyebrow" style="font-size: 11px;">Welcome back</span>
+        <h1 style="font-size: 28px; font-weight: 600; letter-spacing: -0.018em; margin-top: 8px;">Sign in to your workspace</h1>
+      </div>
+
+      <form class="ps-auth-form" onsubmit="event.preventDefault();">
+        <div class="ps-field">
+          <label class="ps-label" for="login-email">Email</label>
+          <input class="ps-input" id="login-email" type="email" placeholder="alex@pocketseed.io" autofocus />
+        </div>
+        <div class="ps-field">
+          <label class="ps-label" for="login-pw">Password <a class="ps-label-hint" href="#" style="color: var(--ps-accent); font-weight: 500;">Forgot?</a></label>
+          <input class="ps-input" id="login-pw" type="password" placeholder="••••••••" />
+        </div>
+        <label class="ps-check-row">
+          <input class="ps-checkbox" type="checkbox" />
+          <span class="ps-check-content">
+            <span class="ps-check-label">Keep me signed in for 30 days</span>
+          </span>
+        </label>
+        <button class="ps-btn ps-btn-primary" style="margin-top: 4px;">Sign in</button>
+
+        <div class="ps-divider">or</div>
+
+        <button type="button" class="ps-btn">Continue with Google</button>
+        <button type="button" class="ps-btn">Continue with Microsoft</button>
+      </form>
+
+      <div style="font-size: 13px; color: var(--ps-muted); text-align: center;">
+        New to PocketSeed?
+        <a href="login.html?signup=1" style="color: var(--ps-ink); font-weight: 500; border-bottom: 1px solid var(--ps-line);">Create an account</a>
+      </div>
+    </div>
+
+    <div class="auth-pane dark">
+      <div class="ps-glow"></div>
+      <div style="position: relative; display: flex; flex-direction: column; gap: 32px; height: 100%; justify-content: space-between;">
+        <span class="ps-eyebrow" style="color: var(--ps-teal); font-size: 11px;">In one breath</span>
+        <h2>
+          We make every claim a brand makes
+          <span class="ps-serif" style="color: var(--ps-teal);">verifiable</span>, every campaign
+          <span class="ps-serif" style="color: var(--ps-teal);">evidenced</span>, and every product
+          <span class="ps-serif" style="color: var(--ps-teal);">interactive.</span>
+        </h2>
+        <div>
+          <p>Trusted by sustainability teams at consumer brands, agencies, and consultancies turning their work into living, verifiable assets.</p>
+          <div class="ps-avatar-stack" style="margin-top: 16px;">
+            <span class="ps-avatar">AC</span>
+            <span class="ps-avatar" style="background: var(--ps-grad-leaf);">SM</span>
+            <span class="ps-avatar" style="background: linear-gradient(135deg, var(--ps-purple), var(--ps-blue));">JR</span>
+            <span class="ps-avatar" style="background: var(--ps-ink-soft); color: var(--ps-paper); border-color: var(--ps-ink);">+24</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

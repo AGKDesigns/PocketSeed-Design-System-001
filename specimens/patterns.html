@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Patterns · PocketSeed Design System</title>
+<link rel="stylesheet" href="../css/pocketseed.css" />
+<link rel="stylesheet" href="_specimen.css" />
+<style>
+  /* Render slide-stage at a manageable preview size on this page */
+  .preview-stage { position: relative; aspect-ratio: 16 / 9; border-radius: var(--ps-radius-lg); overflow: hidden; border: 1px solid var(--ps-line); }
+  .preview-inner { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; transform: scale(var(--scale, 0.5)); transform-origin: top left; }
+  /* Set --scale at runtime for fluid sizing */
+</style>
+<script>
+  function fitStages() {
+    document.querySelectorAll('.preview-stage').forEach(el => {
+      const w = el.clientWidth;
+      const inner = el.querySelector('.preview-inner');
+      if (!inner) return;
+      const scale = w / 1920;
+      inner.style.setProperty('--scale', scale);
+      el.style.height = (1080 * scale) + 'px';
+    });
+  }
+  window.addEventListener('load', fitStages);
+  window.addEventListener('resize', fitStages);
+</script>
+</head>
+<body>
+<main class="spec-shell">
+  <a class="spec-back" href="../index.html">← Back to system</a>
+  <div class="spec-title">
+    <span class="ps-eyebrow" style="font-size: 12px;">Specimen 04</span>
+    <h1 class="ps-web-title">Patterns</h1>
+    <p class="ps-web-lead" style="max-width: 720px;">How the components compose. These are the recurring page archetypes from the v1 sales deck — generalised so you can reach for them on any future deliverable.</p>
+  </div>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Pattern A · Title + content split</span>
+    <h2>Headline left, mockup right</h2>
+    <p class="spec-desc">The default content slide. Eyebrow, headline (with optional serif italic accent), lead paragraph, optional bullets, paired with a visual on the right.</p>
+    <div class="preview-stage" style="margin-top: 24px;">
+      <div class="preview-inner ps-bg-paper">
+        <div class="ps-slide ps-relative">
+          <div class="ps-grain"></div>
+          <header class="ps-chrome">
+            <img class="ps-chrome-logo" src="../assets/pocketseed-logo.png" alt="PocketSeed" />
+            <div class="ps-chrome-meta">
+              <span>Feature 01 · Credentials</span>
+              <span>For retail & consumer brands</span>
+              <span class="ps-mono">04 / 15</span>
+            </div>
+          </header>
+          <div style="margin-top: 140px; display: grid; grid-template-columns: 1fr 1.05fr; gap: 80px; flex: 1; align-items: center;">
+            <div>
+              <span class="ps-eyebrow">01 · Shareable Credentials</span>
+              <h2 class="ps-h-title" style="margin-top: 28px; font-size: 80px;">
+                Replace the PDF report with a <span class="ps-serif" style="color: var(--ps-accent);">living credential.</span>
+              </h2>
+              <p class="ps-lead" style="margin-top: 32px; max-width: 760px;">
+                A Verifiable Credential bundles the claim, the evidence, a digital signature, and an AI chat layer into one tamper-proof share.
+              </p>
+              <ul class="ps-bullets" style="margin-top: 36px;">
+                <li>Tamper-proof and signed, so claims can't be quietly edited</li>
+                <li>Evidence travels with the claim, not in a Dropbox</li>
+                <li>AI chat lets recipients engage with the evidence, not skim</li>
+                <li>Share privately or publicly · embed anywhere</li>
+              </ul>
+            </div>
+            <div style="display: flex; justify-content: center;">
+              <div class="ps-browser" style="width: 600px;">
+                <div class="ps-browser-bar">
+                  <span class="ps-light" style="background: #e8a8a8;"></span>
+                  <span class="ps-light" style="background: #e8d68a;"></span>
+                  <span class="ps-light" style="background: #a8d6a0;"></span>
+                  <span class="ps-url">pocketseed.io/c/cf-2026-acme</span>
+                </div>
+                <div style="padding: 32px 36px; display: flex; flex-direction: column; gap: 18px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="ps-mono" style="font-size: 14px; color: var(--ps-muted);">CREDENTIAL · CF-2026-ACME</span>
+                    <span class="ps-pill ps-pill-accent ps-pill-sm"><span class="ps-dot-mini"></span>Verified</span>
+                  </div>
+                  <div style="font-size: 32px; font-weight: 600; line-height: 1.15; letter-spacing: -0.015em;">2026 Carbon Footprint</div>
+                  <p style="font-size: 17px; line-height: 1.5; color: var(--ps-ink-soft); margin: 0;">
+                    Acme's verified 2026 carbon footprint. Total emissions of <strong style="color: var(--ps-ink); font-weight: 600;">37,453 tCO₂e</strong> across Scope 1, 2 and 3.
+                  </p>
+                  <hr class="ps-rule" />
+                  <div class="ps-ask-bar">Ask a question about this credential…</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Pattern B · Three-up grid</span>
+    <h2>Feature TL;DR</h2>
+    <p class="spec-desc">Used for the "what we sell" slide and any "three things to know" moment. Each card is a <code class="ps-mono">.ps-feature-card</code> with a numerator, accent pill, headline, and short description.</p>
+    <div class="preview-stage" style="margin-top: 24px;">
+      <div class="preview-inner ps-bg-paper">
+        <div class="ps-slide ps-relative">
+          <div class="ps-grain"></div>
+          <header class="ps-chrome">
+            <img class="ps-chrome-logo" src="../assets/pocketseed-logo.png" alt="PocketSeed" />
+            <div class="ps-chrome-meta">
+              <span>What we sell</span>
+              <span>For retail & consumer brands</span>
+              <span class="ps-mono">04 / 15</span>
+            </div>
+          </header>
+          <div style="margin-top: 140px; display: flex; flex-direction: column; gap: 56px; flex: 1;">
+            <div style="max-width: 1500px;">
+              <span class="ps-eyebrow">Three features, one story</span>
+              <h2 class="ps-h-section" style="margin-top: 24px; font-size: 64px;">
+                PocketSeed gives brands a way to back claims with evidence, connect with customers, and turn impact into a story they can share with integrity.
+              </h2>
+            </div>
+            <div class="ps-grid-3" style="gap: 28px;">
+              <div class="ps-feature-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="ps-num">01</span>
+                  <span class="ps-pill ps-pill-sm" style="font-size: 16px; padding: 6px 14px;">Build trust</span>
+                </div>
+                <h3>Credentials</h3>
+                <p>Tamper-proof, digitally signed packages that back claims with evidence. Connect with customers and share with integrity.</p>
+              </div>
+              <div class="ps-feature-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="ps-num">02</span>
+                  <span class="ps-pill ps-pill-sm" style="font-size: 16px; padding: 6px 14px;">Show the work</span>
+                </div>
+                <h3>Products</h3>
+                <p>Verifiable product pages for every SKU, backed by evidence and insight. Interactive, DPP-ready.</p>
+              </div>
+              <div class="ps-feature-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="ps-num">03</span>
+                  <span class="ps-pill ps-pill-sm" style="font-size: 16px; padding: 6px 14px;">Activate impact</span>
+                </div>
+                <h3>Campaigns</h3>
+                <p>Real-world impact attributed to real customer interactions. Every purchase = 1 tree.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Pattern C · Pitch on ink</span>
+    <h2>Centered hero on dark surface</h2>
+    <p class="spec-desc">The big "in one breath" moment — pure type, dark surface, accent glow behind the headline.</p>
+    <div class="preview-stage" style="margin-top: 24px;">
+      <div class="preview-inner">
+        <div class="ps-slide ps-bg-ink ps-relative" style="justify-content: center;">
+          <div class="ps-grain"></div>
+          <div class="ps-glow"></div>
+          <header class="ps-chrome">
+            <img class="ps-chrome-logo" src="../assets/pocketseed-logo-white.png" alt="PocketSeed" />
+            <div class="ps-chrome-meta">
+              <span>The pitch</span>
+              <span>For retail & consumer brands</span>
+              <span class="ps-mono">14 / 15</span>
+            </div>
+          </header>
+          <div style="position: relative; max-width: 1700px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 72px;">
+            <span class="ps-eyebrow">In one breath</span>
+            <p class="ps-serif" style="font-size: 80px; line-height: 1.18; color: var(--ps-paper); letter-spacing: -0.02em;">
+              We make every claim a brand makes <span style="color: var(--ps-accent); font-style: italic;">verifiable</span>, every campaign <span style="color: var(--ps-accent); font-style: italic;">evidenced</span>, and every product <span style="color: var(--ps-accent); font-style: italic;">interactive.</span>
+            </p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+              <span class="ps-pill"><span class="ps-dot-mini" style="background: var(--ps-accent);"></span>Tamper-proof</span>
+              <span class="ps-pill"><span class="ps-dot-mini" style="background: var(--ps-accent);"></span>AI-interactive</span>
+              <span class="ps-pill"><span class="ps-dot-mini" style="background: var(--ps-accent);"></span>DPP-ready</span>
+              <span class="ps-pill"><span class="ps-dot-mini" style="background: var(--ps-accent);"></span>Plug-and-play</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Pattern D · Cover</span>
+    <h2>Hero cover slide</h2>
+    <p class="spec-desc">Logo top-left, mono platform stamp top-right, eyebrow + display headline + lead in the body, footer URL in mono.</p>
+    <div class="preview-stage" style="margin-top: 24px;">
+      <div class="preview-inner">
+        <div class="ps-slide ps-bg-paper ps-relative" style="padding: 0;">
+          <div class="ps-grain"></div>
+          <div style="position: absolute; top: 56px; left: 100px; right: 100px; display: flex; justify-content: space-between; align-items: center;">
+            <img src="../assets/pocketseed-logo.png" alt="PocketSeed" style="height: 48px; width: auto;" />
+            <span class="ps-mono" style="font-size: 16px; color: var(--ps-muted); letter-spacing: 0.08em;">PLATFORM v1 · 2026</span>
+          </div>
+          <div style="position: absolute; inset: 0; display: grid; grid-template-columns: 1.3fr 1fr; align-items: center; padding: 0 100px; gap: 80px;">
+            <div>
+              <span class="ps-eyebrow" style="margin-bottom: 32px; display: block; font-size: 26px;">For retail & consumer brands</span>
+              <h1 class="ps-h-title" style="font-size: 116px;">The trust layer for sustainability claims.</h1>
+              <p class="ps-lead" style="margin-top: 36px; max-width: 800px; font-size: 32px;">
+                Tamper-proof credentials, verifiable product pages, and evidence-backed campaigns. One platform.
+              </p>
+            </div>
+            <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+              <img class="ps-mark" src="../assets/pocketseed-mark.png" alt="PocketSeed" style="--ps-mark-size: 220px;" />
+            </div>
+          </div>
+          <div style="position: absolute; bottom: 64px; left: 100px; right: 100px; display: flex; justify-content: flex-end;">
+            <span class="ps-mono" style="font-size: 16px; color: var(--ps-muted); letter-spacing: 0.08em;">pocketseed.io</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

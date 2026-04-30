@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Colors · PocketSeed Design System</title>
+<link rel="stylesheet" href="../css/pocketseed.css" />
+<link rel="stylesheet" href="_specimen.css" />
+<style>
+  .swatch { aspect-ratio: 1.4 / 1; padding: 20px; border-radius: var(--ps-radius-lg); display: flex; flex-direction: column; justify-content: space-between; border: var(--ps-border); position: relative; overflow: hidden; }
+  .swatch .name { font-size: 14px; font-weight: 600; }
+  .swatch .var  { font-family: var(--ps-font-mono); font-size: 12px; opacity: 0.75; }
+  .swatch .hex  { font-family: var(--ps-font-mono); font-size: 13px; opacity: 0.85; }
+  .swatch.light .name, .swatch.light .var, .swatch.light .hex { color: var(--ps-paper); }
+  .palette-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .accent-demo { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .accent-demo .accent-card { padding: 24px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-lg); }
+  .accent-demo .accent-bar  { height: 8px; border-radius: var(--ps-radius-pill); background: var(--ps-accent); margin-bottom: 16px; }
+  .accent-demo .accent-pill { display: inline-flex; padding: 6px 12px; border-radius: var(--ps-radius-pill); background: color-mix(in oklch, var(--ps-accent) 12%, transparent); border: 1px solid color-mix(in oklch, var(--ps-accent) 35%, transparent); color: var(--ps-accent); font-size: 13px; font-weight: 500; }
+</style>
+</head>
+<body>
+<main class="spec-shell">
+  <a class="spec-back" href="../index.html">← Back to system</a>
+  <div class="spec-title">
+    <span class="ps-eyebrow" style="font-size: 12px;">Specimen 01</span>
+    <h1 class="ps-web-title">Colors</h1>
+    <p class="ps-web-lead" style="max-width: 720px;">PocketSeed lives on warm paper, anchored by deep ink. Brand teal/blue/green do the talking. Use one accent at a time and let the rest stay quiet.</p>
+  </div>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Foundation</span>
+    <h2>Ink, paper & line</h2>
+    <p class="spec-desc">Every surface in the system is one of these. <code class="ps-mono">--ps-paper</code> is the canvas, <code class="ps-mono">--ps-ink</code> is the dark counterpart, and the line tones are quiet enough to disappear at a glance.</p>
+    <div class="palette-row" style="margin-top: 24px;">
+      <div class="swatch" style="background: var(--ps-paper);">
+        <span class="name">Paper</span>
+        <span class="var">--ps-paper</span>
+        <span class="hex">#f7f4ec</span>
+      </div>
+      <div class="swatch" style="background: var(--ps-paper-warm);">
+        <span class="name">Paper warm</span>
+        <span class="var">--ps-paper-warm</span>
+        <span class="hex">#efeadd</span>
+      </div>
+      <div class="swatch" style="background: var(--ps-card); border: 1px solid var(--ps-line);">
+        <span class="name">Card</span>
+        <span class="var">--ps-card</span>
+        <span class="hex">#ffffff</span>
+      </div>
+      <div class="swatch light" style="background: var(--ps-ink);">
+        <span class="name">Ink</span>
+        <span class="var">--ps-ink</span>
+        <span class="hex">#1a2535</span>
+      </div>
+      <div class="swatch light" style="background: var(--ps-ink-soft);">
+        <span class="name">Ink soft</span>
+        <span class="var">--ps-ink-soft</span>
+        <span class="hex">#2d3a4d</span>
+      </div>
+      <div class="swatch" style="background: var(--ps-line);">
+        <span class="name">Line</span>
+        <span class="var">--ps-line</span>
+        <span class="hex">#e5e0d3</span>
+      </div>
+      <div class="swatch" style="background: var(--ps-line-soft);">
+        <span class="name">Line soft</span>
+        <span class="var">--ps-line-soft</span>
+        <span class="hex">#efeae0</span>
+      </div>
+      <div class="swatch light" style="background: var(--ps-muted); color: var(--ps-paper);">
+        <span class="name">Muted</span>
+        <span class="var">--ps-muted</span>
+        <span class="hex">#6b7280</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Brand</span>
+    <h2>Teal, blue, purple, green</h2>
+    <p class="spec-desc">Pulled directly from the logo gradient. Teal is the default accent. Reserve purple for hero gradients (it appears in <code class="ps-mono">--ps-grad-orb</code>); use green sparingly for "go / verified / impact" signals.</p>
+    <div class="palette-row" style="margin-top: 24px;">
+      <div class="swatch light" style="background: var(--ps-teal);">
+        <span class="name">Teal</span>
+        <span class="var">--ps-teal</span>
+        <span class="hex">#2dadc7</span>
+      </div>
+      <div class="swatch light" style="background: var(--ps-blue);">
+        <span class="name">Blue</span>
+        <span class="var">--ps-blue</span>
+        <span class="hex">#3b6cf0</span>
+      </div>
+      <div class="swatch light" style="background: var(--ps-purple);">
+        <span class="name">Purple</span>
+        <span class="var">--ps-purple</span>
+        <span class="hex">#6a4ed8</span>
+      </div>
+      <div class="swatch light" style="background: var(--ps-green);">
+        <span class="name">Green</span>
+        <span class="var">--ps-green</span>
+        <span class="hex">#4caf50</span>
+      </div>
+      <div class="swatch light" style="background: var(--ps-green-deep);">
+        <span class="name">Green deep</span>
+        <span class="var">--ps-green-deep</span>
+        <span class="hex">#2f7a3a</span>
+      </div>
+      <div class="swatch light" style="background: var(--ps-leaf);">
+        <span class="name">Leaf</span>
+        <span class="var">--ps-leaf</span>
+        <span class="hex">#7ed957</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Accents</span>
+    <h2>Switchable accents</h2>
+    <p class="spec-desc">Set <code class="ps-mono">--ps-accent</code> at the page or container level. Anything keyed off the accent (eyebrow, bullets, accent pills, focus rings, feature-card numerals) updates everywhere.</p>
+    <div class="accent-demo" style="margin-top: 24px;">
+      <div class="accent-card ps-accent-teal">
+        <div class="accent-bar"></div>
+        <div class="ps-eyebrow" style="font-size: 12px;">Eyebrow</div>
+        <h3 style="font-size: 22px; font-weight: 600; margin: 6px 0;">Teal (default)</h3>
+        <span class="accent-pill">Accent pill</span>
+      </div>
+      <div class="accent-card ps-accent-blue">
+        <div class="accent-bar"></div>
+        <div class="ps-eyebrow" style="font-size: 12px;">Eyebrow</div>
+        <h3 style="font-size: 22px; font-weight: 600; margin: 6px 0;">Brand blue</h3>
+        <span class="accent-pill">Accent pill</span>
+      </div>
+      <div class="accent-card ps-accent-green">
+        <div class="accent-bar"></div>
+        <div class="ps-eyebrow" style="font-size: 12px;">Eyebrow</div>
+        <h3 style="font-size: 22px; font-weight: 600; margin: 6px 0;">Forest green</h3>
+        <span class="accent-pill">Accent pill</span>
+      </div>
+      <div class="accent-card ps-accent-purple">
+        <div class="accent-bar"></div>
+        <div class="ps-eyebrow" style="font-size: 12px;">Eyebrow</div>
+        <h3 style="font-size: 22px; font-weight: 600; margin: 6px 0;">Purple</h3>
+        <span class="accent-pill">Accent pill</span>
+      </div>
+      <div class="accent-card ps-accent-ink">
+        <div class="accent-bar"></div>
+        <div class="ps-eyebrow" style="font-size: 12px;">Eyebrow</div>
+        <h3 style="font-size: 22px; font-weight: 600; margin: 6px 0;">Ink (mono)</h3>
+        <span class="accent-pill">Accent pill</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">On ink</span>
+    <h2>Alpha layers for dark surfaces</h2>
+    <p class="spec-desc">When you put a card on <code class="ps-mono">.ps-bg-ink</code>, use these tokens for body text, borders, and subtle fills so the contrast stays right.</p>
+    <div class="spec-frame dark" style="margin-top: 24px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+        <div style="padding: 16px; background: var(--ps-on-ink-fill); border: 1px solid var(--ps-on-ink-line); border-radius: 10px;">
+          <div style="font-weight: 600; color: var(--ps-paper); font-size: 14px;">on-ink-fill</div>
+          <div class="ps-mono" style="font-size: 11px; color: var(--ps-on-ink-mute); margin-top: 4px;">rgba(247,244,236,0.04)</div>
+        </div>
+        <div style="padding: 16px; background: rgba(247,244,236,0.06); border: 1px solid var(--ps-on-ink-line); border-radius: 10px;">
+          <div style="font-weight: 600; color: var(--ps-paper); font-size: 14px;">on-ink-line</div>
+          <div class="ps-mono" style="font-size: 11px; color: var(--ps-on-ink-mute); margin-top: 4px;">rgba(247,244,236,0.12)</div>
+        </div>
+        <div style="padding: 16px; background: rgba(247,244,236,0.06); border: 1px solid var(--ps-on-ink-line); border-radius: 10px;">
+          <div style="color: var(--ps-on-ink-strong); font-size: 14px;">on-ink-strong text</div>
+          <div class="ps-mono" style="font-size: 11px; color: var(--ps-on-ink-mute); margin-top: 4px;">rgba(247,244,236,0.85)</div>
+        </div>
+        <div style="padding: 16px; background: rgba(247,244,236,0.06); border: 1px solid var(--ps-on-ink-line); border-radius: 10px;">
+          <div style="color: var(--ps-on-ink-soft); font-size: 14px;">on-ink-soft text</div>
+          <div class="ps-mono" style="font-size: 11px; color: var(--ps-on-ink-mute); margin-top: 4px;">rgba(247,244,236,0.65)</div>
+        </div>
+        <div style="padding: 16px; background: rgba(247,244,236,0.06); border: 1px solid var(--ps-on-ink-line); border-radius: 10px;">
+          <div style="color: var(--ps-on-ink-mute); font-size: 14px;">on-ink-mute text</div>
+          <div class="ps-mono" style="font-size: 11px; color: var(--ps-on-ink-mute); margin-top: 4px;">rgba(247,244,236,0.45)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Gradients</span>
+    <h2>Brand gradients</h2>
+    <div class="palette-row" style="margin-top: 24px;">
+      <div class="swatch light" style="background: var(--ps-grad-orb);">
+        <span class="name">Orb</span>
+        <span class="var">--ps-grad-orb</span>
+        <span class="hex">teal → blue → purple</span>
+      </div>
+      <div class="swatch light" style="background: var(--ps-grad-leaf);">
+        <span class="name">Leaf</span>
+        <span class="var">--ps-grad-leaf</span>
+        <span class="hex">leaf → green → green-deep</span>
+      </div>
+      <div class="swatch light" style="background: var(--ps-grad-teal-blue);">
+        <span class="name">Teal → Blue</span>
+        <span class="var">--ps-grad-teal-blue</span>
+        <span class="hex">135°</span>
+      </div>
+      <div class="swatch light" style="background: var(--ps-grad-teal-green);">
+        <span class="name">Teal → Green</span>
+        <span class="var">--ps-grad-teal-green</span>
+        <span class="hex">90°</span>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

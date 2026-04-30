@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Typography · PocketSeed Design System</title>
+<link rel="stylesheet" href="../css/pocketseed.css" />
+<link rel="stylesheet" href="_specimen.css" />
+<style>
+  .type-row { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding: 24px 0; border-top: 1px solid var(--ps-line); align-items: baseline; }
+  .type-row:first-of-type { border-top: 0; }
+  .type-meta { font-family: var(--ps-font-mono); font-size: 12px; color: var(--ps-muted); display: flex; flex-direction: column; gap: 4px; }
+  .type-meta .name { font-weight: 500; color: var(--ps-ink); font-family: var(--ps-font-sans); font-size: 14px; }
+  .specimen-line { line-height: 1.05; color: var(--ps-ink); }
+  .scale-banner { padding: 12px 16px; background: var(--ps-paper-warm); border: 1px solid var(--ps-line); border-radius: 8px; font-size: 13px; color: var(--ps-ink-soft); margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<main class="spec-shell">
+  <a class="spec-back" href="../index.html">← Back to system</a>
+  <div class="spec-title">
+    <span class="ps-eyebrow" style="font-size: 12px;">Specimen 02</span>
+    <h1 class="ps-web-title">Typography</h1>
+    <p class="ps-web-lead" style="max-width: 720px;"><strong>Inter</strong> for body and UI, <strong>Instrument Serif</strong> italic for editorial accents inside headlines, <strong>JetBrains Mono</strong> for micro-type and tabular data.</p>
+  </div>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Slide ramp · 1920×1080</span>
+    <h2>Built for the deck stage</h2>
+    <p class="spec-desc">Used on slides where we need real presence. These sizes assume the slide is rendered at native 1920×1080 and scaled to fit.</p>
+    <div class="scale-banner">Sizes shown at 50% so they fit the page. Multiply by 2 for the real value.</div>
+    <div style="zoom: 0.5;">
+      <div class="type-row">
+        <div class="type-meta"><span class="name">.ps-h-mega</span><span>200 / 0.9 / 700</span><span>letter-spacing -0.045em</span></div>
+        <div class="ps-h-mega specimen-line">347</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="name">.ps-h-display</span><span>128 / 0.95 / 700</span><span>letter-spacing -0.035em</span></div>
+        <div class="ps-h-display specimen-line">The trust layer.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="name">.ps-h-title</span><span>76 / 1.02 / 700</span><span>letter-spacing -0.025em</span></div>
+        <div class="ps-h-title specimen-line">Replace the PDF report with a <span class="ps-serif" style="color: var(--ps-accent);">living credential.</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="name">.ps-h-section</span><span>56 / 1.05 / 600</span><span>letter-spacing -0.018em</span></div>
+        <div class="ps-h-section specimen-line">Three features, one story.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="name">.ps-h-subtitle</span><span>44 / 1.2 / 500</span><span>color ink-soft</span></div>
+        <div class="ps-h-subtitle specimen-line">A leave-behind for retail and consumer brands.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="name">.ps-lead</span><span>36 / 1.35 / 400</span></div>
+        <div class="ps-lead specimen-line" style="max-width: 1100px;">A Verifiable Credential bundles the claim, the evidence, a digital signature, and an AI chat layer into one tamper-proof share.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="name">.ps-body-lg</span><span>30 / 1.45 / 400</span></div>
+        <div class="ps-body-lg specimen-line">Pulled from the brand voice — direct, generous with space, not afraid of a good serif accent.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="name">.ps-body</span><span>26 / 1.5 / 400</span></div>
+        <div class="ps-body specimen-line">Default body weight on slides. Used inside cards and feature grids.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="name">.ps-small</span><span>22 / 1.5 / 400</span></div>
+        <div class="ps-small specimen-line">Sub-labels, captions, and meta-text on slides.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="name">.ps-eyebrow</span><span>22 / 0.04 tracking / 500</span></div>
+        <div class="ps-eyebrow specimen-line">For retail & consumer brands</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Web ramp · 16px base</span>
+    <h2>Built for product UI and marketing pages</h2>
+    <p class="spec-desc">Same proportions, scaled to a 16px base. Use these on landing pages, dashboards, internal tools.</p>
+    <div class="type-row">
+      <div class="type-meta"><span class="name">.ps-web-display</span><span>72 / 1.02 / 700</span></div>
+      <div class="ps-web-display specimen-line">Make every claim verifiable.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><span class="name">.ps-web-title</span><span>48 / 1.05 / 700</span></div>
+      <div class="ps-web-title specimen-line">A canonical home for every SKU.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><span class="name">.ps-web-section</span><span>36 / 1.15 / 600</span></div>
+      <div class="ps-web-section specimen-line">How the three fit together</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><span class="name">.ps-web-subtitle</span><span>28 / 1.25 / 500</span></div>
+      <div class="ps-web-subtitle specimen-line">A weightless body serum that hydrates with hyaluronic acid and sea kelp.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><span class="name">.ps-web-lead</span><span>20 / 1.45 / 400</span></div>
+      <div class="ps-web-lead specimen-line" style="max-width: 720px;">Tamper-proof credentials, verifiable product pages, and evidence-backed campaigns. One platform.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><span class="name">.ps-web-body</span><span>16 / 1.55 / 400</span></div>
+      <div class="ps-web-body specimen-line" style="max-width: 720px;">Default web body. Comfortable for paragraphs, descriptions, and explanatory copy alongside UI components.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><span class="name">.ps-web-small</span><span>14 / 1.5 / 400</span></div>
+      <div class="ps-web-small specimen-line">Caption, helper text, footer text. Use sparingly.</div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Decorative</span>
+    <h2>Serif italic & mono</h2>
+    <p class="spec-desc"><strong>Serif italic</strong> tucks inside a sans headline to add warmth and editorial weight on a single emphatic word. <strong>Mono</strong> handles micro-type, IDs, codes, timestamps.</p>
+    <div class="spec-frame" style="margin-top: 24px; display: flex; flex-direction: column; gap: 24px;">
+      <div>
+        <div class="ps-mono" style="font-size: 12px; color: var(--ps-muted); margin-bottom: 8px;">.ps-serif used inline in a headline</div>
+        <div class="ps-web-title">Sustainability claims live <span class="ps-serif" style="color: var(--ps-accent);">on faith.</span></div>
+      </div>
+      <hr class="ps-rule" />
+      <div>
+        <div class="ps-mono" style="font-size: 12px; color: var(--ps-muted); margin-bottom: 8px;">.ps-mono used as label / micro-type</div>
+        <div class="ps-flex ps-flex-wrap ps-gap-12">
+          <span class="ps-mono" style="font-size: 14px;">CREDENTIAL · CF-2026-ACME</span>
+          <span class="ps-mono" style="font-size: 14px;">12 / 15</span>
+          <span class="ps-mono" style="font-size: 14px;">PLATFORM v1 · 2026</span>
+          <span class="ps-mono" style="font-size: 14px;">pocketseed.io/p/aqua-serum</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

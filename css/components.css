@@ -1,0 +1,687 @@
+/* PocketSeed Design System — Components
+ * Reusable visual primitives. Class-name prefix: `.ps-`
+ * Load order:  tokens.css → base.css → type.css → components.css
+ */
+
+/* ─── Surfaces ──────────────────────────────────────────────── */
+
+.ps-bg-paper { background: var(--ps-paper); }
+.ps-bg-warm  { background: var(--ps-paper-warm); }
+.ps-bg-card  { background: var(--ps-card); }
+
+/* Dark surface flips the accent to teal automatically — light surfaces
+ * stay on forest green. Matches the brand convention from the deck. */
+.ps-bg-ink {
+  background: var(--ps-ink);
+  color: var(--ps-paper);
+  --ps-accent: var(--ps-teal);
+}
+
+.ps-bg-ink .ps-h-display,
+.ps-bg-ink .ps-h-title,
+.ps-bg-ink .ps-h-section,
+.ps-bg-ink .ps-h-mega,
+.ps-bg-ink .ps-h-subtitle { color: var(--ps-paper); }
+
+.ps-bg-ink .ps-lead,
+.ps-bg-ink .ps-body-lg,
+.ps-bg-ink .ps-body,
+.ps-bg-ink .ps-bullets li,
+.ps-bg-ink .ps-web-lead,
+.ps-bg-ink .ps-web-body { color: var(--ps-on-ink-strong); }
+
+.ps-bg-ink .ps-small,
+.ps-bg-ink .ps-text-muted,
+.ps-bg-ink .ps-web-small { color: var(--ps-on-ink-mute); }
+
+.ps-bg-ink .ps-rule { background: var(--ps-on-ink-line); }
+
+/* ─── Cards ─────────────────────────────────────────────────── */
+
+.ps-card {
+  background: var(--ps-card);
+  border: var(--ps-border);
+  border-radius: var(--ps-radius-2xl);
+  padding: var(--ps-space-40);
+  display: flex;
+  flex-direction: column;
+}
+
+.ps-card.ps-card-bare {
+  background: transparent;
+}
+
+.ps-card.ps-card-tight {
+  padding: var(--ps-space-24);
+  border-radius: var(--ps-radius-lg);
+}
+
+/* On dark surfaces, cards become subtle glass panels */
+.ps-bg-ink .ps-card {
+  background: var(--ps-on-ink-fill);
+  border-color: var(--ps-on-ink-line);
+}
+
+/* Stand-alone dark card — drop on a light surface and it inverts itself.
+ * Use when you want a single ink-coloured card without wrapping. */
+.ps-card.ps-card-ink {
+  background: var(--ps-ink);
+  border-color: var(--ps-ink);
+  color: var(--ps-paper);
+  --ps-accent: var(--ps-teal);
+}
+.ps-card-ink .ps-h-display,
+.ps-card-ink .ps-h-title,
+.ps-card-ink .ps-h-section,
+.ps-card-ink .ps-h-subtitle { color: var(--ps-paper); }
+.ps-card-ink .ps-lead,
+.ps-card-ink .ps-body,
+.ps-card-ink .ps-body-lg,
+.ps-card-ink .ps-bullets li { color: var(--ps-on-ink-strong); }
+.ps-card-ink .ps-small,
+.ps-card-ink .ps-text-muted { color: var(--ps-on-ink-mute); }
+.ps-card-ink .ps-rule { background: var(--ps-on-ink-line); }
+
+/* Feature card — three-up grid pattern from the deck.
+ * Web-scale by default. Inside a .ps-slide / .ps-stage, scales up to slide size. */
+.ps-feature-card {
+  background: var(--ps-card);
+  border: var(--ps-border);
+  border-radius: var(--ps-radius-2xl);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-space-16);
+  position: relative;
+  overflow: hidden;
+}
+
+.ps-feature-card .ps-num {
+  font-family: var(--ps-font-mono);
+  font-size: 13px;
+  color: var(--ps-accent);
+  font-weight: var(--ps-w-medium);
+  letter-spacing: 0.06em;
+}
+
+.ps-feature-card h3 {
+  font-size: 22px;
+  font-weight: var(--ps-w-semibold);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--ps-ink);
+}
+
+.ps-feature-card p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ps-ink-soft);
+}
+
+/* Slide-scale overrides */
+.ps-slide .ps-feature-card,
+.ps-stage .ps-feature-card {
+  border-radius: var(--ps-radius-3xl);
+  padding: 48px 40px;
+  gap: var(--ps-space-24);
+}
+.ps-slide .ps-feature-card .ps-num,
+.ps-stage .ps-feature-card .ps-num { font-size: var(--ps-fs-small); }
+.ps-slide .ps-feature-card h3,
+.ps-stage .ps-feature-card h3 {
+  font-size: var(--ps-fs-h3);
+  letter-spacing: -0.018em;
+  line-height: 1.05;
+}
+.ps-slide .ps-feature-card p,
+.ps-stage .ps-feature-card p { font-size: 24px; line-height: 1.45; }
+
+/* ─── Pills / Tags ──────────────────────────────────────────── */
+
+.ps-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--ps-radius-pill);
+  background: var(--ps-card);
+  border: var(--ps-border);
+  font-size: 13px;
+  font-weight: var(--ps-w-medium);
+  color: var(--ps-ink-soft);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.ps-pill.ps-pill-sm { font-size: 12px; padding: 4px 10px; gap: 5px; }
+.ps-pill.ps-pill-xs { font-size: 11px; padding: 3px 8px; gap: 4px; }
+
+/* Slide-scale override — pills get a real presence on a 1920×1080 stage */
+.ps-slide .ps-pill,
+.ps-stage .ps-pill {
+  font-size: 20px;
+  padding: 10px 18px;
+  gap: var(--ps-space-10);
+}
+.ps-slide .ps-pill.ps-pill-sm,
+.ps-stage .ps-pill.ps-pill-sm { font-size: 14px; padding: 6px 12px; }
+.ps-slide .ps-pill.ps-pill-xs,
+.ps-stage .ps-pill.ps-pill-xs { font-size: 12px; padding: 4px 10px; }
+
+.ps-pill.ps-pill-solid {
+  background: var(--ps-ink);
+  color: var(--ps-paper);
+  border-color: var(--ps-ink);
+}
+
+.ps-pill.ps-pill-accent {
+  background: color-mix(in oklch, var(--ps-accent) 12%, transparent);
+  border-color: color-mix(in oklch, var(--ps-accent) 35%, transparent);
+  color: var(--ps-accent);
+}
+
+.ps-bg-ink .ps-pill {
+  background: rgba(247, 244, 236, 0.06);
+  border-color: var(--ps-on-ink-line);
+  color: var(--ps-on-ink-strong);
+}
+
+.ps-pill .ps-dot-mini {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.ps-slide .ps-pill .ps-dot-mini,
+.ps-stage .ps-pill .ps-dot-mini { width: 8px; height: 8px; }
+
+/* ─── List item card (icon + title + sub) ──────────────────────
+ * Used for "chain of authority" / "five reasons" style lists.
+ * Web-scale by default · bumps to slide-scale inside .ps-slide / .ps-stage. */
+
+.ps-list-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--ps-card);
+  border: var(--ps-border);
+  border-radius: var(--ps-radius-lg);
+  padding: 14px 16px;
+}
+
+.ps-list-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--ps-grad-teal-blue);
+  color: var(--ps-paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.ps-list-title {
+  font-size: 15px;
+  font-weight: var(--ps-w-semibold);
+  color: var(--ps-ink);
+  line-height: 1.2;
+}
+
+.ps-list-sub {
+  font-size: 13px;
+  color: var(--ps-ink-soft);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+/* Glass appearance on ink surfaces */
+.ps-bg-ink .ps-list-item,
+.ps-card-ink .ps-list-item {
+  background: var(--ps-on-ink-fill);
+  border-color: var(--ps-on-ink-line);
+}
+.ps-bg-ink .ps-list-title,
+.ps-card-ink .ps-list-title { color: var(--ps-paper); }
+.ps-bg-ink .ps-list-sub,
+.ps-card-ink .ps-list-sub { color: var(--ps-on-ink-soft); }
+
+/* Slide-scale overrides */
+.ps-slide .ps-list-item,
+.ps-stage .ps-list-item {
+  gap: 24px;
+  padding: 22px 26px;
+  border-radius: 14px;
+}
+.ps-slide .ps-list-icon,
+.ps-stage .ps-list-icon {
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+}
+.ps-slide .ps-list-title,
+.ps-stage .ps-list-title { font-size: 24px; }
+.ps-slide .ps-list-sub,
+.ps-stage .ps-list-sub { font-size: 20px; margin-top: 4px; }
+
+/* ─── Bullet list ───────────────────────────────────────────── */
+
+.ps-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ps-bullets li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ps-ink-soft);
+}
+
+.ps-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 10px;
+  height: 1.5px;
+  background: var(--ps-accent);
+}
+
+/* Slide-scale override */
+.ps-slide .ps-bullets,
+.ps-stage .ps-bullets { gap: 18px; }
+.ps-slide .ps-bullets li,
+.ps-stage .ps-bullets li {
+  padding-left: 28px;
+  font-size: var(--ps-fs-body);
+  line-height: 1.45;
+}
+.ps-slide .ps-bullets li::before,
+.ps-stage .ps-bullets li::before { top: 16px; width: 12px; }
+
+/* ─── Rule ──────────────────────────────────────────────────── */
+
+.ps-rule {
+  height: 1px;
+  background: var(--ps-line);
+  width: 100%;
+  border: 0;
+}
+
+.ps-rule-soft { background: var(--ps-line-soft); }
+
+/* ─── Numarker (mono index marker) ──────────────────────────── */
+
+.ps-numarker {
+  font-family: var(--ps-font-mono);
+  font-size: var(--ps-fs-mono-sm);
+  font-weight: var(--ps-w-medium);
+  color: var(--ps-muted);
+  font-feature-settings: var(--ps-features-tnum);
+  letter-spacing: 0.04em;
+}
+
+/* ─── Brand mark & brandmark ────────────────────────────────── */
+
+/* Icon-only mark · use assets/pocketseed-mark.png as the src */
+.ps-mark {
+  display: block;
+  width: var(--ps-mark-size, 40px);
+  height: var(--ps-mark-size, 40px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Logo + (optional) inline label */
+.ps-brandmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: var(--ps-w-semibold);
+  letter-spacing: 0.04em;
+  color: var(--ps-ink);
+}
+
+.ps-brandmark img { height: 28px; width: auto; }
+
+/* ─── Browser frame (used to mock product / credential pages) ─ */
+
+.ps-browser {
+  background: var(--ps-card);
+  border: var(--ps-border);
+  border-radius: var(--ps-radius-xl);
+  overflow: hidden;
+  box-shadow: var(--ps-shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.ps-browser-bar {
+  height: 36px;
+  background: #f1ede2;
+  border-bottom: var(--ps-border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  min-width: 0;
+}
+
+.ps-browser-bar .ps-light {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d6cfbf;
+  flex-shrink: 0;
+}
+
+.ps-browser-bar .ps-url {
+  margin-left: 12px;
+  font-family: var(--ps-font-mono);
+  font-size: 14px;
+  color: var(--ps-muted);
+  background: var(--ps-paper);
+  border-radius: var(--ps-radius-sm);
+  padding: 4px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ─── Slide chrome (header band on slides) ──────────────────── */
+
+.ps-chrome {
+  position: absolute;
+  top: var(--ps-stage-chrome-top);
+  left: var(--ps-stage-pad-x);
+  right: var(--ps-stage-pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: var(--ps-w-medium);
+  color: var(--ps-muted);
+  letter-spacing: 0.02em;
+}
+
+.ps-chrome .ps-chrome-logo { height: 22px; width: auto; display: block; }
+
+.ps-chrome .ps-chrome-meta {
+  display: flex;
+  gap: var(--ps-space-32);
+  font-feature-settings: var(--ps-features-tnum);
+}
+
+.ps-chrome .ps-chrome-meta span:first-child {
+  color: var(--ps-ink);
+  font-weight: var(--ps-w-medium);
+}
+
+.ps-bg-ink .ps-chrome { color: var(--ps-on-ink-mute); }
+.ps-bg-ink .ps-chrome .ps-chrome-meta span:first-child { color: var(--ps-paper); }
+
+/* ─── Slide frame ───────────────────────────────────────────── */
+
+.ps-slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--ps-stage-pad-top) var(--ps-stage-pad-x);
+  position: relative;
+  overflow: hidden;
+}
+
+.ps-slide.ps-slide-tight { padding: var(--ps-stage-pad-bottom) var(--ps-stage-pad-x); }
+.ps-slide.ps-slide-bleed { padding: 0; }
+
+/* Stage container — sits a 1920×1080 slide on any page, scaled to fit */
+.ps-stage {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  background: var(--ps-paper);
+  transform-origin: top left;
+}
+
+.ps-stage-fit {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── Decorative grain (subtle dotted grid) ─────────────────── */
+
+.ps-grain {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26, 37, 53, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 37, 53, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+.ps-bg-ink .ps-grain {
+  background-image:
+    linear-gradient(rgba(247, 244, 236, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247, 244, 236, 0.04) 1px, transparent 1px);
+}
+
+.ps-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--ps-glow-teal), var(--ps-glow-leaf);
+}
+
+/* ─── Quote block (serif pull-quote on dark) ────────────────── */
+
+.ps-quote {
+  background: var(--ps-ink);
+  color: var(--ps-paper);
+  border-radius: var(--ps-radius-xl);
+  padding: 32px 44px;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ps-space-32);
+}
+
+.ps-quote .ps-quote-mark {
+  font-family: var(--ps-font-serif);
+  font-size: 56px;
+  color: var(--ps-teal);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.ps-quote p {
+  font-family: var(--ps-font-serif);
+  font-style: italic;
+  font-size: 32px;
+  line-height: 1.3;
+  color: var(--ps-paper);
+  flex: 1;
+}
+
+/* ─── Buttons ───────────────────────────────────────────────────
+ *
+ * Default = app-scale (compact, rounded-square). Use everywhere inside
+ * a product UI (forms, modals, toolbars, menus).
+ *
+ * Add .ps-btn-cta to opt into marketing-scale (pill, larger). Use on
+ * landing pages and hero CTAs.
+ */
+
+.ps-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--ps-radius-md);
+  font-family: var(--ps-font-sans);
+  font-size: 14px;
+  font-weight: var(--ps-w-medium);
+  line-height: 1.4;
+  letter-spacing: 0;
+  border: var(--ps-border);
+  background: var(--ps-card);
+  color: var(--ps-ink);
+  cursor: pointer;
+  transition: background var(--ps-dur-fast) var(--ps-ease),
+              border-color var(--ps-dur-fast) var(--ps-ease),
+              color var(--ps-dur-fast) var(--ps-ease);
+}
+
+.ps-btn:hover { background: var(--ps-paper); }
+
+.ps-btn-primary {
+  background: var(--ps-ink);
+  color: var(--ps-paper);
+  border-color: var(--ps-ink);
+}
+.ps-btn-primary:hover { background: var(--ps-ink-soft); border-color: var(--ps-ink-soft); }
+
+.ps-btn-accent {
+  background: var(--ps-accent);
+  color: var(--ps-paper);
+  border-color: var(--ps-accent);
+}
+.ps-btn-accent:hover { filter: brightness(0.94); }
+
+.ps-btn-ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--ps-ink-soft);
+}
+.ps-btn-ghost:hover { background: var(--ps-paper); color: var(--ps-ink); }
+
+.ps-btn-danger {
+  background: #c2382a;
+  color: var(--ps-paper);
+  border-color: #c2382a;
+}
+.ps-btn-danger:hover { filter: brightness(0.95); }
+
+.ps-btn-sm { font-size: 13px; padding: 6px 10px; gap: 6px; }
+.ps-btn-icon { padding: 8px; aspect-ratio: 1; }
+
+/* Marketing-scale CTA — pill shape, larger type, lift on hover */
+.ps-btn-cta {
+  font-size: 16px;
+  padding: 14px 24px;
+  border-radius: var(--ps-radius-pill);
+  gap: 10px;
+  transition: transform var(--ps-dur-fast) var(--ps-ease),
+              background var(--ps-dur-base) var(--ps-ease),
+              border-color var(--ps-dur-base) var(--ps-ease);
+}
+.ps-btn-cta:hover { transform: translateY(-1px); background: var(--ps-card); }
+.ps-btn-cta.ps-btn-primary:hover { background: var(--ps-ink-soft); }
+
+.ps-btn-lg { font-size: 18px; padding: 18px 32px; border-radius: var(--ps-radius-pill); }
+
+.ps-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.ps-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ps-accent) 30%, transparent);
+}
+
+/* ─── Input (used in mockups: "Ask a question…") ────────────── */
+
+.ps-ask-bar {
+  background: var(--ps-paper);
+  border: var(--ps-border);
+  border-radius: var(--ps-radius-md);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--ps-muted);
+  font-family: var(--ps-font-mono);
+}
+
+.ps-ask-bar::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ps-green);
+  flex-shrink: 0;
+}
+
+.ps-bg-ink .ps-ask-bar {
+  background: var(--ps-ink);
+  color: var(--ps-on-ink-soft);
+  border-color: var(--ps-on-ink-line);
+}
+
+/* ─── Stat block ────────────────────────────────────────────── */
+
+.ps-stat { display: flex; flex-direction: column; gap: 4px; }
+.ps-stat-label {
+  font-size: var(--ps-fs-small);
+  color: var(--ps-muted);
+  line-height: 1.5;
+}
+.ps-stat-value {
+  font-size: 32px;
+  font-weight: var(--ps-w-bold);
+  color: var(--ps-ink);
+  font-feature-settings: var(--ps-features-tnum);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.ps-stat-value.ps-text-accent { color: var(--ps-accent); }
+.ps-stat-value.ps-text-green  { color: var(--ps-green-deep); }
+
+/* ─── Layout helpers ────────────────────────────────────────── */
+
+.ps-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--ps-space-64); }
+.ps-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--ps-space-32); }
+.ps-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--ps-space-24); }
+.ps-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--ps-space-20); }
+
+.ps-flex     { display: flex; }
+.ps-flex-col { display: flex; flex-direction: column; }
+.ps-items-center  { align-items: center; }
+.ps-items-start   { align-items: flex-start; }
+.ps-items-end     { align-items: flex-end; }
+.ps-items-baseline{ align-items: baseline; }
+.ps-justify-between { justify-content: space-between; }
+.ps-justify-center  { justify-content: center; }
+.ps-justify-end     { justify-content: flex-end; }
+.ps-flex-wrap { flex-wrap: wrap; }
+.ps-flex-1    { flex: 1; }
+.ps-relative  { position: relative; }
+
+.ps-gap-8  { gap: 8px; }
+.ps-gap-12 { gap: 12px; }
+.ps-gap-16 { gap: 16px; }
+.ps-gap-20 { gap: 20px; }
+.ps-gap-24 { gap: 24px; }
+.ps-gap-32 { gap: 32px; }
+.ps-gap-40 { gap: 40px; }
+.ps-gap-48 { gap: 48px; }
+.ps-gap-56 { gap: 56px; }
+.ps-gap-64 { gap: 64px; }
+
+/* ─── Print: clean page bg ──────────────────────────────────── */
+@media print {
+  body { background: white; }
+  .ps-grain, .ps-glow { display: none; }
+}

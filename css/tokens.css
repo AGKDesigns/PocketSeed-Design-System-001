@@ -1,0 +1,147 @@
+/* PocketSeed Design System — Tokens
+ * Single source of truth for the brand visual language.
+ * Drop this file into any project and all primitives below are available.
+ */
+
+:root {
+  /* ── Palette — Ink & paper ─────────────────────────────────── */
+  --ps-ink: #1a2535;
+  --ps-ink-soft: #2d3a4d;
+  --ps-muted: #6b7280;
+  --ps-line: #e5e0d3;
+  --ps-line-soft: #efeae0;
+  --ps-paper: #f7f4ec;
+  --ps-paper-warm: #efeadd;
+  --ps-card: #ffffff;
+  --ps-bg-page: #0e1218;
+
+  /* ── Palette — Brand ───────────────────────────────────────── */
+  --ps-teal: #2dadc7;
+  --ps-blue: #3b6cf0;
+  --ps-purple: #6a4ed8;
+  --ps-green: #4caf50;
+  --ps-green-deep: #2f7a3a;
+  --ps-leaf: #7ed957;
+
+  /* Semantic accent.
+   * Default = forest green for light/paper surfaces.
+   * Auto-switches to teal on .ps-bg-ink (see components.css).
+   * Override per-component with .ps-accent-* classes below. */
+  --ps-accent: var(--ps-green-deep);
+
+  /* Subtle alpha layers used on dark backgrounds */
+  --ps-on-ink-strong: rgba(247, 244, 236, 0.85);
+  --ps-on-ink-soft:   rgba(247, 244, 236, 0.65);
+  --ps-on-ink-mute:   rgba(247, 244, 236, 0.45);
+  --ps-on-ink-line:   rgba(247, 244, 236, 0.12);
+  --ps-on-ink-fill:   rgba(247, 244, 236, 0.04);
+
+  /* ── Typography ────────────────────────────────────────────── */
+  --ps-font-sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ps-font-serif: 'Instrument Serif', 'Times New Roman', serif;
+  --ps-font-mono:  'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Weights */
+  --ps-w-regular: 400;
+  --ps-w-medium:  500;
+  --ps-w-semibold: 600;
+  --ps-w-bold:    700;
+  --ps-w-black:   800;
+
+  /* Type ramp (slide-scale: built for 1920×1080 stage) */
+  --ps-fs-mega:     200px;
+  --ps-fs-display:  128px;
+  --ps-fs-title:     76px;
+  --ps-fs-section:   56px;
+  --ps-fs-subtitle:  44px;
+  --ps-fs-lead:      36px;
+  --ps-fs-h3:        40px;
+  --ps-fs-body-lg:   30px;
+  --ps-fs-body:      26px;
+  --ps-fs-small:     22px;
+  --ps-fs-eyebrow:   22px;
+  --ps-fs-mono-sm:   18px;
+
+  /* Type ramp (web-scale: built for everyday screens, ~16px base) */
+  --ps-web-display:  72px;
+  --ps-web-title:    48px;
+  --ps-web-section:  36px;
+  --ps-web-subtitle: 28px;
+  --ps-web-lead:     20px;
+  --ps-web-body:     16px;
+  --ps-web-small:    14px;
+  --ps-web-mono-sm:  12px;
+
+  /* ── Spacing ───────────────────────────────────────────────── */
+  --ps-space-2:   2px;
+  --ps-space-4:   4px;
+  --ps-space-6:   6px;
+  --ps-space-8:   8px;
+  --ps-space-10: 10px;
+  --ps-space-12: 12px;
+  --ps-space-14: 14px;
+  --ps-space-16: 16px;
+  --ps-space-20: 20px;
+  --ps-space-24: 24px;
+  --ps-space-28: 28px;
+  --ps-space-32: 32px;
+  --ps-space-36: 36px;
+  --ps-space-40: 40px;
+  --ps-space-48: 48px;
+  --ps-space-56: 56px;
+  --ps-space-64: 64px;
+  --ps-space-80: 80px;
+  --ps-space-100: 100px;
+
+  /* Slide-stage layout (built around the 1920×1080 deck stage) */
+  --ps-stage-pad-x: 100px;
+  --ps-stage-pad-top: 100px;
+  --ps-stage-pad-bottom: 80px;
+  --ps-stage-chrome-top: 48px;
+
+  /* ── Radii ─────────────────────────────────────────────────── */
+  --ps-radius-sm: 6px;
+  --ps-radius-md: 10px;
+  --ps-radius-lg: 14px;
+  --ps-radius-xl: 18px;
+  --ps-radius-2xl: 20px;
+  --ps-radius-3xl: 24px;
+  --ps-radius-pill: 999px;
+
+  /* ── Borders & shadows ────────────────────────────────────── */
+  --ps-border: 1px solid var(--ps-line);
+  --ps-border-soft: 1px solid var(--ps-line-soft);
+  --ps-border-on-ink: 1px solid var(--ps-on-ink-line);
+
+  --ps-shadow-card:  0 30px 60px -30px rgba(26, 37, 53, 0.25);
+  --ps-shadow-soft:  0 8px 24px -16px rgba(26, 37, 53, 0.2);
+  --ps-shadow-mark:  0 12px 40px -12px rgba(59, 108, 240, 0.35);
+
+  /* ── Gradients ─────────────────────────────────────────────── */
+  --ps-grad-orb: linear-gradient(135deg, #2dadc7 0%, #3b6cf0 70%, #6a4ed8 100%);
+  --ps-grad-leaf: radial-gradient(circle at 30% 30%, #7ed957 0%, #4caf50 70%, #2f7a3a 100%);
+  --ps-grad-teal-blue: linear-gradient(135deg, var(--ps-teal), var(--ps-blue));
+  --ps-grad-teal-green: linear-gradient(90deg, var(--ps-teal), var(--ps-green));
+  --ps-glow-teal: radial-gradient(ellipse 1200px 800px at 70% 40%, rgba(45,173,199,0.18), transparent 70%);
+  --ps-glow-leaf: radial-gradient(ellipse 800px 600px at 30% 80%, rgba(76,175,80,0.12), transparent 70%);
+
+  /* ── Motion ────────────────────────────────────────────────── */
+  --ps-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ps-dur-fast: 120ms;
+  --ps-dur-base: 220ms;
+  --ps-dur-slow: 420ms;
+
+  /* ── OpenType features ────────────────────────────────────── */
+  --ps-features-default: 'ss01', 'cv11';
+  --ps-features-tnum: 'tnum';
+}
+
+/* Accent presets — set on any element to swap accent locally
+ * Example:  <div class="ps-accent-green">…</div>
+ */
+.ps-accent-teal   { --ps-accent: var(--ps-teal); }
+.ps-accent-blue   { --ps-accent: var(--ps-blue); }
+.ps-accent-green  { --ps-accent: var(--ps-green-deep); }
+.ps-accent-leaf   { --ps-accent: var(--ps-green); }
+.ps-accent-purple { --ps-accent: var(--ps-purple); }
+.ps-accent-ink    { --ps-accent: var(--ps-ink); }
