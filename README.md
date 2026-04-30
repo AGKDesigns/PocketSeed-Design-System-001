@@ -6,13 +6,43 @@ The visual language behind PocketSeed v1, extracted from the sales deck and pack
 
 > **AI agents:** read [`DESIGN.md`](DESIGN.md) before writing code that uses this system.
 
-## TL;DR
+## TL;DR — pull it into any project
+
+The system is **plain CSS + assets**. No build, no dependencies, no install. Pick a flavor:
+
+### One-line CDN (recommended)
+
+The repo is public, so [jsDelivr](https://www.jsdelivr.com/) serves it as a CDN with no setup. Pin to a version tag for stability:
 
 ```html
-<link rel="stylesheet" href="path/to/PSSlide_Designsystem/css/pocketseed.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AGKDesigns/PSSlide_Designsystem@v1/css/pocketseed.css">
 ```
 
-Then use the classes. Everything is namespaced `.ps-` to avoid colliding with the host project.
+…or follow `main` for the latest (will move under you):
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AGKDesigns/PSSlide_Designsystem@main/css/pocketseed.css">
+```
+
+### Copy into your project
+
+Clone or download, then drop `css/` and `assets/` wherever your static files live:
+
+```html
+<link rel="stylesheet" href="/static/pocketseed/css/pocketseed.css">
+```
+
+### Bundler (React / Vue / Svelte / Next)
+
+Copy the files into the project (or git-submodule the repo) and import once at the entry point:
+
+```ts
+import 'pocketseed-design-system/css/pocketseed.css';
+```
+
+---
+
+Then just use the classes. Everything is namespaced `.ps-` so it never collides with whatever else is on the page:
 
 ```html
 <section class="ps-bg-paper">
@@ -28,11 +58,19 @@ Then use the classes. Everything is namespaced `.ps-` to avoid colliding with th
 </section>
 ```
 
+## Browse the system
+
+The full set of specimens is hosted at **<https://pocketseed-design-system.pages.dev>** *(deploys on every push to `main` via Cloudflare Pages)*. Use it as the reference site when designing — colors, type, components, slide templates, login screens, the lot. AI agents can also fetch the spec pages directly from there.
+
 ## What's in the box
 
 ```
 PSSlide_Designsystem/
-├── index.html                  ← landing page · entry point to the system
+├── README.md                   ← this file · adoption + reference
+├── DESIGN.md                   ← agent guide · direction, rules, recipes
+├── direction.html              ← full design-direction document (web)
+├── index.html                  ← landing page · entry to the spec site
+├── _headers                    ← Cloudflare Pages cache + security headers
 ├── css/
 │   ├── pocketseed.css          ← all-in-one entry (use this)
 │   ├── tokens.css              ← design tokens (CSS variables)
@@ -153,32 +191,13 @@ For product UI built on top of the system. All web-scale by default; pair with `
 
 See `specimens/forms.html` for everything in isolation, and `specimens/login.html` for an end-to-end auth pattern.
 
-## Adopting in a project
+## Building a new thing on the system
 
-### Vanilla HTML / static page
+- **A new sales deck** — open `specimens/slide-template.html` and copy a `<div class="ps-slide …">` block. Each slide is a 1920×1080 frame; build as many as you need.
+- **A marketing or product page** — open `specimens/web-page.html` for a full reference page (hero, three-up features, stats band, pitch on ink, footer). Copy whatever fits.
+- **A web app** — open `specimens/forms.html` for the form/menu/alert/modal/avatar/tabs vocabulary, and `specimens/login.html` for an end-to-end auth pattern.
 
-```html
-<link rel="stylesheet" href="../PSSlide_Designsystem/css/pocketseed.css">
-```
-
-### A React / Vue / Svelte project
-
-Copy `css/` into the project's static asset folder and import once:
-
-```ts
-// app entry
-import 'path/to/css/pocketseed.css';
-```
-
-Or, if the project has its own design tokens, import only `tokens.css` and rebuild components against existing primitives. The tokens are the contract; components are conveniences.
-
-### A new sales deck
-
-Open `specimens/slide-template.html` and copy the `<div class="ps-slide …">` block. Each slide is a 1920×1080 frame; build as many as you need.
-
-### A marketing or product page
-
-Open `specimens/web-page.html` for a full reference page — hero, three-up features, stats band, pitch on ink, footer. Copy whatever fits.
+If a project already has its own design tokens, import only `tokens.css` and rebuild on top. **The tokens are the contract; components are conveniences.**
 
 ## Conventions that matter
 
@@ -188,13 +207,32 @@ Open `specimens/web-page.html` for a full reference page — hero, three-up feat
 4. **Mono is for micro.** IDs, codes, timestamps, URLs, eyebrow markers. Not paragraphs.
 5. **Respect the surface.** Light and dark surfaces flip the accent automatically — don't hardcode a color when the system would have switched it for you.
 
-## Versioning
+## Versioning & releases
 
-This is **v1**, extracted from the v1 sales deck. Future iterations should:
+The system follows lightweight semver via git tags. Projects pin via the jsDelivr URL: `@v1` (latest 1.x), `@v1.0.0` (exact), or `@main` (untagged latest, will move).
+
+Cutting a release:
+
+```bash
+git tag v1.0.0       # or whatever the next version is
+git push --tags      # jsDelivr sees it within minutes
+```
+
+Future iterations should:
 
 - Add new tokens / components rather than mutate existing ones
-- Bump versions in `index.html` and this README
-- Document any breaking change at the top
+- Bump the patch / minor / major version per the change
+- Document any breaking change at the top of this README
+
+## Deploying the spec site
+
+The repo is published to Cloudflare Pages on every push to `main`. To trigger a one-off deploy from a local checkout:
+
+```bash
+wrangler pages deploy . --project-name=pocketseed-design-system
+```
+
+Cloudflare Pages picks up the static files directly — no build step. The `_headers` file at the root sets sensible cache + security headers; HTML caches short, CSS/assets cache longer.
 
 ## Credits
 

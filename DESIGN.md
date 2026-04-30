@@ -170,24 +170,27 @@ For anything more complex, write inline `style` or a one-off CSS rule. Don't add
 
 ## 8 · Adding to a project
 
-```html
-<!-- one line -->
-<link rel="stylesheet" href="path/to/PSSlide_Designsystem/css/pocketseed.css">
+The fastest path is the public jsDelivr CDN — no install, no copy, just one line:
 
-<!-- or, if you only want the deck/marketing parts (no forms / dropdowns / modals): -->
-<link rel="stylesheet" href="path/to/PSSlide_Designsystem/css/tokens.css">
-<link rel="stylesheet" href="path/to/PSSlide_Designsystem/css/base.css">
-<link rel="stylesheet" href="path/to/PSSlide_Designsystem/css/type.css">
-<link rel="stylesheet" href="path/to/PSSlide_Designsystem/css/components.css">
+```html
+<!-- pin to a major version (recommended) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AGKDesigns/PSSlide_Designsystem@v1/css/pocketseed.css">
+
+<!-- or, only the deck/marketing parts (no forms / dropdowns / modals): -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AGKDesigns/PSSlide_Designsystem@v1/css/components.css">
 ```
+
+If a project copies the files locally instead, the path is `path/to/PSSlide_Designsystem/css/pocketseed.css`.
 
 In a React / Vue / Svelte project:
 
 ```ts
-import 'path/to/PSSlide_Designsystem/css/pocketseed.css';
+import 'pocketseed-design-system/css/pocketseed.css';
 ```
 
 Components are class names — they work the same in any framework. **Don't wrap them in framework components unless you're doing it for ergonomics.** The classes are the contract.
+
+**Browse the spec site:** <https://pocketseed-design-system.pages.dev>. Fetch any specimen's HTML for visual reference.
 
 ---
 

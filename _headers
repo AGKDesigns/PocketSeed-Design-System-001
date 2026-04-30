@@ -1,0 +1,21 @@
+# Cloudflare Pages headers
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+# HTML — short cache so doc updates appear quickly
+/*.html
+  Cache-Control: public, max-age=1800
+
+# CSS — medium cache. Projects should pin via jsDelivr's @vX.Y.Z URL for stability,
+# not link to this hosted copy. Cache here is for the spec site browsing experience.
+/css/*
+  Cache-Control: public, max-age=86400
+
+# Assets (logos) rarely change — cache aggressively
+/assets/*
+  Cache-Control: public, max-age=604800
+
+# Sensible defaults
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: interest-cohort=()
