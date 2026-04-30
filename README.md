@@ -2,7 +2,9 @@
 
 The visual language behind PocketSeed v1, extracted from the sales deck and packaged so any future project — decks, web apps, marketing pages, internal tools — can pick it up in one line.
 
-> **AI agents:** read [`DESIGN.md`](DESIGN.md) before writing code that uses this system. It's the rules and patterns that aren't obvious from reading the CSS alone.
+**Direction in one paragraph.** Modern, friendly, light, inviting. Not loud — PocketSeed lives inside other brands and needs to fit beside them without changes. Think of it as a **nutrition label on a package**: a recognisable visual language for proof and data that never fights with whatever it sits on. Content does the work; the system is the frame. See [`DESIGN.md`](DESIGN.md) for the full direction and rules.
+
+> **AI agents:** read [`DESIGN.md`](DESIGN.md) before writing code that uses this system.
 
 ## TL;DR
 

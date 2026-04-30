@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Direction · PocketSeed Design System</title>
+<link rel="stylesheet" href="css/pocketseed.css" />
+<style>
+  body { background: var(--ps-paper); }
+  .top-nav { max-width: 920px; margin: 0 auto; padding: 32px 32px 0; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--ps-muted); }
+  .top-nav a { color: var(--ps-muted); transition: color var(--ps-dur-fast) var(--ps-ease); }
+  .top-nav a:hover { color: var(--ps-ink); }
+
+  article { max-width: 760px; margin: 0 auto; padding: 56px 32px 120px; }
+  article > * + * { margin-top: 24px; }
+  article > * + h2 { margin-top: 72px; }
+  article > * + h3 { margin-top: 40px; }
+  article > .pull + * { margin-top: 32px; }
+
+  .hero { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--ps-line); }
+  .hero h1 { font-size: 56px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; text-wrap: balance; }
+  .hero h1 .ps-serif { color: var(--ps-accent); }
+  .hero p { font-size: 22px; line-height: 1.45; color: var(--ps-ink-soft); text-wrap: pretty; max-width: 700px; }
+
+  article h2 { font-size: 28px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.15; }
+  article h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+  article p { font-size: 17px; line-height: 1.65; color: var(--ps-ink-soft); }
+  article p strong { color: var(--ps-ink); font-weight: 600; }
+
+  .pull { padding: 28px 32px; background: var(--ps-card); border-left: 3px solid var(--ps-accent); border-radius: 0 var(--ps-radius-lg) var(--ps-radius-lg) 0; }
+  .pull p { font-family: var(--ps-font-serif); font-style: italic; font-size: 22px; line-height: 1.4; color: var(--ps-ink); margin: 0; }
+
+  .principles { display: flex; flex-direction: column; gap: 0; margin-top: 32px; }
+  .principle { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 24px 0; border-top: 1px solid var(--ps-line); align-items: baseline; }
+  .principle:last-child { border-bottom: 1px solid var(--ps-line); }
+  .principle .num { font-family: var(--ps-font-mono); font-size: 13px; color: var(--ps-accent); letter-spacing: 0.06em; padding-top: 4px; }
+  .principle h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+  .principle p { font-size: 16px; line-height: 1.55; }
+
+  .test-card { padding: 28px 32px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-2xl); }
+  .test-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .test-card p { font-size: 15px; line-height: 1.6; }
+
+  .end-mark { display: block; margin-top: 64px; text-align: center; font-family: var(--ps-font-mono); font-size: 12px; letter-spacing: 0.16em; color: var(--ps-muted); text-transform: uppercase; }
+
+  /* Tighter mobile reading */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 40px; }
+    .hero p { font-size: 19px; }
+    article h2 { font-size: 24px; }
+    article p { font-size: 16px; }
+    .principle { grid-template-columns: 40px 1fr; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="index.html">← Back to system</a>
+  <span class="ps-mono" style="font-size: 11px; letter-spacing: 0.08em;">DIRECTION</span>
+</nav>
+
+<article>
+  <header class="hero">
+    <span class="ps-eyebrow" style="font-size: 13px;">Why this looks the way it does</span>
+    <h1>Designed to <span class="ps-serif">coexist.</span></h1>
+    <p>The PocketSeed visual system is modern, friendly, light, and inviting. It's deliberately quiet, because PocketSeed lives inside other brands. The work it has to do is structural: present proof clearly, fit anywhere, never compete with the host.</p>
+  </header>
+
+  <h2>The constraint</h2>
+  <p>PocketSeed isn't a destination. A retailer doesn't send their customer to <em>our</em> page; they embed our credential on <em>their</em> product page. A consultancy doesn't ship their client a PocketSeed report; they hand over a deck whose evidence layer happens to be ours. A brand running an impact campaign doesn't redirect to a PocketSeed splash; the campaign sits inside their own funnel.</p>
+  <p>That means everything we make has to <strong>coexist</strong>. Every page, card, credential, deck, dashboard. If our visuals overpower the host, we've made the host's brand feel weaker — and a brand that feels weaker won't put us in front of their customers.</p>
+
+  <div class="pull">
+    <p>Our visual language has to be strong enough to be recognisable, and quiet enough to disappear into someone else's surface without a fight.</p>
+  </div>
+
+  <h2>The nutrition label analogy</h2>
+  <p>The cleanest reference for what we're building is the <strong>nutrition label on a packaged-food product</strong>.</p>
+  <p>The nutrition label is everywhere — cereal boxes, tofu trays, fancy pasta jars, drugstore vitamins. It works because it has a recognisable visual language: clean type, organised data, restrained color, predictable structure. You know what it is at a glance, on any package, without it ever competing with the brand of the food itself.</p>
+  <p>It's strong <strong>because</strong> it's predictable. It's trustworthy <strong>because</strong> it doesn't try to charm you. The food's brand can be loud or muted, hand-painted or industrial; the nutrition label sits there, unbothered, doing its job.</p>
+  <p>That's the bar PocketSeed sits to. We're the trust layer. We don't need a hero shot. We need to render proof legibly on every surface our customers send us into.</p>
+
+  <h2>What this rules out</h2>
+  <p>The direction implies as much by what we <em>don't</em> do as what we do.</p>
+  <p><strong>Not a travel site.</strong> No sweeping landscape photography, no ambient warm tones, no destination energy.</p>
+  <p><strong>Not a nature project.</strong> No leafy gradients, no wood-grain textures, no granola palette. We're sustainability-adjacent in subject matter, not in aesthetic.</p>
+  <p><strong>Not a hero brand campaign.</strong> No look-at-us moments. No giant brand hero with a swooshing tagline. The brand mark is small in the corner, never the centerpiece.</p>
+  <p><strong>Not a "data dashboard."</strong> No grid of glowing chart widgets, no pretend-deep-tech aesthetic. We carry data, but the data is the protagonist — not the chrome around it.</p>
+
+  <h2>The principles</h2>
+
+  <div class="principles">
+    <div class="principle">
+      <span class="num">01</span>
+      <div>
+        <h3>Content is the protagonist</h3>
+        <p>The data, the credential, the product, the impact — those are what readers came for. The system is the frame, never the picture. Strip until only the meaning remains, then strip a little more.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="num">02</span>
+      <div>
+        <h3>Cues, not statements</h3>
+        <p>The palette leans into sustainability and trustworthy-tech: forest green on light, teal on dark, ink, warm paper. The cues are quiet. We sit comfortably next to those topics; we don't describe them.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="num">03</span>
+      <div>
+        <h3>One accent at a time</h3>
+        <p>Color is structural, not decorative. Pick one accent for a surface and let everything else stay quiet. White space, type, and rhythm carry more weight than a second tint ever will.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="num">04</span>
+      <div>
+        <h3>Three voices in type</h3>
+        <p>Inter for clarity, Instrument Serif italic for one editorial moment per surface, JetBrains Mono for micro-type. That's the kit. Resist the urge to add a fourth. Restraint here is the whole point.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="num">05</span>
+      <div>
+        <h3>Tool, not theme</h3>
+        <p>It should feel like an instrument you reach for to communicate proof — not a vibe, not a style, not a hero look. The same surfaces should sit naturally on a CPG retailer's portal <em>and</em> on a B2B consultancy's deck.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="num">06</span>
+      <div>
+        <h3>Strong because it's simple</h3>
+        <p>Clean is the brand. Every component is built so it can disappear into a host context if it needs to, and step forward only when called on. Familiar shapes, predictable behavior, no surprises.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="num">07</span>
+      <div>
+        <h3>Agnostic by design</h3>
+        <p>Personalization is on the roadmap. For now, the system has no theme switcher, no "client mode", no skinning. That's deliberate. A label that adapts to every package is just clutter.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Tests we use</h2>
+  <p>If a design choice you're about to make feels expressive, decorative, or self-consciously "branded", run it past one of these.</p>
+
+  <h3>The nutrition-label test</h3>
+  <div class="test-card">
+    <p><strong>Would this still feel right pasted onto five different packages?</strong> Imagine the same visual treatment on a cereal box, a luxury beauty product, a B2B SaaS dashboard, a consulting report, and an impact campaign landing page. If it works on all five without changes, it passes. If it'd start a fight with any of them, dial it back.</p>
+  </div>
+
+  <h3>The third-party test</h3>
+  <div class="test-card">
+    <p><strong>Does this read as us, or as the host?</strong> When a credential is embedded on someone else's product page, our role is "credible third party". Like a legal disclosure or a payment gateway logo, we're recognisable but not trying to be the brand on the page. If our element is upstaging the host, it's wrong.</p>
+  </div>
+
+  <h3>The instrument test</h3>
+  <div class="test-card">
+    <p><strong>Does this feel like a tool, or like a vibe?</strong> Tools are functional, predictable, and trusted because they get out of your way. Vibes are expressive and fashionable. We're the former. If a piece of UI feels more like a mood board than a calculator, redesign it.</p>
+  </div>
+
+  <h2>Where this might evolve</h2>
+  <p>Personalization will land. Brands will want to nudge the system toward their own palette, type, and voice without losing the recognisable structure. We're building toward that — slot a brand color into <code class="ps-mono">--ps-accent</code>, adjust spacing scale, swap a font — and the rest of the system stays intact. The agnostic core makes that future cheap. Trying to be expressive now would have made it expensive.</p>
+
+  <p>Until then, restraint is the brand.</p>
+
+  <span class="end-mark">— end —</span>
+</article>
+</body>
+</html>

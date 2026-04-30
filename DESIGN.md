@@ -1,8 +1,29 @@
 # DESIGN.md — Agent guide
 
-> Read this first if you're an AI agent or contributor about to write code that uses the PocketSeed Design System. It's the rules that aren't obvious from reading the CSS.
+> Read this first if you're an AI agent or contributor about to write code that uses the PocketSeed Design System. It's the direction, the rules, and the patterns that aren't obvious from reading the CSS.
 
 The visual language is in `css/`. Every primitive is a CSS class prefixed `.ps-`. Every design decision is a CSS custom property prefixed `--ps-`. **Don't reach for raw colors, sizes, or fonts — always use a token or a component class.**
+
+---
+
+## 0 · Direction
+
+The system is **modern, friendly, light, and inviting** — it's there to build trust and let content breathe. It's not loud, not expressive, not performative, because PocketSeed lives **inside other brands**. A retailer's product page, a consultancy's report, a brand's marketing surface — each one needs to keep its own voice. PocketSeed sits in that frame like a credible third party, not a competing logo.
+
+Think of it as a **nutrition label on a package**. The label has a recognisable visual language — clean type, organised data, restrained color — but it never fights with the brand of the food it sits on. It's strong *because* it's predictable. It works on a cereal box and a tofu tray and a fancy pasta jar without changes, because it doesn't try to be the protagonist.
+
+That direction produces the rules:
+
+- **Content does the work.** The data, the credential, the product — those are the protagonist. The system is the frame, never the picture.
+- **Cues, not statements.** The palette leans into sustainability and trustworthy-tech (forest green on light, teal on dark, ink, warm paper). The cues are quiet — you'll never find a leafy nature scene or a sweeping organic gradient. We don't *describe* sustainability, we just sit comfortably next to it.
+- **Restrained color.** One accent at a time. White space and rhythm carry more weight than any tint could.
+- **Three voices in type, no more.** Inter for clarity, Instrument Serif italic for one editorial moment per surface, JetBrains Mono for micro-type. Resist the urge to add a fourth.
+- **Tool, not theme.** It should feel like an instrument you reach for to communicate proof — not a travel site, not a nature project, not a hero brand campaign. The same pages should look at home in a CPG retailer's portal *and* on a B2B consultancy's deck.
+- **Strong because it's simple.** Clean is the brand. Every component is built so it can disappear into a host context if it needs to, and step forward only when called on.
+
+Personalization is on the roadmap. For now, the system is **agnostic by design** — and that is a feature, not a limitation.
+
+If a design choice you're about to make feels expressive, decorative, or "branded", stop and ask whether the nutrition-label test still passes. If it doesn't, dial it back.
 
 ---
 

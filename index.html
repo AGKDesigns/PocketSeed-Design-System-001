@@ -16,6 +16,16 @@
   .nav-card h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.015em; }
   .nav-card p { font-size: 16px; color: var(--ps-ink-soft); line-height: 1.5; }
   .nav-card .arrow { margin-top: 8px; color: var(--ps-accent); font-size: 18px; }
+
+  .direction { margin-bottom: 80px; padding: 56px 48px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-3xl); display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+  .direction .lhs { display: flex; flex-direction: column; gap: 12px; }
+  .direction .lhs h2 { font-size: 32px; font-weight: 600; letter-spacing: -0.018em; line-height: 1.1; }
+  .direction .lhs h2 .ps-serif { color: var(--ps-accent); }
+  .direction .rhs { display: flex; flex-direction: column; gap: 16px; font-size: 16px; line-height: 1.6; color: var(--ps-ink-soft); }
+  .direction .rhs strong { color: var(--ps-ink); font-weight: 600; }
+  .direction .rhs a.read-more { display: inline-flex; align-items: center; gap: 6px; color: var(--ps-accent); font-weight: 500; margin-top: 4px; border-bottom: 1px solid color-mix(in oklch, var(--ps-accent) 35%, transparent); align-self: flex-start; padding-bottom: 1px; }
+  @media (max-width: 760px) { .direction { grid-template-columns: 1fr; gap: 24px; padding: 40px 32px; } }
+
   footer { margin-top: 120px; padding-top: 40px; border-top: 1px solid var(--ps-line); display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: var(--ps-muted); }
   footer img { height: 20px; }
 </style>
@@ -32,6 +42,19 @@
       <a class="ps-btn ps-btn-cta ps-btn-ghost" href="#how-to-use">How to use →</a>
     </div>
   </div>
+
+  <section class="direction">
+    <div class="lhs">
+      <span class="ps-eyebrow" style="font-size: 12px;">Direction</span>
+      <h2>Designed to <span class="ps-serif">coexist.</span></h2>
+    </div>
+    <div class="rhs">
+      <p>Modern, friendly, light, inviting. <strong>Not loud.</strong> PocketSeed lives inside other brands — a retailer's product page, a consultancy's report, a brand's marketing — so the system has to fit beside them without changes, and never compete with the host's voice.</p>
+      <p>Think of it as a <strong>nutrition label on a package</strong>: a recognisable visual language for proof and data that works on a cereal box, a tofu tray, and a fancy pasta jar without changes. Strong because it's predictable. Restrained on purpose.</p>
+      <p>Content does the work. The system is the frame, never the picture. Cues toward sustainability and trustworthy-tech are quiet — no leafy nature scenes, no organic gradients. We sit comfortably next to those topics; we don't describe them.</p>
+      <a class="read-more" href="direction.html">Read the full direction →</a>
+    </div>
+  </section>
 
   <h2 class="ps-web-section" style="margin-bottom: 32px;">Specimens</h2>
   <div class="nav-grid">
