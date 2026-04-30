@@ -27,6 +27,41 @@
   .direction .rhs a.read-more { display: inline-flex; align-items: center; gap: 6px; color: var(--ps-accent); font-weight: 500; margin-top: 4px; border-bottom: 1px solid color-mix(in oklch, var(--ps-accent) 35%, transparent); align-self: flex-start; padding-bottom: 1px; }
   @media (max-width: 760px) { .direction { grid-template-columns: 1fr; gap: 24px; padding: 40px 32px; } }
 
+  /* Code block + copy button */
+  .code-block { position: relative; }
+  .code-block > pre { margin: 0; }
+  .copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    font-family: var(--ps-font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ps-muted);
+    background: var(--ps-card);
+    border: 1px solid var(--ps-line);
+    border-radius: var(--ps-radius-sm);
+    cursor: pointer;
+    transition: color var(--ps-dur-fast) var(--ps-ease),
+                border-color var(--ps-dur-fast) var(--ps-ease),
+                background var(--ps-dur-fast) var(--ps-ease);
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .copy-btn:hover { color: var(--ps-ink); border-color: var(--ps-ink); }
+  .copy-btn:active { transform: translateY(1px); }
+  .copy-btn.copied {
+    color: var(--ps-paper);
+    background: var(--ps-accent);
+    border-color: var(--ps-accent);
+  }
+  .copy-btn .icon { width: 11px; height: 11px; display: inline-block; }
+
   footer { margin-top: 120px; padding-top: 40px; border-top: 1px solid var(--ps-line); display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: var(--ps-muted); }
   footer img { height: 20px; }
 </style>
@@ -114,8 +149,11 @@
     <div class="ps-card ps-card-bare" style="background: var(--ps-card);">
       <h3 class="ps-web-subtitle" style="font-weight: 600; margin-bottom: 12px;">One line, no install</h3>
       <p class="ps-web-body">The repo is public — <a href="https://www.jsdelivr.com/" style="color: var(--ps-accent); border-bottom: 1px solid color-mix(in oklch, var(--ps-accent) 35%, transparent);">jsDelivr</a> serves it as a CDN. Drop this in the <code class="ps-mono">&lt;head&gt;</code> of any page:</p>
-      <pre class="ps-mono" style="margin-top: 16px; padding: 20px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-lg); font-size: 13px; overflow-x: auto; line-height: 1.5;">&lt;link rel="stylesheet"
+      <div class="code-block" style="margin-top: 16px;">
+        <button class="copy-btn" type="button" aria-label="Copy snippet">Copy</button>
+        <pre class="ps-mono" style="padding: 20px; padding-right: 80px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-lg); font-size: 13px; overflow-x: auto; line-height: 1.5;">&lt;link rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/AGKDesigns/PocketSeed-Design-System-001@v1/css/pocketseed.css"&gt;</pre>
+      </div>
       <p class="ps-web-body" style="margin-top: 24px;">Then use the classes. Every component is prefixed <code class="ps-mono">.ps-</code> so it never clashes with whatever else is on the page.</p>
       <p class="ps-web-small" style="margin-top: 16px; color: var(--ps-muted);">Pin to <code class="ps-mono">@v1</code> for the latest 1.x · <code class="ps-mono">@v1.0.0</code> for an exact version · <code class="ps-mono">@main</code> to follow the latest commit (will move). For copy / bundler / framework usage, see the <a href="README.md" style="color: var(--ps-ink);">README</a>.</p>
     </div>
@@ -124,7 +162,9 @@
       <h3 class="ps-web-subtitle" style="font-weight: 600; margin-bottom: 12px;">Using it with an AI</h3>
       <p class="ps-web-body">Building something with Claude, ChatGPT, or any other code-generating model? Point it at the system. The repo is public, so the model can fetch the rules and components directly.</p>
       <p class="ps-web-body" style="margin-top: 16px;"><strong>For a Claude project (claude.ai), Cursor, or any system-prompt setup</strong>, paste this into the project knowledge or custom instructions:</p>
-      <pre class="ps-mono" style="margin-top: 12px; padding: 20px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-lg); font-size: 12px; overflow-x: auto; line-height: 1.6; white-space: pre-wrap;">Use the PocketSeed Design System for all UI. The full philosophy, rules,
+      <div class="code-block" style="margin-top: 12px;">
+        <button class="copy-btn" type="button" aria-label="Copy prompt">Copy</button>
+        <pre class="ps-mono" style="padding: 20px; padding-right: 80px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-lg); font-size: 12px; overflow-x: auto; line-height: 1.6; white-space: pre-wrap;">Use the PocketSeed Design System for all UI. The full philosophy, rules,
 and component vocabulary are at:
 
   https://github.com/AGKDesigns/PocketSeed-Design-System-001/blob/main/DESIGN.md
@@ -139,13 +179,17 @@ Adopt the system in any HTML page with one line:
         href="https://cdn.jsdelivr.net/gh/AGKDesigns/PocketSeed-Design-System-001@v1/css/pocketseed.css"&gt;
 
 Then use the .ps-* classes. Read DESIGN.md before writing code.</pre>
+      </div>
       <p class="ps-web-body" style="margin-top: 20px;"><strong>For Claude Code in a project repo</strong>, drop a reference into <code class="ps-mono">CLAUDE.md</code>:</p>
-      <pre class="ps-mono" style="margin-top: 12px; padding: 20px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-lg); font-size: 12px; overflow-x: auto; line-height: 1.6; white-space: pre-wrap;">## Design system
+      <div class="code-block" style="margin-top: 12px;">
+        <button class="copy-btn" type="button" aria-label="Copy CLAUDE.md snippet">Copy</button>
+        <pre class="ps-mono" style="padding: 20px; padding-right: 80px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-lg); font-size: 12px; overflow-x: auto; line-height: 1.6; white-space: pre-wrap;">## Design system
 
 This project uses the PocketSeed Design System. Before writing UI,
 read https://github.com/AGKDesigns/PocketSeed-Design-System-001/blob/main/DESIGN.md
 and use .ps-* classes from
 https://cdn.jsdelivr.net/gh/AGKDesigns/PocketSeed-Design-System-001@v1/css/pocketseed.css</pre>
+      </div>
       <p class="ps-web-small" style="margin-top: 16px; color: var(--ps-muted);"><a href="DESIGN.md" style="color: var(--ps-ink);">DESIGN.md</a> is written specifically for AI agents — direction, accent rule, surface rules, component vocabulary, common mistakes, and copy-paste pattern recipes.</p>
     </div>
   </section>
@@ -158,5 +202,38 @@ https://cdn.jsdelivr.net/gh/AGKDesigns/PocketSeed-Design-System-001@v1/css/pocke
     <span class="ps-mono" style="font-size: 12px;">pocketseed.io</span>
   </footer>
 </main>
+<script>
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.copy-btn');
+    if (!btn) return;
+    var pre = btn.parentElement.querySelector('pre');
+    if (!pre) return;
+    var text = pre.textContent.replace(/\s+$/, '');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(showCopied).catch(fallback);
+    } else {
+      fallback();
+    }
+    function showCopied() {
+      var prev = btn.textContent;
+      btn.textContent = 'Copied';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = prev;
+        btn.classList.remove('copied');
+      }, 1500);
+    }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showCopied(); } catch (err) {}
+      document.body.removeChild(ta);
+    }
+  });
+</script>
 </body>
 </html>
