@@ -1,0 +1,11 @@
+# wrangler / Cloudflare local cache
+.wrangler/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# node_modules in case anyone npm-installs tooling locally
+node_modules/

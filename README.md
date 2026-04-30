@@ -1,8 +1,8 @@
 # PocketSeed Design System
 
-The visual language behind PocketSeed v1, extracted from the sales deck and packaged so any future project — decks, web apps, marketing pages, internal tools — can pick it up in one line.
+The visual language behind PocketSeed — packaged so any future project (decks, web apps, marketing pages, internal tools) can pick it up in one line.
 
-**Direction in one paragraph.** Modern, friendly, light, inviting. Not loud — PocketSeed lives inside other brands and needs to fit beside them without changes. Think of it as a **nutrition label on a package**: a recognisable visual language for proof and data that never fights with whatever it sits on. Content does the work; the system is the frame. See [`DESIGN.md`](DESIGN.md) for the full direction and rules.
+**Philosophy in one paragraph.** Modern, friendly, light, inviting. Not loud — PocketSeed lives inside other brands and needs to fit beside them without changes. Think of it as a **nutrition label on a package**: a recognisable visual language for proof and data that never fights with whatever it sits on. Content does the work; the system is the frame. See [`DESIGN.md`](DESIGN.md) for the full philosophy and rules.
 
 > **AI agents:** read [`DESIGN.md`](DESIGN.md) before writing code that uses this system.
 
@@ -67,8 +67,8 @@ The full set of specimens is hosted at **<https://pocketseed-design-system.pages
 ```
 PocketSeed-Design-System-001/
 ├── README.md                   ← this file · adoption + reference
-├── DESIGN.md                   ← agent guide · direction, rules, recipes
-├── direction.html              ← full design-direction document (web)
+├── DESIGN.md                   ← agent guide · philosophy, rules, recipes
+├── philosophy.html             ← full design-philosophy document (web)
 ├── index.html                  ← landing page · entry to the spec site
 ├── _headers                    ← Cloudflare Pages cache + security headers
 ├── css/
@@ -122,7 +122,7 @@ All design decisions are CSS custom properties in `css/tokens.css`. If you only 
 - **Light surfaces** (`.ps-bg-paper`, `.ps-bg-warm`, `.ps-bg-card`, default body) → forest green (`--ps-green-deep`)
 - **Dark surfaces** (`.ps-bg-ink`) → teal (`--ps-teal`)
 
-This is the look from the sales deck: cream pages talk in green, ink pages talk in teal. Override per-component with `.ps-accent-teal`, `.ps-accent-blue`, `.ps-accent-purple`, `.ps-accent-leaf`, `.ps-accent-ink`.
+Cream pages talk in green, ink pages talk in teal. Override per-component with `.ps-accent-teal`, `.ps-accent-blue`, `.ps-accent-purple`, `.ps-accent-leaf`, `.ps-accent-ink`.
 
 ### Typography
 
@@ -236,5 +236,4 @@ Cloudflare Pages picks up the static files directly — no build step. The `_hea
 
 ## Credits
 
-Visual language: PocketSeed brand · v1 sales deck (Apr 2026).
-Extracted: 30 Apr 2026.
+Visual language: PocketSeed brand. v1 · 2026.

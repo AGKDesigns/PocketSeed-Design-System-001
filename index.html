@@ -19,7 +19,8 @@
 
   .direction { margin-bottom: 80px; padding: 56px 48px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-3xl); display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
   .direction .lhs { display: flex; flex-direction: column; gap: 12px; }
-  .direction .lhs h2 { font-size: 32px; font-weight: 600; letter-spacing: -0.018em; line-height: 1.1; }
+  .direction .lhs h2 { font-size: 56px; font-weight: 700; letter-spacing: -0.025em; line-height: 1; text-wrap: balance; }
+  @media (max-width: 760px) { .direction .lhs h2 { font-size: 40px; } }
   .direction .lhs h2 .ps-serif { color: var(--ps-accent); }
   .direction .rhs { display: flex; flex-direction: column; gap: 16px; font-size: 16px; line-height: 1.6; color: var(--ps-ink-soft); }
   .direction .rhs strong { color: var(--ps-ink); font-weight: 600; }
@@ -36,7 +37,7 @@
     <img src="assets/pocketseed-logo.png" alt="PocketSeed" style="height: 32px; width: auto; align-self: flex-start;" />
     <span class="ps-eyebrow" style="font-size: 14px;">Design System · v1</span>
     <h1 class="ps-web-display">The visual language behind PocketSeed.</h1>
-    <p class="ps-web-lead" style="max-width: 720px;">Tokens, type, and components extracted from the v1 sales deck. Drop-in ready for any project: decks, web apps, marketing pages, internal tools.</p>
+    <p class="ps-web-lead" style="max-width: 720px;">Tokens, type, and components. Drop-in ready for any project — decks, web apps, marketing pages, internal tools.</p>
     <div class="ps-flex ps-gap-12" style="margin-top: 16px;">
       <a class="ps-btn ps-btn-cta ps-btn-primary" href="specimens/colors.html">Explore the system</a>
       <a class="ps-btn ps-btn-cta ps-btn-ghost" href="#how-to-use">How to use →</a>
@@ -45,14 +46,14 @@
 
   <section class="direction">
     <div class="lhs">
-      <span class="ps-eyebrow" style="font-size: 12px;">Direction</span>
+      <span class="ps-eyebrow" style="font-size: 12px;">Philosophy</span>
       <h2>Designed to <span class="ps-serif">coexist.</span></h2>
     </div>
     <div class="rhs">
       <p>Modern, friendly, light, inviting. <strong>Not loud.</strong> PocketSeed lives inside other brands — a retailer's product page, a consultancy's report, a brand's marketing — so the system has to fit beside them without changes, and never compete with the host's voice.</p>
       <p>Think of it as a <strong>nutrition label on a package</strong>: a recognisable visual language for proof and data that works on a cereal box, a tofu tray, and a fancy pasta jar without changes. Strong because it's predictable. Restrained on purpose.</p>
       <p>Content does the work. The system is the frame, never the picture. Cues toward sustainability and trustworthy-tech are quiet — no leafy nature scenes, no organic gradients. We sit comfortably next to those topics; we don't describe them.</p>
-      <a class="read-more" href="direction.html">Read the full direction →</a>
+      <a class="read-more" href="philosophy.html">Read the full philosophy →</a>
     </div>
   </section>
 
@@ -111,10 +112,41 @@
   <section id="how-to-use" style="margin-top: 96px;">
     <h2 class="ps-web-section" style="margin-bottom: 24px;">How to use</h2>
     <div class="ps-card ps-card-bare" style="background: var(--ps-card);">
-      <h3 class="ps-web-subtitle" style="font-weight: 600; margin-bottom: 12px;">In one line</h3>
-      <p class="ps-web-body">Add this to the &lt;head&gt; of any page:</p>
-      <pre class="ps-mono" style="margin-top: 16px; padding: 20px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-lg); font-size: 14px; overflow-x: auto;">&lt;link rel="stylesheet" href="path/to/pocketseed-design-system/css/pocketseed.css" /&gt;</pre>
-      <p class="ps-web-body" style="margin-top: 24px;">Then use the classes — every component is prefixed <code class="ps-mono">.ps-</code> to avoid clashing with anything else in the host project.</p>
+      <h3 class="ps-web-subtitle" style="font-weight: 600; margin-bottom: 12px;">One line, no install</h3>
+      <p class="ps-web-body">The repo is public — <a href="https://www.jsdelivr.com/" style="color: var(--ps-accent); border-bottom: 1px solid color-mix(in oklch, var(--ps-accent) 35%, transparent);">jsDelivr</a> serves it as a CDN. Drop this in the <code class="ps-mono">&lt;head&gt;</code> of any page:</p>
+      <pre class="ps-mono" style="margin-top: 16px; padding: 20px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-lg); font-size: 13px; overflow-x: auto; line-height: 1.5;">&lt;link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/AGKDesigns/PocketSeed-Design-System-001@v1/css/pocketseed.css"&gt;</pre>
+      <p class="ps-web-body" style="margin-top: 24px;">Then use the classes. Every component is prefixed <code class="ps-mono">.ps-</code> so it never clashes with whatever else is on the page.</p>
+      <p class="ps-web-small" style="margin-top: 16px; color: var(--ps-muted);">Pin to <code class="ps-mono">@v1</code> for the latest 1.x · <code class="ps-mono">@v1.0.0</code> for an exact version · <code class="ps-mono">@main</code> to follow the latest commit (will move). For copy / bundler / framework usage, see the <a href="README.md" style="color: var(--ps-ink);">README</a>.</p>
+    </div>
+
+    <div class="ps-card ps-card-bare" style="background: var(--ps-card); margin-top: 24px;">
+      <h3 class="ps-web-subtitle" style="font-weight: 600; margin-bottom: 12px;">Using it with an AI</h3>
+      <p class="ps-web-body">Building something with Claude, ChatGPT, or any other code-generating model? Point it at the system. The repo is public, so the model can fetch the rules and components directly.</p>
+      <p class="ps-web-body" style="margin-top: 16px;"><strong>For a Claude project (claude.ai), Cursor, or any system-prompt setup</strong>, paste this into the project knowledge or custom instructions:</p>
+      <pre class="ps-mono" style="margin-top: 12px; padding: 20px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-lg); font-size: 12px; overflow-x: auto; line-height: 1.6; white-space: pre-wrap;">Use the PocketSeed Design System for all UI. The full philosophy, rules,
+and component vocabulary are at:
+
+  https://github.com/AGKDesigns/PocketSeed-Design-System-001/blob/main/DESIGN.md
+
+Browseable spec site (every component, every pattern):
+
+  https://pocketseed-design-system.pages.dev
+
+Adopt the system in any HTML page with one line:
+
+  &lt;link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/AGKDesigns/PocketSeed-Design-System-001@v1/css/pocketseed.css"&gt;
+
+Then use the .ps-* classes. Read DESIGN.md before writing code.</pre>
+      <p class="ps-web-body" style="margin-top: 20px;"><strong>For Claude Code in a project repo</strong>, drop a reference into <code class="ps-mono">CLAUDE.md</code>:</p>
+      <pre class="ps-mono" style="margin-top: 12px; padding: 20px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-lg); font-size: 12px; overflow-x: auto; line-height: 1.6; white-space: pre-wrap;">## Design system
+
+This project uses the PocketSeed Design System. Before writing UI,
+read https://github.com/AGKDesigns/PocketSeed-Design-System-001/blob/main/DESIGN.md
+and use .ps-* classes from
+https://cdn.jsdelivr.net/gh/AGKDesigns/PocketSeed-Design-System-001@v1/css/pocketseed.css</pre>
+      <p class="ps-web-small" style="margin-top: 16px; color: var(--ps-muted);"><a href="DESIGN.md" style="color: var(--ps-ink);">DESIGN.md</a> is written specifically for AI agents — direction, accent rule, surface rules, component vocabulary, common mistakes, and copy-paste pattern recipes.</p>
     </div>
   </section>
 
