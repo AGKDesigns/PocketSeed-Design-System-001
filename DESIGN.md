@@ -174,13 +174,13 @@ The fastest path is the public jsDelivr CDN — no install, no copy, just one li
 
 ```html
 <!-- pin to a major version (recommended) -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AGKDesigns/PSSlide_Designsystem@v1/css/pocketseed.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AGKDesigns/PocketSeed-Design-System-001@v1/css/pocketseed.css">
 
 <!-- or, only the deck/marketing parts (no forms / dropdowns / modals): -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AGKDesigns/PSSlide_Designsystem@v1/css/components.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AGKDesigns/PocketSeed-Design-System-001@v1/css/components.css">
 ```
 
-If a project copies the files locally instead, the path is `path/to/PSSlide_Designsystem/css/pocketseed.css`.
+If a project copies the files locally instead, the path is `path/to/PocketSeed-Design-System-001/css/pocketseed.css`.
 
 In a React / Vue / Svelte project:
 

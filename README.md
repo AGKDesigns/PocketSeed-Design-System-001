@@ -15,13 +15,13 @@ The system is **plain CSS + assets**. No build, no dependencies, no install. Pic
 The repo is public, so [jsDelivr](https://www.jsdelivr.com/) serves it as a CDN with no setup. Pin to a version tag for stability:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AGKDesigns/PSSlide_Designsystem@v1/css/pocketseed.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AGKDesigns/PocketSeed-Design-System-001@v1/css/pocketseed.css">
 ```
 
 …or follow `main` for the latest (will move under you):
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AGKDesigns/PSSlide_Designsystem@main/css/pocketseed.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AGKDesigns/PocketSeed-Design-System-001@main/css/pocketseed.css">
 ```
 
 ### Copy into your project
@@ -65,7 +65,7 @@ The full set of specimens is hosted at **<https://pocketseed-design-system.pages
 ## What's in the box
 
 ```
-PSSlide_Designsystem/
+PocketSeed-Design-System-001/
 ├── README.md                   ← this file · adoption + reference
 ├── DESIGN.md                   ← agent guide · direction, rules, recipes
 ├── direction.html              ← full design-direction document (web)
