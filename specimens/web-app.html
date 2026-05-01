@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Web app · PocketSeed Design System</title>
+<link rel="stylesheet" href="../css/pocketseed.css" />
+<style>
+  /* Dark page frame, app floats inside it like the slide-template stage */
+  body { background: #0e1218; margin: 0; min-height: 100vh; padding: 56px 32px 32px; box-sizing: border-box; }
+  .meta { position: fixed; top: 16px; left: 32px; right: 32px; display: flex; justify-content: space-between; align-items: center; font-family: var(--ps-font-mono); font-size: 12px; color: rgba(247,244,236,0.6); pointer-events: none; z-index: 10; }
+  .meta a { pointer-events: auto; color: rgba(247,244,236,0.6); border: 1px solid rgba(247,244,236,0.2); padding: 6px 10px; border-radius: 6px; }
+  .meta a:hover { color: var(--ps-paper); }
+
+  /* App shell — floats inside the dark frame */
+  .app-shell { display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - 88px); background: var(--ps-paper); border-radius: var(--ps-radius-2xl); overflow: hidden; box-shadow: 0 30px 80px -30px rgba(0,0,0,0.45); }
+
+  /* Sidebar */
+  .app-sidebar { background: var(--ps-card); border-right: 1px solid var(--ps-line); display: flex; flex-direction: column; }
+  .app-sidebar-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 24px; border-bottom: 1px solid var(--ps-line-soft); }
+  .app-sidebar-head img { height: 22px; width: auto; }
+  .app-sidebar-head .collapse { width: 28px; height: 28px; border-radius: var(--ps-radius-sm); display: inline-flex; align-items: center; justify-content: center; color: var(--ps-muted); border: 0; background: transparent; cursor: pointer; }
+  .app-sidebar-head .collapse:hover { background: var(--ps-paper); color: var(--ps-ink); }
+
+  .app-nav { padding: 20px 12px; flex: 1; display: flex; flex-direction: column; gap: 24px; }
+  .app-nav-section { display: flex; flex-direction: column; gap: 2px; }
+  .app-nav-label { font-family: var(--ps-font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ps-muted); padding: 0 12px 8px; font-weight: 500; }
+  .app-nav-item { display: flex; align-items: center; gap: 12px; padding: 9px 12px; border-radius: var(--ps-radius-md); font-size: 14px; font-weight: 500; color: var(--ps-ink-soft); cursor: pointer; transition: background var(--ps-dur-fast) var(--ps-ease), color var(--ps-dur-fast) var(--ps-ease); }
+  .app-nav-item:hover { background: var(--ps-paper); color: var(--ps-ink); }
+  .app-nav-item.active { background: color-mix(in oklch, var(--ps-accent-vivid) 18%, transparent); color: var(--ps-ink); }
+  .app-nav-item.active .ps-icon { color: var(--ps-accent); }
+  .app-nav-item .ps-icon { color: currentColor; --ps-icon-size: 16px; }
+
+  .app-sidebar-foot { padding: 12px; border-top: 1px solid var(--ps-line-soft); }
+  .user-profile { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: var(--ps-radius-md); cursor: pointer; transition: background var(--ps-dur-fast) var(--ps-ease); }
+  .user-profile:hover { background: var(--ps-paper); }
+  .user-profile .ps-avatar { --ps-avatar-size: 28px; font-size: 11px; border: 0; }
+  .user-profile .email { flex: 1; font-size: 13px; color: var(--ps-ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .user-profile .caret { color: var(--ps-muted); }
+
+  /* Main content */
+  .app-main { padding: 32px 40px 80px; max-width: 1280px; }
+  .app-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+  .app-header h1 { font-size: 32px; font-weight: 600; letter-spacing: -0.02em; color: var(--ps-ink); line-height: 1.1; }
+
+  .app-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; gap: 16px; }
+  .app-toolbar .ps-input-group { max-width: 420px; flex: 1; background: var(--ps-card); }
+  .view-toggle { display: inline-flex; padding: 3px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-md); }
+  .view-toggle button { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 30px; border: 0; background: transparent; border-radius: var(--ps-radius-sm); color: var(--ps-muted); cursor: pointer; transition: background var(--ps-dur-fast) var(--ps-ease), color var(--ps-dur-fast) var(--ps-ease); }
+  .view-toggle button:hover { color: var(--ps-ink); }
+  .view-toggle button.active { background: color-mix(in oklch, var(--ps-accent-vivid) 18%, transparent); color: var(--ps-accent); }
+
+  /* Credential grid */
+  .cred-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+  .cred-card { background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-2xl); padding: 24px 26px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 12px 32px -16px rgba(26, 37, 53, 0.18); transition: box-shadow var(--ps-dur-base) var(--ps-ease), transform var(--ps-dur-base) var(--ps-ease); }
+  .cred-card:hover { box-shadow: 0 18px 40px -18px rgba(26, 37, 53, 0.24); transform: translateY(-1px); }
+
+  /* Eyebrow + menu row at top of every credential card */
+  .cred-card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .cred-eyebrow { font-family: var(--ps-font-mono); font-size: 11px; color: var(--ps-muted); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cred-menu { color: var(--ps-muted); width: 28px; height: 28px; border-radius: var(--ps-radius-sm); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; }
+  .cred-menu:hover { background: var(--ps-paper); color: var(--ps-ink); }
+
+  .cred-title { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; color: var(--ps-ink); line-height: 1.25; }
+
+  .cred-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .cred-desc { font-size: 14px; line-height: 1.5; color: var(--ps-ink-soft); }
+
+  /* Provenance meta row: label + value × 3, divider above */
+  .cred-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-top: 16px; border-top: 1px solid var(--ps-line-soft); margin-top: auto; }
+  .cred-meta-item { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .cred-meta-label { font-size: 12px; color: var(--ps-muted); display: inline-flex; align-items: center; gap: 6px; line-height: 1; }
+  .cred-meta-label .ps-icon { --ps-icon-size: 12px; color: var(--ps-muted); }
+  .cred-meta-value { font-size: 14px; font-weight: 600; color: var(--ps-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .cred-card-foot { display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding-top: 14px; }
+
+  /* Custom pill variants — one-off statuses for this app */
+  .pill-warn { background: #fdf0db; border-color: #f0d49b; color: #8a5a16; }
+  .pill-warn .ps-dot-mini { background: #c69f1d; }
+  .pill-error { background: #fdedea; border-color: #f3c4bc; color: #8a3022; }
+  .pill-error .ps-dot-mini { background: #c2382a; }
+  .pill-neutral { background: var(--ps-paper); color: var(--ps-ink-soft); }
+
+  @media (max-width: 1024px) {
+    .cred-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 720px) {
+    .app-shell { grid-template-columns: 1fr; }
+    .app-sidebar { display: none; }
+    .app-main { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="meta">
+  <a href="../index.html">← Back to system</a>
+  <span>WEB APP TEMPLATE · CREDENTIALS LIST</span>
+</div>
+
+<div class="app-shell">
+
+  <!-- ─────────── Sidebar ─────────── -->
+  <aside class="app-sidebar">
+    <div class="app-sidebar-head">
+      <img src="../assets/pocketseed-logo.png" alt="PocketSeed" />
+      <button class="collapse" aria-label="Collapse sidebar"><i class="ps-icon" data-lucide="panel-left-close"></i></button>
+    </div>
+
+    <nav class="app-nav">
+      <div class="app-nav-section">
+        <span class="app-nav-label">Brand strategy</span>
+        <a href="#" class="app-nav-item"><i class="ps-icon" data-lucide="layout-grid"></i>Dashboard</a>
+        <a href="#" class="app-nav-item"><i class="ps-icon" data-lucide="package"></i>Products</a>
+      </div>
+
+      <div class="app-nav-section">
+        <span class="app-nav-label">Assurance & proof</span>
+        <a href="#" class="app-nav-item active"><i class="ps-icon" data-lucide="shield-check"></i>Credentials</a>
+        <a href="#" class="app-nav-item"><i class="ps-icon" data-lucide="file-check"></i>Evidence vault</a>
+        <a href="#" class="app-nav-item"><i class="ps-icon" data-lucide="sprout"></i>Campaigns</a>
+      </div>
+
+      <div class="app-nav-section" style="margin-top: auto;">
+        <span class="app-nav-label">System</span>
+        <a href="#" class="app-nav-item"><i class="ps-icon" data-lucide="circle-help"></i>Help & docs</a>
+        <a href="#" class="app-nav-item"><i class="ps-icon" data-lucide="settings"></i>Settings</a>
+      </div>
+    </nav>
+
+    <footer class="app-sidebar-foot">
+      <div class="user-profile">
+        <span class="ps-avatar">AL</span>
+        <span class="email">alex+test5@pocketseed.io</span>
+        <i class="ps-icon caret" data-lucide="chevron-up"></i>
+      </div>
+    </footer>
+  </aside>
+
+  <!-- ─────────── Main ─────────── -->
+  <main class="app-main">
+    <header class="app-header">
+      <h1>Credentials</h1>
+      <button class="ps-btn ps-btn-primary"><i class="ps-icon" data-lucide="plus"></i>New credential</button>
+    </header>
+
+    <div class="app-toolbar">
+      <div class="ps-input-group">
+        <span class="ps-input-prefix"><i class="ps-icon" data-lucide="search" style="--ps-icon-size: 14px; color: var(--ps-muted);"></i></span>
+        <input class="ps-input" type="search" placeholder="Search credentials" />
+      </div>
+      <div class="view-toggle">
+        <button class="active" aria-label="Grid view"><i class="ps-icon" data-lucide="layout-grid" style="--ps-icon-size: 14px;"></i></button>
+        <button aria-label="List view"><i class="ps-icon" data-lucide="list" style="--ps-icon-size: 14px;"></i></button>
+      </div>
+    </div>
+
+    <div class="cred-grid">
+
+      <!-- ─── 1: We are carbon neutral ─── -->
+      <article class="cred-card">
+        <div class="cred-card-top">
+          <span class="cred-eyebrow">Credential · 07225e2d-b0bb</span>
+          <span class="cred-menu"><i class="ps-icon" data-lucide="more-horizontal" style="--ps-icon-size: 16px;"></i></span>
+        </div>
+        <h2 class="cred-title">We are carbon neutral</h2>
+        <div class="cred-pills">
+          <span class="ps-pill ps-pill-accent ps-pill-sm"><i class="ps-icon" data-lucide="check"></i>Issued</span>
+          <span class="ps-pill ps-pill-accent ps-pill-sm"><i class="ps-icon" data-lucide="link-2"></i>Anchored</span>
+          <span class="ps-pill ps-pill-sm pill-neutral"><i class="ps-icon" data-lucide="tag" style="color: var(--ps-muted);"></i>General</span>
+        </div>
+        <p class="cred-desc">We offset all our emissions and are working towards reducing our carbon footprint across operations and supply chain.</p>
+        <div class="cred-meta">
+          <div class="cred-meta-item">
+            <span class="cred-meta-label"><i class="ps-icon" data-lucide="users"></i>Signed by</span>
+            <span class="cred-meta-value">2 parties</span>
+          </div>
+          <div class="cred-meta-item">
+            <span class="cred-meta-label"><i class="ps-icon" data-lucide="file-text"></i>Evidence</span>
+            <span class="cred-meta-value">14 documents</span>
+          </div>
+          <div class="cred-meta-item">
+            <span class="cred-meta-label"><i class="ps-icon" data-lucide="calendar"></i>Issued</span>
+            <span class="cred-meta-value">Apr 21 · 2026</span>
+          </div>
+        </div>
+        <div class="cred-card-foot">
+          <button class="ps-btn ps-btn-sm">Open<i class="ps-icon" data-lucide="arrow-up-right" style="--ps-icon-size: 13px;"></i></button>
+        </div>
+      </article>
+
+      <!-- ─── 2: Aqua serum claims ─── -->
+      <article class="cred-card">
+        <div class="cred-card-top">
+          <span class="cred-eyebrow">Credential · ad0b5a76-ef18</span>
+          <span class="cred-menu"><i class="ps-icon" data-lucide="more-horizontal" style="--ps-icon-size: 16px;"></i></span>
+        </div>
+        <h2 class="cred-title">Aqua Hydration Body Serum claims</h2>
+        <div class="cred-pills">
+          <span class="ps-pill ps-pill-sm pill-warn"><i class="ps-icon" data-lucide="clock" style="color: #c69f1d;"></i>Pending</span>
+          <span class="ps-pill ps-pill-sm pill-warn"><i class="ps-icon" data-lucide="link-2" style="color: #c69f1d;"></i>Anchoring</span>
+          <span class="ps-pill ps-pill-sm pill-neutral"><i class="ps-icon" data-lucide="package" style="color: var(--ps-muted);"></i>Product</span>
+        </div>
+        <p class="cred-desc">Vegan, cruelty-free, recycled glass, made in UK. Backed by ingredient sourcing audit and Scottish supplier verification.</p>
+        <div class="cred-meta">
+          <div class="cred-meta-item">
+            <span class="cred-meta-label"><i class="ps-icon" data-lucide="users"></i>Signed by</span>
+            <span class="cred-meta-value">1 party</span>
+          </div>
+          <div class="cred-meta-item">
+            <span class="cred-meta-label"><i class="ps-icon" data-lucide="file-text"></i>Evidence</span>
+            <span class="cred-meta-value">9 documents</span>
+          </div>
+          <div class="cred-meta-item">
+            <span class="cred-meta-label"><i class="ps-icon" data-lucide="calendar"></i>Drafted</span>
+            <span class="cred-meta-value">Apr 16 · 2026</span>
+          </div>
+        </div>
+        <div class="cred-card-foot">
+          <button class="ps-btn ps-btn-sm">Open<i class="ps-icon" data-lucide="arrow-up-right" style="--ps-icon-size: 13px;"></i></button>
+        </div>
+      </article>
+
+      <!-- ─── 3: Sustainability report ─── -->
+      <article class="cred-card">
+        <div class="cred-card-top">
+          <span class="cred-eyebrow">Credential · a51ff841-4f23</span>
+          <span class="cred-menu"><i class="ps-icon" data-lucide="more-horizontal" style="--ps-icon-size: 16px;"></i></span>
+        </div>
+        <h2 class="cred-title">2026 Sustainability report</h2>
+        <div class="cred-pills">
+          <span class="ps-pill ps-pill-accent ps-pill-sm"><i class="ps-icon" data-lucide="check"></i>Issued</span>
+          <span class="ps-pill ps-pill-accent ps-pill-sm"><i class="ps-icon" data-lucide="link-2"></i>Anchored</span>
+          <span class="ps-pill ps-pill-sm pill-neutral"><i class="ps-icon" data-lucide="file-check" style="color: var(--ps-muted);"></i>Audit</span>
+        </div>
+        <p class="cred-desc">Annual sustainability disclosure, co-signed by the CEO and the lead carbon assessor at Carbon Green Services.</p>
+        <div class="cred-meta">
+          <div class="cred-meta-item">
+            <span class="cred-meta-label"><i class="ps-icon" data-lucide="users"></i>Signed by</span>
+            <span class="cred-meta-value">2 parties</span>
+          </div>
+          <div class="cred-meta-item">
+            <span class="cred-meta-label"><i class="ps-icon" data-lucide="file-text"></i>Evidence</span>
+            <span class="cred-meta-value">22 documents</span>
+          </div>
+          <div class="cred-meta-item">
+            <span class="cred-meta-label"><i class="ps-icon" data-lucide="calendar"></i>Issued</span>
+            <span class="cred-meta-value">Mar 26 · 2026</span>
+          </div>
+        </div>
+        <div class="cred-card-foot">
+          <button class="ps-btn ps-btn-sm">Open<i class="ps-icon" data-lucide="arrow-up-right" style="--ps-icon-size: 13px;"></i></button>
+        </div>
+      </article>
+
+    </div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
