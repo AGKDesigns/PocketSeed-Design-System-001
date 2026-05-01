@@ -131,7 +131,7 @@
   <div class="three-up">
     <div class="ps-feature-card">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span class="ps-num">01</span>
+        <i class="ps-icon ps-icon-xl" data-lucide="shield-check"></i>
         <span class="ps-pill ps-pill-sm">Build trust</span>
       </div>
       <h3>Credentials</h3>
@@ -139,7 +139,7 @@
     </div>
     <div class="ps-feature-card ps-accent-blue">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span class="ps-num">02</span>
+        <i class="ps-icon ps-icon-xl" data-lucide="package"></i>
         <span class="ps-pill ps-pill-sm">Show the work</span>
       </div>
       <h3>Products</h3>
@@ -147,7 +147,7 @@
     </div>
     <div class="ps-feature-card ps-accent-green">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span class="ps-num">03</span>
+        <i class="ps-icon ps-icon-xl" data-lucide="sprout"></i>
         <span class="ps-pill ps-pill-sm">Activate impact</span>
       </div>
       <h3>Campaigns</h3>
@@ -270,17 +270,17 @@
 </section>
 
 <section id="pricing">
-  <div class="pitch-band">
+  <div class="pitch-band ps-bg-ink">
     <div class="ps-glow"></div>
-    <span class="ps-eyebrow" style="color: var(--ps-teal); font-size: 14px; position: relative;">In one breath</span>
+    <span class="ps-eyebrow" style="font-size: 14px; position: relative;">In one breath</span>
     <p>
-      We make every claim a brand makes <span style="color: var(--ps-teal);">verifiable</span>, every campaign <span style="color: var(--ps-teal);">evidenced</span>, and every product <span style="color: var(--ps-teal);">interactive.</span>
+      We make every claim a brand makes <span style="color: var(--ps-accent);">verifiable</span>, every campaign <span style="color: var(--ps-accent);">evidenced</span>, and every product <span style="color: var(--ps-accent);">interactive.</span>
     </p>
     <div class="pill-row">
-      <span class="ps-pill"><span class="ps-dot-mini" style="background: var(--ps-teal);"></span>Tamper-proof</span>
-      <span class="ps-pill"><span class="ps-dot-mini" style="background: var(--ps-teal);"></span>AI-interactive</span>
-      <span class="ps-pill"><span class="ps-dot-mini" style="background: var(--ps-teal);"></span>DPP-ready</span>
-      <span class="ps-pill"><span class="ps-dot-mini" style="background: var(--ps-teal);"></span>Plug-and-play</span>
+      <span class="ps-pill"><i class="ps-icon" data-lucide="shield-check"></i>Tamper-proof</span>
+      <span class="ps-pill"><i class="ps-icon" data-lucide="sparkles"></i>AI-interactive</span>
+      <span class="ps-pill"><i class="ps-icon" data-lucide="qr-code"></i>DPP-ready</span>
+      <span class="ps-pill"><i class="ps-icon" data-lucide="puzzle"></i>Plug-and-play</span>
     </div>
   </div>
 </section>
@@ -292,5 +292,7 @@
   </div>
   <span class="ps-mono">hello@pocketseed.io</span>
 </footer>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
 </body>
 </html>

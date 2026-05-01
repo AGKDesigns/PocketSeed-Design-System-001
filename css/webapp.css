@@ -561,6 +561,9 @@ details.ps-dropdown[open] > .ps-menu { display: flex; }
 }
 
 .ps-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 10px 14px;
   font-size: 14px;
   font-weight: var(--ps-w-medium);
@@ -571,6 +574,9 @@ details.ps-dropdown[open] > .ps-menu { display: flex; }
   transition: color var(--ps-dur-fast) var(--ps-ease),
               border-color var(--ps-dur-fast) var(--ps-ease);
 }
+
+/* Icons inside tabs follow the tab's text colour, like buttons do */
+.ps-tab .ps-icon { color: currentColor; }
 
 .ps-tab:hover { color: var(--ps-ink); }
 

@@ -255,6 +255,13 @@
 .ps-bg-ink .ps-list-sub,
 .ps-card-ink .ps-list-sub { color: var(--ps-on-ink-soft); }
 
+/* Inner icon sits on the gradient — paper-coloured, sized to match */
+.ps-list-icon .ps-icon {
+  color: var(--ps-paper);
+  --ps-icon-size: 16px;
+  vertical-align: 0;
+}
+
 /* Slide-scale overrides */
 .ps-slide .ps-list-item,
 .ps-stage .ps-list-item {
@@ -267,6 +274,10 @@
   width: 44px;
   height: 44px;
   font-size: 18px;
+}
+.ps-slide .ps-list-icon .ps-icon,
+.ps-stage .ps-list-icon .ps-icon {
+  --ps-icon-size: 20px;
 }
 .ps-slide .ps-list-title,
 .ps-stage .ps-list-title { font-size: 24px; }

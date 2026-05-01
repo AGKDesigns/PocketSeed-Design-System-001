@@ -271,7 +271,10 @@
   <section class="spec-section">
     <span class="spec-section-title">Tabs</span>
     <h2>Tabbed navigation</h2>
+    <p class="spec-desc">Plain text by default. Add a Lucide icon when the label benefits from a visual cue at a glance — admin-style sections, settings, dense navigation. Skip them for short, obvious labels.</p>
+
     <div class="spec-frame" style="margin-top: 24px;">
+      <div class="ps-mono" style="font-size: 12px; color: var(--ps-muted); margin-bottom: 14px;">Without icons · text only</div>
       <div class="ps-tabs" role="tablist">
         <button class="ps-tab" role="tab" aria-selected="true">Overview</button>
         <button class="ps-tab" role="tab" aria-selected="false">Evidence</button>
@@ -279,7 +282,29 @@
         <button class="ps-tab" role="tab" aria-selected="false">Activity</button>
         <button class="ps-tab" role="tab" aria-selected="false">Settings</button>
       </div>
-      <div style="padding: 24px 0; color: var(--ps-ink-soft); font-size: 14px;">Tab panel content goes here.</div>
+      <div style="padding: 20px 0 8px; color: var(--ps-ink-soft); font-size: 14px;">Tab panel content goes here.</div>
+    </div>
+
+    <div class="spec-frame" style="margin-top: 16px;">
+      <div class="ps-mono" style="font-size: 12px; color: var(--ps-muted); margin-bottom: 14px;">With icons · same labels, easier to scan</div>
+      <div class="ps-tabs" role="tablist">
+        <button class="ps-tab" role="tab" aria-selected="true">
+          <i class="ps-icon" data-lucide="layout-grid"></i>Overview
+        </button>
+        <button class="ps-tab" role="tab" aria-selected="false">
+          <i class="ps-icon" data-lucide="file-check"></i>Evidence
+        </button>
+        <button class="ps-tab" role="tab" aria-selected="false">
+          <i class="ps-icon" data-lucide="users"></i>Co-signers
+        </button>
+        <button class="ps-tab" role="tab" aria-selected="false">
+          <i class="ps-icon" data-lucide="activity"></i>Activity
+        </button>
+        <button class="ps-tab" role="tab" aria-selected="false">
+          <i class="ps-icon" data-lucide="settings"></i>Settings
+        </button>
+      </div>
+      <div style="padding: 20px 0 8px; color: var(--ps-ink-soft); font-size: 14px;">Tab panel content goes here.</div>
     </div>
   </section>
 
@@ -324,5 +349,7 @@
     </div>
   </section>
 </main>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
 </body>
 </html>
