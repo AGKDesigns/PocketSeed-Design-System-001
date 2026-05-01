@@ -26,7 +26,7 @@
   article h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
   article p { font-size: 17px; line-height: 1.65; color: var(--ps-ink-soft); }
   article p strong { color: var(--ps-ink); font-weight: 600; }
-  article em { font-family: var(--ps-font-serif); font-style: italic; color: var(--ps-ink); letter-spacing: -0.01em; }
+  article em { font-style: normal; color: var(--ps-muted); }
 
   .pull { padding: 28px 32px; background: var(--ps-card); border-left: 3px solid var(--ps-accent); border-radius: 0 var(--ps-radius-lg) var(--ps-radius-lg) 0; }
   .pull p { font-family: var(--ps-font-serif); font-style: italic; font-size: 22px; line-height: 1.4; color: var(--ps-ink); margin: 0; }
@@ -35,7 +35,7 @@
   .pillar { padding: 28px 32px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-2xl); }
   .pillar h3 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
   .pillar h3 .label { color: var(--ps-accent); font-family: var(--ps-font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 8px; font-weight: 500; }
-  .pillar .tag { font-family: var(--ps-font-serif); font-style: italic; font-size: 16px; color: var(--ps-muted); margin-bottom: 12px; }
+  .pillar .tag { font-size: 15px; color: var(--ps-muted); margin-bottom: 12px; line-height: 1.45; }
   .pillar p { font-size: 15px; line-height: 1.55; }
   .pillar .in-copy { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--ps-line-soft); font-size: 13px; color: var(--ps-muted); }
   .pillar .in-copy strong { color: var(--ps-ink); font-weight: 600; }
@@ -62,7 +62,7 @@
   .term { padding: 20px 0; border-top: 1px solid var(--ps-line); }
   .term:last-of-type { border-bottom: 1px solid var(--ps-line); }
   .term h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; display: flex; align-items: baseline; gap: 12px; }
-  .term h3 .aside { font-family: var(--ps-font-serif); font-style: italic; font-size: 14px; color: var(--ps-muted); font-weight: 400; }
+  .term h3 .aside { font-size: 13px; color: var(--ps-muted); font-weight: 400; }
   .term p { font-size: 15px; line-height: 1.55; margin-top: 6px; }
 
   .avoid-list { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
@@ -336,7 +336,7 @@
       <span class="why">Feels punitive. Evokes the wrong context.</span>
     </div>
     <div class="avoid-item">
-      <span class="word">Verified <em style="color: var(--ps-muted); font-family: var(--ps-font-serif);">(as an external stamp)</em></span>
+      <span class="word">Verified <span style="color: var(--ps-muted); font-weight: 400; font-family: var(--ps-font-sans);">(as an external stamp)</span></span>
       <span class="why">Implies someone else certified the claim's truth, which we don't.</span>
     </div>
     <div class="avoid-item">
