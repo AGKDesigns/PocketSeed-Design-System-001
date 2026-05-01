@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Icons · PocketSeed Design System</title>
+<link rel="stylesheet" href="../css/pocketseed.css" />
+<link rel="stylesheet" href="_specimen.css" />
+<style>
+  .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+  .principle-card { padding: 20px 24px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-lg); }
+  .principle-card .label { font-family: var(--ps-font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ps-muted); display: block; margin-bottom: 6px; }
+  .principle-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .principle-card p { font-size: 14px; line-height: 1.5; color: var(--ps-ink-soft); }
+
+  .size-row { display: flex; align-items: center; gap: 32px; padding: 20px 24px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-lg); margin-top: 24px; flex-wrap: wrap; }
+  .size-cell { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .size-cell .label { font-family: var(--ps-font-mono); font-size: 11px; color: var(--ps-muted); letter-spacing: 0.04em; }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-top: 24px; }
+  .icon-tile { display: flex; align-items: center; gap: 10px; padding: 14px 16px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-md); transition: border-color var(--ps-dur-fast) var(--ps-ease); }
+  .icon-tile:hover { border-color: var(--ps-ink); }
+  .icon-tile .name { font-family: var(--ps-font-mono); font-size: 12px; color: var(--ps-ink-soft); }
+
+  .demo-section { margin-top: 24px; padding: 24px 28px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-lg); }
+  .demo-label { font-family: var(--ps-font-mono); font-size: 12px; color: var(--ps-muted); margin-bottom: 14px; }
+  .demo-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+  .feature-icons { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
+
+  /* Dark sample */
+  .dark-sample { background: var(--ps-ink); color: var(--ps-paper); padding: 24px 28px; border-radius: var(--ps-radius-lg); margin-top: 24px; }
+  .dark-sample .demo-label { color: var(--ps-on-ink-mute); }
+
+  @media (max-width: 760px) {
+    .principles { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<main class="spec-shell">
+  <a class="spec-back" href="../index.html">← Back to system</a>
+  <div class="spec-title">
+    <span class="ps-eyebrow" style="font-size: 12px;">Specimen 09</span>
+    <h1 class="ps-web-title">Icons</h1>
+    <p class="ps-web-lead" style="max-width: 720px;">
+      <a href="https://lucide.dev" target="_blank" rel="noopener" style="color: var(--ps-accent); border-bottom: 1px solid color-mix(in oklch, var(--ps-accent) 35%, transparent);">Lucide</a> is the icon system. Small, restrained, always accent-coloured. Used inside tags and cards to add signal, never decoration.
+    </p>
+  </div>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Principles</span>
+    <h2>How icons should feel</h2>
+    <p class="spec-desc">Type carries the meaning. Icons amplify it when they add real signal — a status, an action, a concept the words alone don't convey. If a label reads cleanly without the icon, leave it off.</p>
+    <div class="principles">
+      <div class="principle-card">
+        <span class="label">Size</span>
+        <h4>Small by default</h4>
+        <p>14–16px in body contexts. They should sit at the type's x-height, not compete with it. Reach for 20–28px only when the icon is the focal point of a card.</p>
+      </div>
+      <div class="principle-card">
+        <span class="label">Color</span>
+        <h4>Always accent</h4>
+        <p>Forest green on light surfaces, teal on dark, automatically via <code class="ps-mono">var(--ps-accent)</code>. Never raw hex. Never a second colour competing with the text.</p>
+      </div>
+      <div class="principle-card">
+        <span class="label">Weight</span>
+        <h4>Lightened from default</h4>
+        <p>Lucide ships at <code class="ps-mono">stroke-width: 2</code>. The system overrides to <code class="ps-mono">1.75</code> so icons sit beside Inter without feeling chunky.</p>
+      </div>
+      <div class="principle-card">
+        <span class="label">Restraint</span>
+        <h4>Sparingly</h4>
+        <p>One icon per element, max. Don't pepper a paragraph with icons. Don't put an icon on every bullet. Quiet support, not decoration.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Sizes</span>
+    <h2>Scale tokens</h2>
+    <p class="spec-desc">Set <code class="ps-mono">--ps-icon-size</code> directly or use the <code class="ps-mono">.ps-icon-sm</code> / <code class="ps-mono">-lg</code> / <code class="ps-mono">-xl</code> modifiers.</p>
+    <div class="size-row">
+      <div class="size-cell">
+        <i class="ps-icon ps-icon-sm" data-lucide="shield-check"></i>
+        <span class="label">.ps-icon-sm · 14</span>
+      </div>
+      <div class="size-cell">
+        <i class="ps-icon" data-lucide="shield-check"></i>
+        <span class="label">default · 16</span>
+      </div>
+      <div class="size-cell">
+        <i class="ps-icon ps-icon-lg" data-lucide="shield-check"></i>
+        <span class="label">.ps-icon-lg · 20</span>
+      </div>
+      <div class="size-cell">
+        <i class="ps-icon ps-icon-xl" data-lucide="shield-check"></i>
+        <span class="label">.ps-icon-xl · 28</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">The set</span>
+    <h2>Icons we reach for</h2>
+    <p class="spec-desc">Lucide has thousands. These are the ones that come up repeatedly in PocketSeed contexts — credentials, evidence, sharing, AI, products, impact. Browse <a href="https://lucide.dev/icons/" target="_blank" rel="noopener" style="color: var(--ps-accent);">lucide.dev/icons</a> for the full library.</p>
+    <div class="icon-grid">
+      <div class="icon-tile"><i class="ps-icon" data-lucide="shield-check"></i><span class="name">shield-check</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="badge-check"></i><span class="name">badge-check</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="check"></i><span class="name">check</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="file-check"></i><span class="name">file-check</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="file-text"></i><span class="name">file-text</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="paperclip"></i><span class="name">paperclip</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="users"></i><span class="name">users</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="user-check"></i><span class="name">user-check</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="link"></i><span class="name">link</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="external-link"></i><span class="name">external-link</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="qr-code"></i><span class="name">qr-code</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="sparkles"></i><span class="name">sparkles</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="package"></i><span class="name">package</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="leaf"></i><span class="name">leaf</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="sprout"></i><span class="name">sprout</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="trees"></i><span class="name">trees</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="recycle"></i><span class="name">recycle</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="bar-chart-3"></i><span class="name">bar-chart-3</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="trending-up"></i><span class="name">trending-up</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="info"></i><span class="name">info</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="circle-help"></i><span class="name">circle-help</span></div>
+      <div class="icon-tile"><i class="ps-icon" data-lucide="arrow-right"></i><span class="name">arrow-right</span></div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">In tags</span>
+    <h2>Icons inside pills</h2>
+    <p class="spec-desc">Drop a Lucide icon at the start of a pill to add a status hint. Auto-sizes against the pill's font; in accent pills it picks up the vivid tone.</p>
+    <div class="demo-section">
+      <div class="demo-label">.ps-pill .ps-icon</div>
+      <div class="demo-row">
+        <span class="ps-pill ps-pill-accent"><i class="ps-icon" data-lucide="check"></i>Verified</span>
+        <span class="ps-pill"><i class="ps-icon" data-lucide="shield-check"></i>Tamper-proof</span>
+        <span class="ps-pill"><i class="ps-icon" data-lucide="sparkles"></i>AI-interactive</span>
+        <span class="ps-pill"><i class="ps-icon" data-lucide="link"></i>Public link</span>
+        <span class="ps-pill"><i class="ps-icon" data-lucide="users"></i>2 co-signers</span>
+        <span class="ps-pill"><i class="ps-icon" data-lucide="leaf"></i>Vegan</span>
+        <span class="ps-pill"><i class="ps-icon" data-lucide="recycle"></i>Recycled glass</span>
+        <span class="ps-pill ps-pill-sm"><i class="ps-icon" data-lucide="qr-code"></i>QR-ready</span>
+        <span class="ps-pill ps-pill-xs"><i class="ps-icon" data-lucide="check"></i>OK</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">In feature cards</span>
+    <h2>Replacing the numerator</h2>
+    <p class="spec-desc">For a softer entry point than <code class="ps-mono">01 / 02 / 03</code>, swap the numerator for an icon at <code class="ps-mono">.ps-icon-xl</code>. Pairs naturally with the existing accent pill in the top-right.</p>
+    <div class="feature-icons">
+      <div class="ps-feature-card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <i class="ps-icon ps-icon-xl" data-lucide="shield-check"></i>
+          <span class="ps-pill ps-pill-sm">Build trust</span>
+        </div>
+        <h3>Credentials</h3>
+        <p>Tamper-proof, digitally signed packages that back claims with evidence.</p>
+      </div>
+      <div class="ps-feature-card ps-accent-blue">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <i class="ps-icon ps-icon-xl" data-lucide="package"></i>
+          <span class="ps-pill ps-pill-sm">Show the work</span>
+        </div>
+        <h3>Products</h3>
+        <p>Verifiable product pages for every SKU, backed by evidence and insight.</p>
+      </div>
+      <div class="ps-feature-card ps-accent-green">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <i class="ps-icon ps-icon-xl" data-lucide="sprout"></i>
+          <span class="ps-pill ps-pill-sm">Activate impact</span>
+        </div>
+        <h3>Campaigns</h3>
+        <p>Real-world impact attributed to real customer interactions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">In buttons</span>
+    <h2>Action affordance</h2>
+    <p class="spec-desc">Icons in buttons inherit the button's text colour rather than the accent. Use a leading icon for an action (download, share) and a trailing arrow for "go forward" CTAs.</p>
+    <div class="demo-section">
+      <div class="demo-label">.ps-btn + .ps-icon</div>
+      <div class="demo-row">
+        <button class="ps-btn ps-btn-primary"><i class="ps-icon" data-lucide="download"></i>Download credential</button>
+        <button class="ps-btn"><i class="ps-icon" data-lucide="link"></i>Copy share link</button>
+        <button class="ps-btn ps-btn-ghost"><i class="ps-icon" data-lucide="external-link"></i>Open in browser</button>
+        <a class="ps-btn ps-btn-cta ps-btn-primary" href="#">Get a demo<i class="ps-icon" data-lucide="arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">On dark</span>
+    <h2>Icons on ink surfaces</h2>
+    <p class="spec-desc">Inside <code class="ps-mono">.ps-bg-ink</code> the accent flips to teal automatically — icons follow.</p>
+    <div class="dark-sample ps-bg-ink">
+      <div class="demo-label">In dark pills</div>
+      <div class="demo-row">
+        <span class="ps-pill"><i class="ps-icon" data-lucide="shield-check"></i>Tamper-proof</span>
+        <span class="ps-pill"><i class="ps-icon" data-lucide="sparkles"></i>AI-interactive</span>
+        <span class="ps-pill"><i class="ps-icon" data-lucide="qr-code"></i>DPP-ready</span>
+        <span class="ps-pill"><i class="ps-icon" data-lucide="users"></i>Plug-and-play</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">How to wire it up</span>
+    <h2>Setup</h2>
+    <p class="spec-desc">Lucide is a tiny script. Drop the CDN tag at the end of the <code class="ps-mono">&lt;body&gt;</code> and call <code class="ps-mono">lucide.createIcons()</code> after the DOM is ready. The script walks the page and replaces every <code class="ps-mono">&lt;i data-lucide="…"&gt;</code> with the matching SVG, keeping any classes you put on the placeholder.</p>
+    <div class="demo-section">
+      <pre class="ps-mono" style="margin: 0; font-size: 12px; line-height: 1.6; color: var(--ps-ink-soft); overflow-x: auto;">&lt;!-- end of body --&gt;
+&lt;script src="https://unpkg.com/lucide@latest"&gt;&lt;/script&gt;
+&lt;script&gt;lucide.createIcons();&lt;/script&gt;
+
+&lt;!-- usage --&gt;
+&lt;span class="ps-pill ps-pill-accent"&gt;
+  &lt;i class="ps-icon" data-lucide="check"&gt;&lt;/i&gt;
+  Verified
+&lt;/span&gt;</pre>
+    </div>
+    <p class="ps-web-small" style="margin-top: 16px; color: var(--ps-muted); max-width: 720px;">For static / build-time contexts (decks exported as PDF, server-rendered pages, anywhere JS isn't running), copy the SVG directly from <a href="https://lucide.dev/icons/" target="_blank" rel="noopener" style="color: var(--ps-ink);">lucide.dev/icons</a> and drop it inline with <code class="ps-mono">stroke="currentColor"</code> so it still inherits <code class="ps-mono">--ps-accent</code>.</p>
+  </section>
+</main>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

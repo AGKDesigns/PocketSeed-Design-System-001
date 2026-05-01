@@ -147,6 +147,7 @@ Image with rounded frame | `.ps-image-frame` (+ `-square` / `-wide` / `-pano`)
 Multi-up image row | `.ps-image-grid` (+ `-2` / `-4`)
 Layer pins / cards over an image | `.ps-image-stack` + `.ps-image-overlay`
 Annotation pin on an image | `.ps-pin` (+ `.ps-pin-ink`)
+Icon (Lucide) | `<i class="ps-icon" data-lucide="name">` (+ `.ps-icon-sm` / `-lg` / `-xl`) · always accent-coloured · auto-sizes inside pills
 
 **Web app additions** (`webapp.css`):
 

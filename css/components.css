@@ -357,6 +357,41 @@
 
 .ps-brandmark img { height: 28px; width: auto; }
 
+/* ─── Icons (Lucide) ───────────────────────────────────────────
+ * Use Lucide via CDN: <script src="https://unpkg.com/lucide@latest"></script>
+ * then call lucide.createIcons() once on load. The script replaces
+ * <i data-lucide="name"> tags with the matching <svg>, preserving
+ * any classes / attributes on the placeholder.
+ *
+ * Convention: small, sparing, always accent-colored. Lean on text first;
+ * reach for an icon only when it's adding actual signal — a status, an
+ * action, or a concept the type alone doesn't carry. */
+
+.ps-icon {
+  display: inline-block;
+  width: var(--ps-icon-size, 16px);
+  height: var(--ps-icon-size, 16px);
+  color: var(--ps-accent);
+  stroke-width: 1.75;
+  flex-shrink: 0;
+  vertical-align: -3px;
+}
+
+.ps-icon-sm { --ps-icon-size: 14px; }
+.ps-icon-lg { --ps-icon-size: 20px; }
+.ps-icon-xl { --ps-icon-size: 28px; }
+
+/* Auto-size inside pills so icons sit at the same scale as the label */
+.ps-pill .ps-icon { --ps-icon-size: 13px; }
+.ps-pill.ps-pill-sm .ps-icon { --ps-icon-size: 12px; }
+.ps-pill.ps-pill-xs .ps-icon { --ps-icon-size: 10px; }
+
+/* In an accent pill, the icon picks up the vivid tone (matches the dot) */
+.ps-pill.ps-pill-accent .ps-icon { color: var(--ps-accent-vivid); }
+
+/* In a button, icons inherit the button's text color rather than accent */
+.ps-btn .ps-icon { color: currentColor; }
+
 /* ─── Imagery ──────────────────────────────────────────────────
  * Frame: a content-shaped image with rounded corners and a warm
  * placeholder background while loading.
