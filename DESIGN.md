@@ -1,27 +1,29 @@
-# DESIGN.md — Agent guide
+# DESIGN.md, Agent guide
 
 > Read this first if you're an AI agent or contributor about to write code that uses the PocketSeed Design System. It's the philosophy, the rules, and the patterns that aren't obvious from reading the CSS.
+>
+> For **copy** (UI text, marketing, onboarding, anything user-facing), read [`VOICE.md`](VOICE.md), voice, tone, terminology, principles, and the words to avoid.
 
-The visual language is in `css/`. Every primitive is a CSS class prefixed `.ps-`. Every design decision is a CSS custom property prefixed `--ps-`. **Don't reach for raw colors, sizes, or fonts — always use a token or a component class.**
+The visual language is in `css/`. Every primitive is a CSS class prefixed `.ps-`. Every design decision is a CSS custom property prefixed `--ps-`. **Don't reach for raw colors, sizes, or fonts, always use a token or a component class.**
 
 ---
 
 ## 0 · Philosophy
 
-The system is **modern, friendly, light, and inviting** — it's there to build trust and let content breathe. It's not loud, not expressive, not performative, because PocketSeed lives **inside other brands**. A retailer's product page, a consultancy's report, a brand's marketing surface — each one needs to keep its own voice. PocketSeed sits in that frame like a credible third party, not a competing logo.
+The system is **modern, friendly, light, and inviting**, it's there to build trust and let content breathe. It's not loud, not expressive, not performative, because PocketSeed lives **inside other brands**. A retailer's product page, a consultancy's report, a brand's marketing surface, each one needs to keep its own voice. PocketSeed sits in that frame like a credible third party, not a competing logo.
 
-Think of it as a **nutrition label on a package**. The label has a recognisable visual language — clean type, organised data, restrained color — but it never fights with the brand of the food it sits on. It's strong *because* it's predictable. It works on a cereal box and a tofu tray and a fancy pasta jar without changes, because it doesn't try to be the protagonist.
+Think of it as a **nutrition label on a package**. The label has a recognisable visual language, clean type, organised data, restrained color, but it never fights with the brand of the food it sits on. It's strong *because* it's predictable. It works on a cereal box and a tofu tray and a fancy pasta jar without changes, because it doesn't try to be the protagonist.
 
 That philosophy produces the rules:
 
-- **Content does the work.** The data, the credential, the product — those are the protagonist. The system is the frame, never the picture.
-- **Cues, not statements.** The palette leans into sustainability and trustworthy-tech (forest green on light, teal on dark, ink, warm paper). The cues are quiet — you'll never find a leafy nature scene or a sweeping organic gradient. We don't *describe* sustainability, we just sit comfortably next to it.
+- **Content does the work.** The data, the credential, the product, those are the protagonist. The system is the frame, never the picture.
+- **Cues, not statements.** The palette leans into sustainability and trustworthy-tech (forest green on light, teal on dark, ink, warm paper). The cues are quiet, you'll never find a leafy nature scene or a sweeping organic gradient. We don't *describe* sustainability, we just sit comfortably next to it.
 - **Restrained color.** One accent at a time. White space and rhythm carry more weight than any tint could.
 - **Three voices in type, no more.** Inter for clarity, Instrument Serif italic for one editorial moment per surface, JetBrains Mono for micro-type. Resist the urge to add a fourth.
-- **Tool, not theme.** It should feel like an instrument you reach for to communicate proof — not a travel site, not a nature project, not a hero brand campaign. The same pages should look at home in a CPG retailer's portal *and* on a B2B consultancy's deck.
+- **Tool, not theme.** It should feel like an instrument you reach for to communicate proof, not a travel site, not a nature project, not a hero brand campaign. The same pages should look at home in a CPG retailer's portal *and* on a B2B consultancy's deck.
 - **Strong because it's simple.** Clean is the brand. Every component is built so it can disappear into a host context if it needs to, and step forward only when called on.
 
-Personalization is on the roadmap. For now, the system is **agnostic by design** — and that is a feature, not a limitation.
+Personalization is on the roadmap. For now, the system is **agnostic by design**, and that is a feature, not a limitation.
 
 If a design choice you're about to make feels expressive, decorative, or "branded", stop and ask whether the nutrition-label test still passes. If it doesn't, dial it back.
 
@@ -36,7 +38,7 @@ If a design choice you're about to make feels expressive, decorative, or "brande
 | Light (`.ps-bg-paper` / `.ps-bg-warm` / `.ps-bg-card` / default body) | Forest green (`--ps-green-deep`, `#2f7a3a`) | Default in `tokens.css` |
 | Dark (`.ps-bg-ink`) | Teal (`--ps-teal`, `#2dadc7`) | Override in `components.css` |
 
-**Always use `var(--ps-accent)`** for anything semantically "the accent" — eyebrows, serif italic accents inside headlines, bullet dashes, focus rings, accent pills, primary CTAs. The switch then happens automatically.
+**Always use `var(--ps-accent)`** for anything semantically "the accent", eyebrows, serif italic accents inside headlines, bullet dashes, focus rings, accent pills, primary CTAs. The switch then happens automatically.
 
 ```html
 <!-- Right -->
@@ -69,7 +71,7 @@ The system has four standard surfaces. Each one carries text-color overrides so 
 - Dark surfaces (`.ps-bg-ink`) → `assets/pocketseed-logo-white.png` (light wordmark)
 - Icon-only need (favicons, hero accent) → `assets/pocketseed-mark.png`
 
-The `.ps-mark` class sizes via `--ps-mark-size` (default 40px). Don't try to recreate the mark in CSS — there used to be a `.ps-orb` component; it was removed.
+The `.ps-mark` class sizes via `--ps-mark-size` (default 40px). Don't try to recreate the mark in CSS, there used to be a `.ps-orb` component; it was removed.
 
 ---
 
@@ -77,12 +79,12 @@ The `.ps-mark` class sizes via `--ps-mark-size` (default 40px). Don't try to rec
 
 Many components ship **two sizes** that switch automatically based on context:
 
-- **Web scale (default)** — used everywhere by default. Built for 16px-base product / marketing pages.
-- **Slide scale** — bigger numbers everywhere. Activates automatically when the component is inside `.ps-slide` or `.ps-stage`.
+- **Web scale (default)**, used everywhere by default. Built for 16px-base product / marketing pages.
+- **Slide scale**, bigger numbers everywhere. Activates automatically when the component is inside `.ps-slide` or `.ps-stage`.
 
 This applies to: `.ps-bullets`, `.ps-feature-card`, `.ps-pill`, `.ps-list-item`, and a few others.
 
-**Implication:** if you're building a slide, **wrap your slide content in `.ps-slide`** — components scale up correctly. If you're building a web page or app UI, just use the components without that wrapper.
+**Implication:** if you're building a slide, **wrap your slide content in `.ps-slide`**, components scale up correctly. If you're building a web page or app UI, just use the components without that wrapper.
 
 ---
 
@@ -115,8 +117,8 @@ Two ramps. Pick the one that matches the context.
 **Don't mix ramps.** A web page using `.ps-h-title` will look enormous. A slide using `.ps-web-title` will look tiny.
 
 **Decorative:**
-- `.ps-serif` — italic editorial accent. Use on **one word per headline**, max. It's flavor, not a default.
-- `.ps-mono` — micro-type only: IDs, codes, timestamps, eyebrow markers, URL strings. Never paragraphs.
+- `.ps-serif`, italic editorial accent. Use on **one word per headline**, max. It's flavor, not a default.
+- `.ps-mono`, micro-type only: IDs, codes, timestamps, eyebrow markers, URL strings. Never paragraphs.
 
 `.ps-eyebrow` sits above headlines. Always uppercase, always tracked, always the accent color.
 
@@ -170,7 +172,7 @@ For anything more complex, write inline `style` or a one-off CSS rule. Don't add
 
 ## 8 · Adding to a project
 
-The fastest path is the public jsDelivr CDN — no install, no copy, just one line:
+The fastest path is the public jsDelivr CDN, no install, no copy, just one line:
 
 ```html
 <!-- pin to a major version (recommended) -->
@@ -188,7 +190,7 @@ In a React / Vue / Svelte project:
 import 'pocketseed-design-system/css/pocketseed.css';
 ```
 
-Components are class names — they work the same in any framework. **Don't wrap them in framework components unless you're doing it for ergonomics.** The classes are the contract.
+Components are class names, they work the same in any framework. **Don't wrap them in framework components unless you're doing it for ergonomics.** The classes are the contract.
 
 **Browse the spec site:** <https://pocketseed-design-system.pages.dev>. Fetch any specimen's HTML for visual reference.
 
@@ -199,10 +201,10 @@ Components are class names — they work the same in any framework. **Don't wrap
 1. **Hardcoding hex values.** `color: #2dadc7` → use `var(--ps-teal)` or `var(--ps-accent)`.
 2. **Using `var(--ps-teal)` on light surfaces.** Wrong color (light slides should be green). Use `var(--ps-accent)` and let it switch.
 3. **Putting `.ps-bg-ink` and `.ps-card` on the same element.** `.ps-card`'s background wins the cascade and the card stays white. Either nest a `.ps-card` inside a `.ps-bg-ink` parent, or use `.ps-card-ink` for a stand-alone dark card.
-4. **Using `.ps-btn-cta` inside an app.** It's marketing-scale — too big for forms, modals, toolbars. Use plain `.ps-btn`.
+4. **Using `.ps-btn-cta` inside an app.** It's marketing-scale, too big for forms, modals, toolbars. Use plain `.ps-btn`.
 5. **Mixing slide and web type ramps in the same context.** Pick one based on the surrounding canvas size.
 6. **Forgetting `.ps-slide` on a 1920×1080 slide.** Some components (bullets, feature cards, pills, list items) won't bump to slide-scale without it.
-7. **Using the icon-only mark with a separate "POCKETSEED" text label.** Use the full lockup asset (`pocketseed-logo.png`) — the wordmark is already in the PNG.
+7. **Using the icon-only mark with a separate "POCKETSEED" text label.** Use the full lockup asset (`pocketseed-logo.png`), the wordmark is already in the PNG.
 8. **Reaching for the orb.** It was removed. Use `.ps-mark` with `pocketseed-mark.png` instead.
 9. **Stacking emphasis.** Bold + italic + accent color + larger size on the same word is too much. Pick one.
 10. **Adding `<br>` tags to wrap headlines.** `.ps-h-title` and `.ps-h-section` already have `text-wrap: balance`. Let the browser do it.
@@ -284,7 +286,7 @@ Components are class names — they work the same in any framework. **Don't wrap
 
 ## 11 · When the system doesn't have what you need
 
-1. Check `specimens/` first — there may be an example you missed.
+1. Check `specimens/` first, there may be an example you missed.
 2. If the pattern is a one-off, write inline `style` and move on.
 3. If the pattern repeats across contexts, **extend the system** rather than working around it: add a token, add a component class to the right file, add a specimen page entry, update this DESIGN.md and the README.
 4. **Don't fork tokens.** Adding `--my-app-blue` defeats the system. If you need a new shade, add it to `tokens.css` so everyone gets it.

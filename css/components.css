@@ -1,4 +1,4 @@
-/* PocketSeed Design System — Components
+/* PocketSeed Design System, Components
  * Reusable visual primitives. Class-name prefix: `.ps-`
  * Load order:  tokens.css → base.css → type.css → components.css
  */
@@ -9,7 +9,7 @@
 .ps-bg-warm  { background: var(--ps-paper-warm); }
 .ps-bg-card  { background: var(--ps-card); }
 
-/* Dark surface flips the accent to teal automatically — light surfaces
+/* Dark surface flips the accent to teal automatically, light surfaces
  * stay on forest green. Matches the brand convention from the deck. */
 .ps-bg-ink {
   background: var(--ps-ink);
@@ -62,7 +62,7 @@
   border-color: var(--ps-on-ink-line);
 }
 
-/* Stand-alone dark card — drop on a light surface and it inverts itself.
+/* Stand-alone dark card, drop on a light surface and it inverts itself.
  * Use when you want a single ink-coloured card without wrapping. */
 .ps-card.ps-card-ink {
   background: var(--ps-ink);
@@ -82,7 +82,7 @@
 .ps-card-ink .ps-text-muted { color: var(--ps-on-ink-mute); }
 .ps-card-ink .ps-rule { background: var(--ps-on-ink-line); }
 
-/* Feature card — three-up grid pattern from the deck.
+/* Feature card, three-up grid pattern from the deck.
  * Web-scale by default. Inside a .ps-slide / .ps-stage, scales up to slide size. */
 .ps-feature-card {
   background: var(--ps-card);
@@ -156,7 +156,7 @@
 .ps-pill.ps-pill-sm { font-size: 12px; padding: 4px 10px; gap: 5px; }
 .ps-pill.ps-pill-xs { font-size: 11px; padding: 3px 8px; gap: 4px; }
 
-/* Slide-scale override — pills get a real presence on a 1920×1080 stage */
+/* Slide-scale override, pills get a real presence on a 1920×1080 stage */
 .ps-slide .ps-pill,
 .ps-stage .ps-pill {
   font-size: 20px;
@@ -444,7 +444,7 @@
 .ps-slide.ps-slide-tight { padding: var(--ps-stage-pad-bottom) var(--ps-stage-pad-x); }
 .ps-slide.ps-slide-bleed { padding: 0; }
 
-/* Stage container — sits a 1920×1080 slide on any page, scaled to fit */
+/* Stage container, sits a 1920×1080 slide on any page, scaled to fit */
 .ps-stage {
   width: 1920px;
   height: 1080px;
@@ -579,7 +579,7 @@
 .ps-btn-sm { font-size: 13px; padding: 6px 10px; gap: 6px; }
 .ps-btn-icon { padding: 8px; aspect-ratio: 1; }
 
-/* Marketing-scale CTA — pill shape, larger type, lift on hover */
+/* Marketing-scale CTA, pill shape, larger type, lift on hover */
 .ps-btn-cta {
   font-size: 16px;
   padding: 14px 24px;

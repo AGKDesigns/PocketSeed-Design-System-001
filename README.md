@@ -1,12 +1,12 @@
 # PocketSeed Design System
 
-The visual language behind PocketSeed — packaged so any future project (decks, web apps, marketing pages, internal tools) can pick it up in one line.
+The visual language behind PocketSeed, packaged so any future project (decks, web apps, marketing pages, internal tools) can pick it up in one line.
 
-**Philosophy in one paragraph.** Modern, friendly, light, inviting. Not loud — PocketSeed lives inside other brands and needs to fit beside them without changes. Think of it as a **nutrition label on a package**: a recognisable visual language for proof and data that never fights with whatever it sits on. Content does the work; the system is the frame. See [`DESIGN.md`](DESIGN.md) for the full philosophy and rules.
+**Philosophy in one paragraph.** Modern, friendly, light, inviting. Not loud, PocketSeed lives inside other brands and needs to fit beside them without changes. Think of it as a **nutrition label on a package**: a recognisable visual language for proof and data that never fights with whatever it sits on. Content does the work; the system is the frame. See [`DESIGN.md`](DESIGN.md) for the full philosophy and rules.
 
-> **AI agents:** read [`DESIGN.md`](DESIGN.md) before writing code that uses this system.
+> **AI agents:** read [`DESIGN.md`](DESIGN.md) (visual rules) and [`VOICE.md`](VOICE.md) (voice & tone) before writing code or copy that uses this system.
 
-## TL;DR — pull it into any project
+## TL;DR, pull it into any project
 
 The system is **plain CSS + assets**. No build, no dependencies, no install. Pick a flavor:
 
@@ -60,7 +60,7 @@ Then just use the classes. Everything is namespaced `.ps-` so it never collides 
 
 ## Browse the system
 
-The full set of specimens is hosted at **<https://pocketseed-design-system.pages.dev>** *(deploys on every push to `main` via Cloudflare Pages)*. Use it as the reference site when designing — colors, type, components, slide templates, login screens, the lot. AI agents can also fetch the spec pages directly from there.
+The full set of specimens is hosted at **<https://pocketseed-design-system.pages.dev>** *(deploys on every push to `main` via Cloudflare Pages)*. Use it as the reference site when designing, colors, type, components, slide templates, web pages, forms, the lot. AI agents can also fetch the spec pages directly from there.
 
 ## What's in the box
 
@@ -68,7 +68,9 @@ The full set of specimens is hosted at **<https://pocketseed-design-system.pages
 PocketSeed-Design-System-001/
 ├── README.md                   ← this file · adoption + reference
 ├── DESIGN.md                   ← agent guide · philosophy, rules, recipes
+├── VOICE.md                    ← voice, tone, terminology, UX copy rules
 ├── philosophy.html             ← full design-philosophy document (web)
+├── voice.html                  ← full voice-and-tone document (web)
 ├── index.html                  ← landing page · entry to the spec site
 ├── _headers                    ← Cloudflare Pages cache + security headers
 ├── css/
@@ -89,15 +91,14 @@ PocketSeed-Design-System-001/
     ├── patterns.html           ← composed slide archetypes
     ├── slide-template.html     ← copy-paste starting point for new decks
     ├── web-page.html           ← same language applied to a web page
-    ├── forms.html              ← inputs, dropdowns, alerts, modal, tabs
-    └── login.html              ← sign-in / auth screen pattern
+    └── forms.html              ← inputs, dropdowns, alerts, modal, tabs · plus auth pattern
 ```
 
 Open `index.html` in a browser to navigate the specimens visually.
 
 ## Tokens (the source of truth)
 
-All design decisions are CSS custom properties in `css/tokens.css`. If you only remember one thing, remember this — change the token, the whole system updates.
+All design decisions are CSS custom properties in `css/tokens.css`. If you only remember one thing, remember this, change the token, the whole system updates.
 
 ### Color
 
@@ -110,10 +111,10 @@ All design decisions are CSS custom properties in `css/tokens.css`. If you only 
 | `--ps-ink-soft` | `#2d3a4d` | Body text |
 | `--ps-muted` | `#6b7280` | Captions, meta |
 | `--ps-line` / `--ps-line-soft` | `#e5e0d3` / `#efeae0` | Borders |
-| `--ps-teal` | `#2dadc7` | Brand teal — accent on **dark** surfaces |
-| `--ps-blue` | `#3b6cf0` | Brand blue |
+| `--ps-teal` | `#2dadc7` | Brand teal, accent on **dark** surfaces |
+| `--ps-blue` | `#1f6f96` | Brand blue (deep teal-blue) |
 | `--ps-purple` | `#6a4ed8` | Used in orb gradient |
-| `--ps-green` / `--ps-green-deep` | `#4caf50` / `#2f7a3a` | Brand green — `green-deep` is the accent on **light** surfaces |
+| `--ps-green` / `--ps-green-deep` | `#4caf50` / `#2f7a3a` | Brand green, `green-deep` is the accent on **light** surfaces |
 
 ### Accent rule
 
@@ -126,14 +127,14 @@ Cream pages talk in green, ink pages talk in teal. Override per-component with `
 
 ### Typography
 
-- **Inter** — body & UI · 400/500/600/700/800
-- **Instrument Serif** — italic editorial accents inside headlines
-- **JetBrains Mono** — micro-type, IDs, timestamps, tabular figures
+- **Inter**, body & UI · 400/500/600/700/800
+- **Instrument Serif**, italic editorial accents inside headlines
+- **JetBrains Mono**, micro-type, IDs, timestamps, tabular figures
 
 Two ramps:
 
-- `.ps-h-mega` / `.ps-h-display` / `.ps-h-title` / `.ps-h-section` / `.ps-h-subtitle` / `.ps-lead` / `.ps-body-lg` / `.ps-body` / `.ps-small` — built for the **1920×1080 slide stage**
-- `.ps-web-display` / `.ps-web-title` / `.ps-web-section` / `.ps-web-subtitle` / `.ps-web-lead` / `.ps-web-body` / `.ps-web-small` — built for **everyday screens**
+- `.ps-h-mega` / `.ps-h-display` / `.ps-h-title` / `.ps-h-section` / `.ps-h-subtitle` / `.ps-lead` / `.ps-body-lg` / `.ps-body` / `.ps-small`, built for the **1920×1080 slide stage**
+- `.ps-web-display` / `.ps-web-title` / `.ps-web-section` / `.ps-web-subtitle` / `.ps-web-lead` / `.ps-web-body` / `.ps-web-small`, built for **everyday screens**
 
 Plus `.ps-eyebrow` (kicker), `.ps-serif` (italic accent), `.ps-mono` (mono micro-type).
 
@@ -165,7 +166,7 @@ Spacing tokens follow a denominated scale: `--ps-space-2` through `--ps-space-10
 | `.ps-ask-bar` | "Ask a question…" input mock |
 | `.ps-stat` + `.ps-stat-label` + `.ps-stat-value` | Tabular figures |
 
-Layout helpers (no Tailwind — these are direct, opinionated): `.ps-grid-2/3/4/5`, `.ps-flex`, `.ps-flex-col`, `.ps-items-center`, `.ps-justify-between`, `.ps-gap-{8,12,16,20,24,32,40,48,56,64}`.
+Layout helpers (no Tailwind, these are direct, opinionated): `.ps-grid-2/3/4/5`, `.ps-flex`, `.ps-flex-col`, `.ps-items-center`, `.ps-justify-between`, `.ps-gap-{8,12,16,20,24,32,40,48,56,64}`.
 
 See `specimens/components.html` for every one in isolation.
 
@@ -189,23 +190,23 @@ For product UI built on top of the system. All web-scale by default; pair with `
 | `.ps-auth-shell` + `.ps-auth-card` | Centered auth-screen scaffold |
 | `.ps-divider` | Horizontal rule with optional centered label |
 
-See `specimens/forms.html` for everything in isolation, and `specimens/login.html` for an end-to-end auth pattern.
+See `specimens/forms.html` for everything in isolation.
 
 ## Building a new thing on the system
 
-- **A new sales deck** — open `specimens/slide-template.html` and copy a `<div class="ps-slide …">` block. Each slide is a 1920×1080 frame; build as many as you need.
-- **A marketing or product page** — open `specimens/web-page.html` for a full reference page (hero, three-up features, stats band, pitch on ink, footer). Copy whatever fits.
-- **A web app** — open `specimens/forms.html` for the form/menu/alert/modal/avatar/tabs vocabulary, and `specimens/login.html` for an end-to-end auth pattern.
+- **A new sales deck**, open `specimens/slide-template.html` and copy a `<div class="ps-slide …">` block. Each slide is a 1920×1080 frame; build as many as you need.
+- **A marketing or product page**, open `specimens/web-page.html` for a full reference page (hero, three-up features, stats band, pitch on ink, footer). Copy whatever fits.
+- **A web app**, open `specimens/forms.html` for the form/menu/alert/modal/avatar/tabs vocabulary.
 
 If a project already has its own design tokens, import only `tokens.css` and rebuild on top. **The tokens are the contract; components are conveniences.**
 
 ## Conventions that matter
 
-1. **One accent at a time.** Don't mix teal, blue, and green in the same headline — the system has variants for a reason.
+1. **One accent at a time.** Don't mix teal, blue, and green in the same headline, the system has variants for a reason.
 2. **Earn the serif italic.** Use it on one word per headline, max. It's flavor, not a default.
 3. **Quiet by default.** Pages should breathe. Big type, big padding, restrained color. The deck is built around `100px` slide padding for a reason.
 4. **Mono is for micro.** IDs, codes, timestamps, URLs, eyebrow markers. Not paragraphs.
-5. **Respect the surface.** Light and dark surfaces flip the accent automatically — don't hardcode a color when the system would have switched it for you.
+5. **Respect the surface.** Light and dark surfaces flip the accent automatically, don't hardcode a color when the system would have switched it for you.
 
 ## Versioning & releases
 
@@ -232,7 +233,7 @@ The repo is published to Cloudflare Pages on every push to `main`. To trigger a 
 wrangler pages deploy . --project-name=pocketseed-design-system
 ```
 
-Cloudflare Pages picks up the static files directly — no build step. The `_headers` file at the root sets sensible cache + security headers; HTML caches short, CSS/assets cache longer.
+Cloudflare Pages picks up the static files directly, no build step. The `_headers` file at the root sets sensible cache + security headers; HTML caches short, CSS/assets cache longer.
 
 ## Credits
 

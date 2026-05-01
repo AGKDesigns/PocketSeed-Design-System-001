@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Voice & tone · PocketSeed Design System</title>
+<link rel="stylesheet" href="css/pocketseed.css" />
+<style>
+  body { background: var(--ps-paper); }
+  .top-nav { max-width: 920px; margin: 0 auto; padding: 32px 32px 0; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--ps-muted); }
+  .top-nav a { color: var(--ps-muted); transition: color var(--ps-dur-fast) var(--ps-ease); }
+  .top-nav a:hover { color: var(--ps-ink); }
+
+  article { max-width: 760px; margin: 0 auto; padding: 56px 32px 120px; }
+  article > * + * { margin-top: 24px; }
+  article > * + h2 { margin-top: 72px; }
+  article > * + h3 { margin-top: 40px; }
+  article > .pull + * { margin-top: 32px; }
+
+  .hero { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--ps-line); }
+  .hero h1 { font-size: 56px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; text-wrap: balance; }
+  .hero h1 .ps-serif { color: var(--ps-accent); }
+  .hero p { font-size: 22px; line-height: 1.45; color: var(--ps-ink-soft); text-wrap: pretty; max-width: 700px; }
+
+  article h2 { font-size: 28px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.15; }
+  article h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+  article p { font-size: 17px; line-height: 1.65; color: var(--ps-ink-soft); }
+  article p strong { color: var(--ps-ink); font-weight: 600; }
+  article em { font-family: var(--ps-font-serif); font-style: italic; color: var(--ps-ink); letter-spacing: -0.01em; }
+
+  .pull { padding: 28px 32px; background: var(--ps-card); border-left: 3px solid var(--ps-accent); border-radius: 0 var(--ps-radius-lg) var(--ps-radius-lg) 0; }
+  .pull p { font-family: var(--ps-font-serif); font-style: italic; font-size: 22px; line-height: 1.4; color: var(--ps-ink); margin: 0; }
+
+  .pillars { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+  .pillar { padding: 28px 32px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-2xl); }
+  .pillar h3 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+  .pillar h3 .label { color: var(--ps-accent); font-family: var(--ps-font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 8px; font-weight: 500; }
+  .pillar .tag { font-family: var(--ps-font-serif); font-style: italic; font-size: 16px; color: var(--ps-muted); margin-bottom: 12px; }
+  .pillar p { font-size: 15px; line-height: 1.55; }
+  .pillar .in-copy { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--ps-line-soft); font-size: 13px; color: var(--ps-muted); }
+  .pillar .in-copy strong { color: var(--ps-ink); font-weight: 600; }
+
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 24px; border: var(--ps-border); border-radius: var(--ps-radius-lg); overflow: hidden; }
+  .compare > div { padding: 16px 20px; }
+  .compare .col-heading { font-family: var(--ps-font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ps-muted); margin-bottom: 8px; font-weight: 500; }
+  .compare .yes { background: color-mix(in oklch, var(--ps-green-deep) 6%, var(--ps-card)); border-right: 1px solid var(--ps-line); }
+  .compare .no { background: var(--ps-card); }
+  .compare ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .compare li { font-size: 15px; color: var(--ps-ink); }
+
+  .principle { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 24px 0; border-top: 1px solid var(--ps-line); align-items: baseline; }
+  .principle:last-of-type { border-bottom: 1px solid var(--ps-line); }
+  .principle .num { font-family: var(--ps-font-mono); font-size: 13px; color: var(--ps-accent); letter-spacing: 0.06em; padding-top: 4px; }
+  .principle h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .principle p { font-size: 16px; line-height: 1.55; }
+  .principle .ex { margin-top: 10px; padding: 10px 14px; border-left: 2px solid; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.5; color: var(--ps-ink); display: flex; align-items: flex-start; gap: 8px; }
+  .principle .ex.yes { border-color: var(--ps-green-deep); background: color-mix(in oklch, var(--ps-green-deep) 6%, var(--ps-card)); }
+  .principle .ex.no { border-color: #c2382a; background: #fdedea; }
+  .principle .ex .marker { font-family: var(--ps-font-mono); font-weight: 600; color: var(--ps-green-deep); flex-shrink: 0; }
+  .principle .ex.no .marker { color: #c2382a; }
+
+  .term { padding: 20px 0; border-top: 1px solid var(--ps-line); }
+  .term:last-of-type { border-bottom: 1px solid var(--ps-line); }
+  .term h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; display: flex; align-items: baseline; gap: 12px; }
+  .term h3 .aside { font-family: var(--ps-font-serif); font-style: italic; font-size: 14px; color: var(--ps-muted); font-weight: 400; }
+  .term p { font-size: 15px; line-height: 1.55; margin-top: 6px; }
+
+  .avoid-list { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+  .avoid-item { padding: 14px 18px; background: var(--ps-card); border: 1px solid var(--ps-line); border-radius: var(--ps-radius-md); display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: baseline; font-size: 14px; }
+  .avoid-item .word { font-family: var(--ps-font-mono); font-weight: 600; color: var(--ps-ink); }
+  .avoid-item .why { color: var(--ps-ink-soft); line-height: 1.5; }
+
+  .three-beat { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; counter-reset: beat; }
+  .beat { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 22px 24px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-lg); align-items: baseline; }
+  .beat::before { counter-increment: beat; content: counter(beat); font-family: var(--ps-font-mono); font-size: 22px; color: var(--ps-accent); font-weight: 500; }
+  .beat h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+  .beat p { font-size: 14px; line-height: 1.55; }
+
+  .checklist { padding: 28px 32px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-2xl); }
+  .checklist ol { margin-left: 20px; padding-left: 0; }
+  .checklist li { padding: 6px 0; font-size: 15px; line-height: 1.5; color: var(--ps-ink-soft); }
+  .checklist li strong { color: var(--ps-ink); font-weight: 600; }
+
+  .end-mark { display: block; margin-top: 64px; text-align: center; font-family: var(--ps-font-mono); font-size: 12px; letter-spacing: 0.16em; color: var(--ps-muted); text-transform: uppercase; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 40px; }
+    .hero p { font-size: 19px; }
+    article h2 { font-size: 24px; }
+    article p { font-size: 16px; }
+    .principle, .beat { grid-template-columns: 40px 1fr; gap: 12px; }
+    .compare { grid-template-columns: 1fr; }
+    .compare .yes { border-right: 0; border-bottom: 1px solid var(--ps-line); }
+    .avoid-item { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="index.html">← Back to system</a>
+  <span class="ps-mono" style="font-size: 11px; letter-spacing: 0.08em;">VOICE & TONE</span>
+</nav>
+
+<article>
+  <header class="hero">
+    <span class="ps-eyebrow" style="font-size: 13px;">How we sound</span>
+    <h1>Calm, intelligent, <span class="ps-serif">principled.</span></h1>
+    <p>This is the working source for voice, tone, terminology, and UX copy across PocketSeed. It's how we talk to users, especially new ones encountering the platform for the first time.</p>
+  </header>
+
+  <h2>What we're trying to do</h2>
+  <p>PocketSeed is structurally complex, but the underlying idea is human: companies say things about themselves, and now there's a way to manage and back them up. We want PocketSeed to make managing a brand's voice feel <strong>exciting and achievable</strong>, helping teams be bold while staying inside the lines on risk and reward.</p>
+  <p>We're not asking anyone to change what they do. We're giving them the structure and confidence to keep doing it, <em>loudly</em>.</p>
+
+  <h3>Who we're for</h3>
+  <p><strong>Sustainability-led brands.</strong> Small to medium, cross-functional, often with one person wearing several hats, the marketing or comms manager who's also watching regulation, owning brand tone, and chasing evidence from suppliers. They're already doing the hard part. We make their existing work defensible.</p>
+  <p><strong>Agencies and consultants</strong> who do the evidence-gathering on behalf of clients. They produce the proof; their clients make the claims.</p>
+  <p><strong>Internal teams.</strong> Marketing, sustainability, legal, comms, aligning on what can credibly be said.</p>
+
+  <h2>Brand voice</h2>
+  <p>We are <strong>calm, intelligent, and principled</strong>, not corporate or preachy.</p>
+  <p>We exist because responsible teams are tired of navigating claims through email threads, PDFs, and fragmented approvals. We don't amplify noise. We bring structure to it.</p>
+  <p>We speak clearly and directly. We avoid hype, fear, and inflated promises. We don't moralise. We don't shame. We help.</p>
+
+  <div class="pull">
+    <p>We sound like the colleague who understands both the creative ambition and the regulatory reality, and helps you bridge the gap.</p>
+  </div>
+
+  <div class="compare">
+    <div class="yes">
+      <div class="col-heading">We are</div>
+      <ul>
+        <li>Confident</li>
+        <li>Structured</li>
+        <li>Modern</li>
+        <li>Professional</li>
+        <li>On their side</li>
+      </ul>
+    </div>
+    <div class="no">
+      <div class="col-heading">We aren't</div>
+      <ul>
+        <li>Aggressive</li>
+        <li>Bureaucratic</li>
+        <li>Trendy</li>
+        <li>Stiff</li>
+        <li>Above them</li>
+      </ul>
+    </div>
+  </div>
+
+  <p style="margin-top: 32px;">We don't claim to "change the world." We help teams say what they mean and stand behind it. We believe claims should be <strong>built</strong>, not just written. We believe trust should be <strong>structured</strong>, not assumed.</p>
+
+  <h3>Closest references</h3>
+  <p><strong>Stripe · Notion · Patagonia's environmental reporting.</strong> We are not an audit firm, a regulator, or a compliance platform.</p>
+
+  <h2>The four pillars</h2>
+  <p>Each pillar should be felt in the product experience and reflected in the copy.</p>
+
+  <div class="pillars">
+    <div class="pillar">
+      <h3><span class="label">Pillar 01</span>Guidance</h3>
+      <p class="tag">We help teams navigate complexity.</p>
+      <p>PocketSeed walks users through a process that would otherwise be confusing, fragmented, or easy to get wrong. The product is a guide, structured, supportive, oriented around the user's needs. We're not a destination, we're a path.</p>
+      <div class="in-copy"><strong>In copy:</strong> clear next steps, helpful framing, never leaving someone stranded without context.</div>
+    </div>
+    <div class="pillar">
+      <h3><span class="label">Pillar 02</span>Intelligence</h3>
+      <p class="tag">Structured reasoning that surfaces what matters.</p>
+      <p>The framework analyses claims, identifies gaps, provides detailed insight from multiple angles. We bring rigour to something that previously relied on instinct and luck. The product thinks carefully so the user doesn't have to start from scratch.</p>
+      <div class="in-copy"><strong>In copy:</strong> specific, considered, never vague. When we explain something, we explain it properly.</div>
+    </div>
+    <div class="pillar">
+      <h3><span class="label">Pillar 03</span>Integrity</h3>
+      <p class="tag">Claims built to withstand scrutiny.</p>
+      <p>Integrity is the core promise. Not that claims are always right, that they're built honestly, with evidence, through a process the user can stand behind. The user is accountable, and PocketSeed gives them the tools to earn that accountability properly.</p>
+      <div class="in-copy"><strong>In copy:</strong> straightforward, principled, no overselling. We don't promise more than we deliver.</div>
+    </div>
+    <div class="pillar">
+      <h3><span class="label">Pillar 04</span>Flow</h3>
+      <p class="tag">Replace chaotic email chains with composable evidence.</p>
+      <p>The practical, day-to-day value. PocketSeed replaces the scramble, email threads, missing documents, back-and-forth approvals, with a calm, organised process. It aligns teams around evidence and makes everyone's life easier.</p>
+      <div class="in-copy"><strong>In copy:</strong> light, efficient, relieved. The absence of friction is itself a feature worth naming.</div>
+    </div>
+  </div>
+
+  <h2>Core principles</h2>
+  <p>These shape every line of UX copy.</p>
+
+  <div class="principle">
+    <span class="num">01</span>
+    <div>
+      <h3>Supportive, not judgmental</h3>
+      <p>PocketSeed helps companies do things properly. It doesn't punish mistakes or assume bad intent. Many companies are doing meaningful work, the systems around claims are messy. We exist to fix that, not to call it out.</p>
+      <div class="ex yes"><span class="marker">YES</span><span>"PocketSeed helps teams organise the evidence behind their claims."</span></div>
+      <div class="ex no" style="margin-top: 8px;"><span class="marker">NO</span><span>"Companies must prove their claims."</span></div>
+    </div>
+  </div>
+
+  <div class="principle">
+    <span class="num">02</span>
+    <div>
+      <h3>Make them the hero</h3>
+      <p>The marketing manager spotted the problem. They're fixing it. Everyone around them benefits. PocketSeed gives them the tools, they get the credit. Reinforce that they're doing something <strong>smart and proactive</strong>, not something they were forced into.</p>
+    </div>
+  </div>
+
+  <div class="principle">
+    <span class="num">03</span>
+    <div>
+      <h3>Opportunity, not obligation</h3>
+      <p>Don't frame PocketSeed as damage control. Frame it as a competitive edge, the ability to say bold things and genuinely back them up. Lead with what they gain. Protection is a benefit, not the point.</p>
+      <div class="ex yes"><span class="marker">YES</span><span>"Reduces your risk of X."</span></div>
+      <div class="ex no" style="margin-top: 8px;"><span class="marker">NO</span><span>"Stops you getting in trouble."</span></div>
+    </div>
+  </div>
+
+  <div class="principle">
+    <span class="num">04</span>
+    <div>
+      <h3>Evidence without accusation</h3>
+      <p>Evidence and defensibility are central, but always framed as empowering, not enforcing.</p>
+      <div class="ex yes"><span class="marker">YES</span><span>"PocketSeed makes it easier to show the proof behind your claims."</span></div>
+      <div class="ex no" style="margin-top: 8px;"><span class="marker">NO</span><span>"Claims must be backed by proof."</span></div>
+    </div>
+  </div>
+
+  <div class="principle">
+    <span class="num">05</span>
+    <div>
+      <h3>Good faith, not perfection</h3>
+      <p>Users don't need to be right forever. They need to be honest about what they knew when they said it. If things change, they update. The record of what they knew then is the protection. This is a <em>liberating</em> idea, not a scary one.</p>
+    </div>
+  </div>
+
+  <div class="principle">
+    <span class="num">06</span>
+    <div>
+      <h3>Practically useful</h3>
+      <p>The platform should feel useful in day-to-day work, not just important in the abstract. Show that it helps teams organise documents, reduce back-and-forth, prepare evidence, collaborate across teams, and publish clear records. It's not just about trust, it's about making work easier.</p>
+    </div>
+  </div>
+
+  <div class="principle">
+    <span class="num">07</span>
+    <div>
+      <h3>Quiet optimism</h3>
+      <p>PocketSeed should feel <strong>hopeful</strong> about progress, not cynical about greenwashing. Lead with what's gained. When context calls for it, it's fine to acknowledge harder reality, but keep it as the supporting note, not the headline. Risk acknowledged, never weaponised.</p>
+      <div class="ex yes"><span class="marker">YES</span><span>"Vague claims are getting harder to stand behind. Specific ones travel further."</span></div>
+      <div class="ex no" style="margin-top: 8px;"><span class="marker">NO</span><span>"Companies that can't prove their claims will get caught out."</span></div>
+    </div>
+  </div>
+
+  <div class="principle">
+    <span class="num">08</span>
+    <div>
+      <h3>Teach as you go</h3>
+      <p>Don't front-load jargon. Earn each term by explaining the concept first. Users learn "claim", "evidence", "credential", and "product" by doing, not by reading a glossary.</p>
+    </div>
+  </div>
+
+  <h2>The three-beat story</h2>
+  <p>When in doubt, structure copy around this arc:</p>
+
+  <div class="three-beat">
+    <div class="beat">
+      <div>
+        <h3>We help you get it right</h3>
+        <p>The framework guides you, surfaces gaps, asks the right questions.</p>
+      </div>
+    </div>
+    <div class="beat">
+      <div>
+        <h3>You sign off</h3>
+        <p>Accountability is yours, and that's a feature, not a bug.</p>
+      </div>
+    </div>
+    <div class="beat">
+      <div>
+        <h3>We issue the credential</h3>
+        <p>A permanent, timestamped record of what you said, why, and what backed it up. Yours to share.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Terminology</h2>
+  <p>Use these consistently, the load-bearing vocabulary of the product.</p>
+
+  <div class="term">
+    <h3>Credential <span class="aside">the core thing PocketSeed creates</span></h3>
+    <p>A data package that locks together a claim's content, its supporting evidence, the sign-off, and a timestamp, as one record. Tamper-proof, on-chain timestamped, shareable.</p>
+    <p>PocketSeed certifies the <strong>integrity of the package</strong>, not the truth of the claim inside it. Lead with what credentials enable (a permanent, shareable record). The technical proof points are accurate and available when relevant, especially around sharing, but shouldn't be the opening line.</p>
+  </div>
+
+  <div class="term">
+    <h3>Claim <span class="aside">what gets said</span></h3>
+    <p>What a company says about their brand, products, or practices, the public-facing statement built on top of a credential. Co-equal with credential: the credential is the underlying data package, the claim is what gets said based on it.</p>
+    <p>Introduce it by meeting users in their own language first ("the things you say about your products") before using the word directly. <strong>Claim</strong> is the product term.</p>
+  </div>
+
+  <div class="term">
+    <h3>Product <span class="aside">a bundle of credentials</span></h3>
+    <p>A way to bundle credentials and product information together so they can be shared as one item. Useful when a single product has multiple credentials behind it (sourcing, manufacturing, sustainability) and the team wants to keep and share them as one.</p>
+  </div>
+
+  <div class="term">
+    <h3>Evidence <span class="aside">what backs a claim up</span></h3>
+    <p>Certifications, lab reports, supplier contracts, test results. Use real-world names where possible; refer to the category as <strong>evidence</strong>. Reserve <strong>certificate</strong> for actual third-party certifications (ISO, B Corp, Fair Trade); never for the things PocketSeed itself issues, those are credentials.</p>
+  </div>
+
+  <div class="term">
+    <h3>Sign-off <span class="aside">the user's mark</span></h3>
+    <p>What the user does when they're satisfied a claim is ready. They're the ones accountable. This is a <strong>feature, not a burden</strong>, it's their name on something they're proud of.</p>
+  </div>
+
+  <div class="term">
+    <h3>CLEAR Framework <span class="aside">working name</span></h3>
+    <p>How PocketSeed guides users through building a responsible claim. It surfaces gaps, asks the right questions, suggests improvements, and gives an overall score. It doesn't verify the claim <em>for</em> them, it helps them verify it themselves. Accountability stays with the user.</p>
+  </div>
+
+  <div class="term">
+    <h3>Snapshot <span class="aside">the metaphor for a credential</span></h3>
+    <p>A claim was made, evidence was attached, someone signed off, all on a specific date. If circumstances change later, the snapshot shows what was known and intended at the time. The protection isn't that you're always right, it's that you were always honest.</p>
+  </div>
+
+  <h2>Words to avoid in onboarding</h2>
+  <p>Lead with these only when they earn their place, around sharing, exporting, or proof moments. Never in the first line of an onboarding screen.</p>
+
+  <div class="avoid-list">
+    <div class="avoid-item">
+      <span class="word">Compliance</span>
+      <span class="why">Too defensive. Makes the user feel they're doing something wrong.</span>
+    </div>
+    <div class="avoid-item">
+      <span class="word">Audit</span>
+      <span class="why">Feels punitive. Evokes the wrong context.</span>
+    </div>
+    <div class="avoid-item">
+      <span class="word">Verified <em style="color: var(--ps-muted); font-family: var(--ps-font-serif);">(as an external stamp)</em></span>
+      <span class="why">Implies someone else certified the claim's truth, which we don't.</span>
+    </div>
+    <div class="avoid-item">
+      <span class="word">Tamper-proof, on-chain, timestamped, blockchain</span>
+      <span class="why">Technically accurate, perfectly fine to use, but should support the story rather than open it.</span>
+    </div>
+  </div>
+
+  <h2>Quick reference, when writing</h2>
+  <p>Before shipping a piece of copy, run it past these:</p>
+
+  <div class="checklist">
+    <ol>
+      <li>Does this <strong>make the user the hero</strong>, or talk down to them?</li>
+      <li>Does this lead with <strong>what they gain</strong>, not what they avoid?</li>
+      <li>Have we <strong>earned each term</strong>, or front-loaded jargon?</li>
+      <li>Are we <strong>calm and principled</strong>, or hyped/fearful?</li>
+      <li>Could this sit comfortably in a Stripe / Notion / Patagonia interface?</li>
+      <li>If it's onboarding copy, does it <strong>avoid</strong> "compliance / audit / verified-as-stamp"?</li>
+      <li>Does it pass the colleague test, does it sound like a knowledgeable peer, or a regulator?</li>
+    </ol>
+  </div>
+
+  <span class="end-mark">· end ·</span>
+</article>
+</body>
+</html>

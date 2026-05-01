@@ -1,4 +1,4 @@
-/* Shared layout for specimen pages — not part of the design system itself */
+/* Shared layout for specimen pages, not part of the design system itself */
 
 .spec-shell { max-width: 1200px; margin: 0 auto; padding: 64px 48px 120px; }
 .spec-back { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ps-muted); margin-bottom: 32px; }

@@ -1,4 +1,4 @@
-/* PocketSeed Design System — Base
+/* PocketSeed Design System, Base
  * Resets + element defaults that pair with tokens.css.
  * Load order:  tokens.css → base.css → components.css
  */
@@ -29,7 +29,7 @@ a { color: inherit; text-decoration: none; }
 /* Selection */
 ::selection { background: var(--ps-accent); color: var(--ps-paper); }
 
-/* Default focus ring — accessible, on-brand */
+/* Default focus ring, accessible, on-brand */
 :focus-visible {
   outline: 2px solid var(--ps-accent);
   outline-offset: 2px;

@@ -1,10 +1,10 @@
-/* PocketSeed Design System — Tokens
+/* PocketSeed Design System, Tokens
  * Single source of truth for the brand visual language.
  * Drop this file into any project and all primitives below are available.
  */
 
 :root {
-  /* ── Palette — Ink & paper ─────────────────────────────────── */
+  /* ── Palette, Ink & paper ─────────────────────────────────── */
   --ps-ink: #1a2535;
   --ps-ink-soft: #2d3a4d;
   --ps-muted: #6b7280;
@@ -15,9 +15,9 @@
   --ps-card: #ffffff;
   --ps-bg-page: #0e1218;
 
-  /* ── Palette — Brand ───────────────────────────────────────── */
+  /* ── Palette, Brand ───────────────────────────────────────── */
   --ps-teal: #2dadc7;
-  --ps-blue: #3b6cf0;
+  --ps-blue: #1f6f96;
   --ps-purple: #6a4ed8;
   --ps-green: #4caf50;
   --ps-green-deep: #2f7a3a;
@@ -115,10 +115,10 @@
 
   --ps-shadow-card:  0 30px 60px -30px rgba(26, 37, 53, 0.25);
   --ps-shadow-soft:  0 8px 24px -16px rgba(26, 37, 53, 0.2);
-  --ps-shadow-mark:  0 12px 40px -12px rgba(59, 108, 240, 0.35);
+  --ps-shadow-mark:  0 12px 40px -12px rgba(31, 111, 150, 0.4);
 
   /* ── Gradients ─────────────────────────────────────────────── */
-  --ps-grad-orb: linear-gradient(135deg, #2dadc7 0%, #3b6cf0 70%, #6a4ed8 100%);
+  --ps-grad-orb: linear-gradient(135deg, var(--ps-teal) 0%, var(--ps-blue) 70%, var(--ps-purple) 100%);
   --ps-grad-leaf: radial-gradient(circle at 30% 30%, #7ed957 0%, #4caf50 70%, #2f7a3a 100%);
   --ps-grad-teal-blue: linear-gradient(135deg, var(--ps-teal), var(--ps-blue));
   --ps-grad-teal-green: linear-gradient(90deg, var(--ps-teal), var(--ps-green));
@@ -136,7 +136,7 @@
   --ps-features-tnum: 'tnum';
 }
 
-/* Accent presets — set on any element to swap accent locally
+/* Accent presets, set on any element to swap accent locally
  * Example:  <div class="ps-accent-green">…</div>
  */
 .ps-accent-teal   { --ps-accent: var(--ps-teal); }

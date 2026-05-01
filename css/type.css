@@ -1,4 +1,4 @@
-/* PocketSeed Design System — Typography
+/* PocketSeed Design System, Typography
  * Two ramps: ".ps-h-*" for slide-scale, ".ps-web-*" for everyday screens.
  * Pair with serif italic emphasis (.ps-serif) and mono micro-type (.ps-mono).
  */
@@ -75,7 +75,7 @@
   color: var(--ps-muted);
 }
 
-/* Eyebrow / kicker — sits above headlines */
+/* Eyebrow / kicker, sits above headlines */
 .ps-eyebrow {
   font-size: var(--ps-fs-eyebrow);
   font-weight: var(--ps-w-medium);
