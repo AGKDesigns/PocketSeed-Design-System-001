@@ -381,8 +381,6 @@
 .ps-image-frame.ps-image-square    { aspect-ratio: 1 / 1; }
 .ps-image-frame.ps-image-wide      { aspect-ratio: 16 / 9; }
 .ps-image-frame.ps-image-pano      { aspect-ratio: 3.27 / 1; }
-.ps-image-frame.ps-image-portrait  { aspect-ratio: 4 / 5; }
-.ps-image-frame.ps-image-card      { aspect-ratio: 3 / 4; }
 
 /* Image grids */
 .ps-image-grid {

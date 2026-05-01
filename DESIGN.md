@@ -143,7 +143,7 @@ Slide chrome | `.ps-chrome` + `.ps-chrome-logo` + `.ps-chrome-meta`
 Slide frame | `.ps-slide` (full-bleed inside `.ps-stage`)
 Decorative grid | `.ps-grain`
 Brand glow halo | `.ps-glow`
-Image with rounded frame | `.ps-image-frame` (+ `-square` / `-wide` / `-pano` / `-portrait` / `-card`)
+Image with rounded frame | `.ps-image-frame` (+ `-square` / `-wide` / `-pano`)
 Multi-up image row | `.ps-image-grid` (+ `-2` / `-4`)
 Layer pins / cards over an image | `.ps-image-stack` + `.ps-image-overlay`
 Draw connection lines between elements | `.ps-connector` (inline SVG)
