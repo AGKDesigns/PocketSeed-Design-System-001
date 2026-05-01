@@ -35,6 +35,16 @@
       <span class="ps-pill ps-accent-blue ps-pill-accent"><span class="ps-dot-mini"></span>Blue accent</span>
       <span class="ps-pill ps-accent-green ps-pill-accent"><span class="ps-dot-mini"></span>Green accent</span>
     </div>
+
+    <div class="spec-frame" style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+      <div class="demo-label" style="width: 100%; margin-bottom: -4px;">With Lucide icon · auto-sizes against pill text, picks up the vivid tone in accent pills</div>
+      <span class="ps-pill ps-pill-accent"><i class="ps-icon" data-lucide="check"></i>Verified</span>
+      <span class="ps-pill"><i class="ps-icon" data-lucide="shield-check"></i>Tamper-proof</span>
+      <span class="ps-pill"><i class="ps-icon" data-lucide="sparkles"></i>AI-interactive</span>
+      <span class="ps-pill"><i class="ps-icon" data-lucide="link"></i>Public link</span>
+      <span class="ps-pill"><i class="ps-icon" data-lucide="users"></i>2 co-signers</span>
+      <span class="ps-pill ps-pill-sm"><i class="ps-icon" data-lucide="qr-code"></i>QR-ready</span>
+    </div>
   </section>
 
   <section class="spec-section">
@@ -48,16 +58,24 @@
       <button class="ps-btn ps-btn-ghost">Ghost</button>
       <button class="ps-btn ps-btn-danger">Danger</button>
       <button class="ps-btn ps-btn-sm">Small</button>
-      <button class="ps-btn ps-btn-icon" aria-label="More">⋯</button>
+      <button class="ps-btn ps-btn-icon" aria-label="More"><i class="ps-icon" data-lucide="more-horizontal"></i></button>
       <button class="ps-btn" disabled>Disabled</button>
+    </div>
+
+    <div class="spec-frame" style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+      <div class="demo-label" style="width: 100%; margin-bottom: -4px;">With icon · leading icon for actions, trailing arrow for "go forward" CTAs</div>
+      <button class="ps-btn ps-btn-primary"><i class="ps-icon" data-lucide="download"></i>Download credential</button>
+      <button class="ps-btn"><i class="ps-icon" data-lucide="link"></i>Copy share link</button>
+      <button class="ps-btn ps-btn-ghost"><i class="ps-icon" data-lucide="external-link"></i>Open in browser</button>
+      <button class="ps-btn ps-btn-danger"><i class="ps-icon" data-lucide="trash-2"></i>Delete</button>
     </div>
 
     <h2 style="margin-top: 40px;">CTA scale (marketing)</h2>
     <p class="spec-desc">Add <code class="ps-mono">.ps-btn-cta</code> to any button to bump it to pill-shape, larger type, with a lift on hover. Use on landing pages and hero CTAs.</p>
     <div class="spec-frame" style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
-      <a class="ps-btn ps-btn-cta ps-btn-primary" href="#">Get a demo</a>
-      <a class="ps-btn ps-btn-cta ps-btn-ghost" href="#">See it in action →</a>
-      <a class="ps-btn ps-btn-lg ps-btn-primary" href="#">Large primary →</a>
+      <a class="ps-btn ps-btn-cta ps-btn-primary" href="#">Get a demo<i class="ps-icon" data-lucide="arrow-right"></i></a>
+      <a class="ps-btn ps-btn-cta ps-btn-ghost" href="#"><i class="ps-icon" data-lucide="play"></i>See it in action</a>
+      <a class="ps-btn ps-btn-lg ps-btn-primary" href="#">Large primary<i class="ps-icon" data-lucide="arrow-right"></i></a>
     </div>
   </section>
 
@@ -83,11 +101,11 @@
     </div>
 
     <div style="margin-top: 24px;">
-      <div class="demo-label">.ps-feature-card, three-up grid pattern</div>
+      <div class="demo-label">.ps-feature-card · three-up grid · Lucide icon at <code class="ps-mono">.ps-icon-xl</code> in place of the numerator</div>
       <div class="demo-grid cols-3">
         <div class="ps-feature-card">
           <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="ps-num">01</span>
+            <i class="ps-icon ps-icon-xl" data-lucide="shield-check"></i>
             <span class="ps-pill ps-pill-sm">Build trust</span>
           </div>
           <h3>Credentials</h3>
@@ -95,7 +113,7 @@
         </div>
         <div class="ps-feature-card ps-accent-blue">
           <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="ps-num">02</span>
+            <i class="ps-icon ps-icon-xl" data-lucide="package"></i>
             <span class="ps-pill ps-pill-sm">Show the work</span>
           </div>
           <h3>Products</h3>
@@ -103,7 +121,7 @@
         </div>
         <div class="ps-feature-card ps-accent-green">
           <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="ps-num">03</span>
+            <i class="ps-icon ps-icon-xl" data-lucide="sprout"></i>
             <span class="ps-pill ps-pill-sm">Activate impact</span>
           </div>
           <h3>Campaigns</h3>
@@ -204,5 +222,7 @@
     </div>
   </section>
 </main>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
 </body>
 </html>
