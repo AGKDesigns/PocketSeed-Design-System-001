@@ -7,7 +7,16 @@
 <link rel="stylesheet" href="../css/pocketseed.css" />
 <style>
   /* Dark page frame, app floats inside it like the slide-template stage */
-  body { background: #0e1218; margin: 0; min-height: 100vh; padding: 56px 32px 32px; box-sizing: border-box; }
+  body {
+    background:
+      linear-gradient(rgba(247,244,236,0.06) 1px, transparent 1px) 0 0 / 45px 45px,
+      linear-gradient(90deg, rgba(247,244,236,0.06) 1px, transparent 1px) 0 0 / 45px 45px,
+      #0e1218;
+    margin: 0;
+    min-height: 100vh;
+    padding: 56px 32px 32px;
+    box-sizing: border-box;
+  }
   .meta { position: fixed; top: 16px; left: 32px; right: 32px; display: flex; justify-content: space-between; align-items: center; font-family: var(--ps-font-mono); font-size: 12px; color: rgba(247,244,236,0.6); pointer-events: none; z-index: 10; }
   .meta a { pointer-events: auto; color: rgba(247,244,236,0.6); border: 1px solid rgba(247,244,236,0.2); padding: 6px 10px; border-radius: 6px; }
   .meta a:hover { color: var(--ps-paper); }

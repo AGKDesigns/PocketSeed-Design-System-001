@@ -6,8 +6,24 @@
 <title>PocketSeed Design System</title>
 <link rel="stylesheet" href="css/pocketseed.css" />
 <style>
-  body { background: var(--ps-paper); }
-  .wrap { max-width: 1200px; margin: 0 auto; padding: 80px 48px 120px; }
+  body { background: var(--ps-paper); position: relative; }
+  /* Subtle hero grid — fades out vertically before reaching the specimens */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 800px;
+    background:
+      linear-gradient(rgba(140, 120, 70, 0.05) 1px, transparent 1px) 0 0 / 45px 45px,
+      linear-gradient(90deg, rgba(140, 120, 70, 0.05) 1px, transparent 1px) 0 0 / 45px 45px;
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.85) 30%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.85) 30%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 80px 48px 120px; position: relative; z-index: 1; }
   .hero { display: flex; flex-direction: column; gap: 24px; margin-bottom: 80px; }
   .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
   .nav-card { display: flex; flex-direction: column; gap: 12px; padding: 32px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-2xl); transition: transform var(--ps-dur-base) var(--ps-ease), box-shadow var(--ps-dur-base) var(--ps-ease); }
