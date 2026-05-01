@@ -70,7 +70,7 @@ The system has four standard surfaces. Each one carries text-color overrides so 
 **Paper vs. mute, when to use which.** The paper tokens are warm and beige; they belong on the *outer* surface (the page, the slide, the slightly-warmer-than-page card). Inside a white `.ps-card`, those warm tones read as cream patches and clash. For panel-within-a-panel work, table headers, hover states, dividers between rows, reach for the cooler neutral mid-grays instead:
 
 - `--ps-mute-bg` — subtle gray for table headers and hover states inside white surfaces.
-- `--ps-mute-bg-2` — stronger neutral for selected rows, pressed states.
+- `--ps-mute-bg-2` — selected / pressed rows. Sits *between white and `--ps-mute-bg`*, so a selected row reads as a soft inset rather than a heavier block pulled forward of the header.
 - `--ps-mute-line` — divider color inside white-card contexts.
 
 Rule of thumb: **`--ps-paper` / `--ps-paper-warm`** when the surface IS paper. **`--ps-mute-bg` / `--ps-mute-line`** when you need a subtle gray INSIDE a white card.
