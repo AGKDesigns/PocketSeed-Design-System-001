@@ -30,6 +30,24 @@
   /* Hero browser mock, sized down for web context */
   .hero-mock { width: 100%; }
   .hero-mock .ps-browser-bar { height: 32px; }
+
+  /* Image-feature row: image left, copy right */
+  .image-feature { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 40px; }
+  .image-feature.reverse { grid-template-columns: 1fr 1fr; }
+  .image-feature.reverse > .image-feature-media { order: 2; }
+
+  /* Compose: product image + overlapping credential mockup */
+  .compose-stage { padding: 56px 40px; display: flex; align-items: center; justify-content: center; background: var(--ps-paper-warm); border-radius: var(--ps-radius-2xl); margin-top: 40px; min-height: 540px; }
+  .compose-stage .compose-product { width: 420px; flex-shrink: 0; }
+  .compose-stage .compose-cred { width: 380px; flex-shrink: 0; margin-left: -140px; margin-top: 60px; box-shadow: 0 30px 60px -25px rgba(26, 37, 53, 0.28); position: relative; z-index: 2; }
+
+  @media (max-width: 880px) {
+    .image-feature { grid-template-columns: 1fr; gap: 32px; }
+    .image-feature.reverse > .image-feature-media { order: 0; }
+    .compose-stage { flex-direction: column; padding: 24px; gap: 16px; min-height: auto; }
+    .compose-stage .compose-product { width: 100%; max-width: 360px; }
+    .compose-stage .compose-cred { width: 100%; max-width: 380px; margin: 0; }
+  }
 </style>
 </head>
 <body>
@@ -134,6 +152,94 @@
       </div>
       <h3>Campaigns</h3>
       <p>Real-world impact attributed to real customer interactions. Every purchase = 1 tree planted.</p>
+    </div>
+  </div>
+</section>
+
+<section id="show-the-work" style="padding-top: 48px;">
+  <span class="ps-eyebrow" style="font-size: 13px;">Show the work</span>
+  <h2 class="ps-web-title" style="margin-top: 12px; max-width: 800px;">
+    Every claim, traceable to its <span class="ps-serif" style="color: var(--ps-accent);">source.</span>
+  </h2>
+  <div class="image-feature">
+    <div class="image-feature-media">
+      <div class="ps-image-stack">
+        <div class="ps-image-frame ps-image-square">
+          <img src="../assets/images/hydrosyrum.png" alt="Aqua Hydration Body Serum on a windowsill" />
+        </div>
+        <div class="ps-image-overlay">
+          <span class="ps-pin" style="top: 18%; left: 50%;">Bamboo dropper</span>
+          <span class="ps-pin" style="top: 56%; left: 56%;">Recycled glass</span>
+          <span class="ps-pin ps-pin-ink" style="bottom: 18px; right: 18px;">3 verified credentials</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="ps-web-lead" style="margin-bottom: 16px;">
+        Surface ingredients, evidence, and supplier provenance on a single product page. Customers see what they're buying. So do retailers, regulators, and partners.
+      </p>
+      <ul class="ps-bullets" style="margin-top: 16px;">
+        <li>Annotate parts of the product with verifiable claims</li>
+        <li>Link each claim to the credential that backs it up</li>
+        <li>Embed via QR on pack, widget on the PDP, or shareable link</li>
+        <li>The same source of truth for marketing, retail, and support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="in-one-move" style="padding-top: 48px;">
+  <span class="ps-eyebrow" style="font-size: 13px;">In one move</span>
+  <h2 class="ps-web-title" style="margin-top: 12px; max-width: 800px;">
+    Real products, real <span class="ps-serif" style="color: var(--ps-accent);">credentials.</span>
+  </h2>
+  <p class="ps-web-lead" style="margin-top: 16px; max-width: 720px;">
+    Drop a verifiable credential next to a product photo, on a website, in a deck, in a leave-behind. Customers see the product and the proof in one move.
+  </p>
+
+  <div class="compose-stage">
+    <div class="ps-image-frame ps-image-square compose-product">
+      <img src="../assets/images/Hydrationsyrum.png" alt="Aqua Hydration Body Serum" />
+    </div>
+    <div class="ps-browser compose-cred">
+      <div class="ps-browser-bar">
+        <span class="ps-light" style="background: #e8a8a8;"></span>
+        <span class="ps-light" style="background: #e8d68a;"></span>
+        <span class="ps-light" style="background: #a8d6a0;"></span>
+        <span class="ps-url">pocketseed.io/p/aqua-serum</span>
+      </div>
+      <div style="padding: 22px 24px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span class="ps-mono" style="font-size: 11px; color: var(--ps-muted);">PRODUCT · AQUA-50ML</span>
+          <span class="ps-pill ps-pill-accent ps-pill-sm"><span class="ps-dot-mini"></span>Verified</span>
+        </div>
+        <div style="font-size: 20px; font-weight: 600; line-height: 1.15; letter-spacing: -0.015em;">Aqua Hydration Body Serum</div>
+        <p style="font-size: 13px; line-height: 1.5; color: var(--ps-ink-soft); margin: 0;">
+          A weightless body serum with <strong style="color: var(--ps-ink); font-weight: 600;">hyaluronic acid and Scottish sea kelp</strong>. Vegan, cruelty-free, dermatologist-tested. Recycled glass, bamboo dropper.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+          <span class="ps-pill ps-pill-xs">Vegan</span>
+          <span class="ps-pill ps-pill-xs">Cruelty-free</span>
+          <span class="ps-pill ps-pill-xs">Recycled glass</span>
+          <span class="ps-pill ps-pill-xs">Made in UK</span>
+        </div>
+        <hr class="ps-rule" />
+        <div style="display: flex; justify-content: space-between; font-size: 12px;">
+          <div>
+            <div style="color: var(--ps-muted); margin-bottom: 2px;">Credentials</div>
+            <div style="font-weight: 600;">4 linked</div>
+          </div>
+          <div>
+            <div style="color: var(--ps-muted); margin-bottom: 2px;">Evidence</div>
+            <div style="font-weight: 600;">9 docs</div>
+          </div>
+          <div>
+            <div style="color: var(--ps-muted); margin-bottom: 2px;">Updated</div>
+            <div style="font-weight: 600;">Apr 18 · 2026</div>
+          </div>
+        </div>
+        <div class="ps-ask-bar" style="font-size: 12px;">Where was the kelp sourced?</div>
+      </div>
     </div>
   </div>
 </section>
