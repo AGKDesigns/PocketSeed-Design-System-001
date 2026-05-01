@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Imagery · PocketSeed Design System</title>
+<link rel="stylesheet" href="../css/pocketseed.css" />
+<link rel="stylesheet" href="_specimen.css" />
+<style>
+  .demo-grid { display: grid; gap: 24px; margin-top: 24px; }
+  .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+  .principle-card { padding: 20px 24px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-lg); }
+  .principle-card .label { font-family: var(--ps-font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ps-muted); display: block; margin-bottom: 6px; }
+  .principle-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .principle-card p { font-size: 14px; line-height: 1.5; color: var(--ps-ink-soft); }
+
+  /* Connection diagram example */
+  .connect-stage { position: relative; padding: 32px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-2xl); min-height: 480px; }
+  .connect-grid { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 56px; align-items: center; position: relative; z-index: 1; }
+  .credential-stack { display: flex; flex-direction: column; gap: 10px; }
+  .cred-mini { padding: 12px 14px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-md); display: flex; flex-direction: column; gap: 2px; }
+  .cred-mini .ps-mono { font-size: 10px; color: var(--ps-muted); letter-spacing: 0.06em; }
+  .cred-mini .name { font-size: 13px; font-weight: 600; color: var(--ps-ink); }
+  .claim-card { padding: 20px 24px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-lg); }
+  .claim-card .label { font-family: var(--ps-font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ps-accent); margin-bottom: 8px; display: block; font-weight: 500; }
+  .claim-card .quote { font-family: var(--ps-font-serif); font-style: italic; font-size: 18px; line-height: 1.35; color: var(--ps-ink); }
+  @media (max-width: 760px) {
+    .principles { grid-template-columns: 1fr; }
+    .connect-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+</style>
+</head>
+<body>
+<main class="spec-shell">
+  <a class="spec-back" href="../index.html">← Back to system</a>
+  <div class="spec-title">
+    <span class="ps-eyebrow" style="font-size: 12px;">Specimen 08</span>
+    <h1 class="ps-web-title">Imagery</h1>
+    <p class="ps-web-lead" style="max-width: 720px;">Frames, grids, layered overlays, and graphic connectors. Imagery in PocketSeed is restrained and functional, never decorative for its own sake.</p>
+  </div>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Principles</span>
+    <h2>How imagery should feel</h2>
+    <p class="spec-desc">Like the rest of the system, the goal is quiet support. Photography is a tool that grounds the abstract (a credential, a claim) in the real (a product, a place). Use sparingly and treat consistently.</p>
+    <div class="principles">
+      <div class="principle-card">
+        <span class="label">Subject</span>
+        <h4>Real products, real places</h4>
+        <p>Product photography on neutral surfaces. Sustainability infrastructure (wind, solar, regenerative agriculture). Avoid stock-photo hands-on-keyboards or "diverse team smiling."</p>
+      </div>
+      <div class="principle-card">
+        <span class="label">Treatment</span>
+        <h4>Quiet, no filters</h4>
+        <p>No heavy color grading, no duotones, no washed-out filters. The colors should sit comfortably with the system's warm-paper / ink palette without competing.</p>
+      </div>
+      <div class="principle-card">
+        <span class="label">Frame</span>
+        <h4>Rounded corners, never square-edged</h4>
+        <p>Always wrap photos in <code class="ps-mono">.ps-image-frame</code> so the radius and clipping are consistent. 14px radius matches cards and buttons.</p>
+      </div>
+      <div class="principle-card">
+        <span class="label">Avoid</span>
+        <h4>The granola palette</h4>
+        <p>No leafy stock close-ups, no glowing planet earth, no abstract geometric "tech" gradients. Photography is anchored in the world, not symbolic of it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Aspect ratios</span>
+    <h2>Frame variants</h2>
+    <p class="spec-desc">All available via aspect-ratio modifiers on <code class="ps-mono">.ps-image-frame</code>. Source imagery should be cropped to the target ratio when possible; <code class="ps-mono">object-fit: cover</code> handles the rest.</p>
+    <div class="demo-grid" style="grid-template-columns: 1fr 1fr;">
+      <div>
+        <div class="ps-image-frame ps-image-square">
+          <img src="../assets/aqua-serum-square.jpg" alt="Aqua Hydration Body Serum" onerror="this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;color:var(--ps-muted);font-family:var(--ps-font-mono);font-size:12px;&quot;>square · 1:1</div>'" />
+        </div>
+        <div class="ps-image-caption">.ps-image-square · 1:1</div>
+      </div>
+      <div>
+        <div class="ps-image-frame ps-image-wide">
+          <img src="../assets/sustainability-wide.jpg" alt="Wind farm and solar array" onerror="this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;color:var(--ps-muted);font-family:var(--ps-font-mono);font-size:12px;&quot;>wide · 16:9</div>'" />
+        </div>
+        <div class="ps-image-caption">.ps-image-wide · 16:9</div>
+      </div>
+      <div>
+        <div class="ps-image-frame ps-image-portrait">
+          <img src="../assets/portrait.jpg" alt="" onerror="this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;color:var(--ps-muted);font-family:var(--ps-font-mono);font-size:12px;&quot;>portrait · 4:5</div>'" />
+        </div>
+        <div class="ps-image-caption">.ps-image-portrait · 4:5</div>
+      </div>
+      <div>
+        <div class="ps-image-frame ps-image-card">
+          <img src="../assets/card.jpg" alt="" onerror="this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;color:var(--ps-muted);font-family:var(--ps-font-mono);font-size:12px;&quot;>card · 3:4</div>'" />
+        </div>
+        <div class="ps-image-caption">.ps-image-card · 3:4</div>
+      </div>
+    </div>
+    <div style="margin-top: 24px;">
+      <div class="ps-image-frame ps-image-pano">
+        <img src="../assets/pano.jpg" alt="" onerror="this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;color:var(--ps-muted);font-family:var(--ps-font-mono);font-size:12px;&quot;>pano · 3.27:1</div>'" />
+      </div>
+      <div class="ps-image-caption">.ps-image-pano · 3.27:1 · use for full-bleed slide hero or section break</div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Grid</span>
+    <h2>Multi-up image rows</h2>
+    <p class="spec-desc">Use <code class="ps-mono">.ps-image-grid</code> for product lineups, evidence galleries, or process steps. 3-up is the default; 2/4-up via modifier.</p>
+    <div class="ps-image-grid" style="margin-top: 24px;">
+      <div class="ps-image-frame ps-image-square">
+        <img src="../assets/aqua-serum.png" alt="Variant A" />
+      </div>
+      <div class="ps-image-frame ps-image-square">
+        <img src="../assets/aqua-serum.png" alt="Variant B" />
+      </div>
+      <div class="ps-image-frame ps-image-square">
+        <img src="../assets/aqua-serum.png" alt="Variant C" />
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Layering</span>
+    <h2>Stack with overlay</h2>
+    <p class="spec-desc">Wrap an image frame in <code class="ps-mono">.ps-image-stack</code> and add <code class="ps-mono">.ps-image-overlay</code> children for annotations, pins, or floating cards.</p>
+    <div class="ps-image-stack" style="margin-top: 24px; max-width: 800px;">
+      <div class="ps-image-frame ps-image-wide">
+        <img src="../assets/aqua-serum.png" alt="Aqua Hydration Body Serum on a windowsill" />
+      </div>
+      <div class="ps-image-overlay">
+        <span class="ps-pin" style="top: 14%; left: 38%;">Recycled glass</span>
+        <span class="ps-pin" style="top: 56%; left: 24%;">Bamboo dropper</span>
+        <span class="ps-pin ps-pin-ink" style="bottom: 18px; right: 18px;">3 verified credentials</span>
+      </div>
+    </div>
+    <div class="ps-image-caption">.ps-pin · annotation pills with a vivid dot, anchored anywhere on the image</div>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Connectors</span>
+    <h2>Show how things relate</h2>
+    <p class="spec-desc">SVG paths drawn between elements via <code class="ps-mono">.ps-connector</code>. Use to map credentials to products, evidence to claims, or any "X feeds into Y" diagram.</p>
+
+    <div class="connect-stage">
+      <div class="connect-grid">
+        <!-- LEFT: credentials -->
+        <div class="credential-stack">
+          <span class="ps-eyebrow" style="font-size: 11px; margin-bottom: 4px;">Credentials</span>
+          <div class="cred-mini" id="cred-1">
+            <span class="ps-mono">CF-2026-ACME</span>
+            <span class="name">Carbon Footprint</span>
+          </div>
+          <div class="cred-mini" id="cred-2">
+            <span class="ps-mono">LAB-118</span>
+            <span class="name">Lab Results · Batch 118</span>
+          </div>
+          <div class="cred-mini" id="cred-3">
+            <span class="ps-mono">SRC-42</span>
+            <span class="name">Ingredient Sourcing</span>
+          </div>
+        </div>
+
+        <!-- MIDDLE: product image -->
+        <div style="position: relative;">
+          <div class="ps-image-frame ps-image-square" id="product-img">
+            <img src="../assets/aqua-serum.png" alt="Aqua Hydration Body Serum" />
+          </div>
+          <div class="ps-image-caption" style="text-align: center;">Aqua Hydration Body Serum</div>
+        </div>
+
+        <!-- RIGHT: claim -->
+        <div class="claim-card" id="claim">
+          <span class="label">Public claim</span>
+          <p class="quote">"Bottled in recycled glass, sourced from a verified UK supplier."</p>
+        </div>
+      </div>
+
+      <!-- Connector SVG layer — paths drawn between centers of items -->
+      <svg class="ps-connector" viewBox="0 0 1000 480" preserveAspectRatio="none">
+        <!-- Left credentials → product -->
+        <path d="M 220 90  C 320 90, 380 240, 480 240"  />
+        <path d="M 220 200 C 320 200, 380 240, 480 240" />
+        <path d="M 220 310 C 320 310, 380 240, 480 240" />
+        <!-- Product → claim -->
+        <path d="M 720 240 C 800 240, 820 240, 880 240" />
+        <!-- Endpoint dots -->
+        <circle class="ps-connector-dot" cx="220" cy="90"  r="3" />
+        <circle class="ps-connector-dot" cx="220" cy="200" r="3" />
+        <circle class="ps-connector-dot" cx="220" cy="310" r="3" />
+        <circle class="ps-connector-dot" cx="480" cy="240" r="4" />
+        <circle class="ps-connector-dot" cx="720" cy="240" r="4" />
+        <circle class="ps-connector-dot" cx="880" cy="240" r="3" />
+      </svg>
+    </div>
+
+    <p class="ps-web-small" style="margin-top: 16px; color: var(--ps-muted); max-width: 720px;">Path coordinates are illustrative — for production use, position the SVG over your real layout and either hard-code the curve or compute endpoints in JS so they track element positions on resize.</p>
+  </section>
+
+  <section class="spec-section">
+    <span class="spec-section-title">Image sources</span>
+    <h2>Where photography comes from</h2>
+    <p class="spec-desc">Until we commission a real shoot, source imagery from these in priority order:</p>
+    <ol style="margin-top: 16px; padding-left: 20px; font-size: 15px; line-height: 1.7; color: var(--ps-ink-soft);">
+      <li><strong>Real customer products</strong> — with their permission, used in case studies and product mockups.</li>
+      <li><strong>The official PocketSeed shoot</strong> (<em>not yet commissioned</em>) — generic product, place, and process imagery owned by us.</li>
+      <li><strong>Stock with editorial intent</strong> — Unsplash / Pexels / curated stock platforms, choosing images that look like they could have come from a real customer story.</li>
+    </ol>
+    <p class="ps-web-body" style="margin-top: 16px; color: var(--ps-ink-soft);">Always crop to the target ratio at source. Don't rely on <code class="ps-mono">object-fit: cover</code> to do compositional work — it's a fallback, not a strategy.</p>
+  </section>
+</main>
+</body>
+</html>

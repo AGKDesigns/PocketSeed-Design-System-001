@@ -357,6 +357,117 @@
 
 .ps-brandmark img { height: 28px; width: auto; }
 
+/* ─── Imagery ──────────────────────────────────────────────────
+ * Frame: a content-shaped image with rounded corners and a warm
+ * placeholder background while loading.
+ * Aspect-ratio variants keep imagery consistent across the system. */
+
+.ps-image-frame {
+  display: block;
+  position: relative;
+  border-radius: var(--ps-radius-lg);
+  overflow: hidden;
+  background: var(--ps-paper-warm);
+}
+
+.ps-image-frame > img,
+.ps-image-frame > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ps-image-frame.ps-image-square    { aspect-ratio: 1 / 1; }
+.ps-image-frame.ps-image-wide      { aspect-ratio: 16 / 9; }
+.ps-image-frame.ps-image-pano      { aspect-ratio: 3.27 / 1; }
+.ps-image-frame.ps-image-portrait  { aspect-ratio: 4 / 5; }
+.ps-image-frame.ps-image-card      { aspect-ratio: 3 / 4; }
+
+/* Image grids */
+.ps-image-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.ps-image-grid.ps-image-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.ps-image-grid.ps-image-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Layering: stack overlays on top of an image */
+.ps-image-stack {
+  position: relative;
+}
+.ps-image-stack > .ps-image-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ps-image-stack > .ps-image-overlay > * { pointer-events: auto; }
+
+/* Connector layer — inline SVG that draws lines between elements */
+.ps-connector {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.ps-connector path,
+.ps-connector line {
+  fill: none;
+  stroke: var(--ps-accent-vivid);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.ps-connector path.ps-connector-soft,
+.ps-connector line.ps-connector-soft {
+  stroke: var(--ps-line);
+  stroke-dasharray: 4 4;
+}
+.ps-connector circle.ps-connector-dot {
+  fill: var(--ps-accent-vivid);
+}
+
+/* Annotation pin — small floating label anchored on imagery */
+.ps-pin {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--ps-card);
+  border: 1px solid var(--ps-line);
+  border-radius: var(--ps-radius-pill);
+  font-size: 12px;
+  font-weight: var(--ps-w-medium);
+  color: var(--ps-ink);
+  box-shadow: 0 6px 16px -8px rgba(26, 37, 53, 0.3);
+  white-space: nowrap;
+}
+.ps-pin::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ps-accent-vivid);
+  flex-shrink: 0;
+}
+.ps-pin.ps-pin-ink {
+  background: var(--ps-ink);
+  color: var(--ps-paper);
+  border-color: var(--ps-ink);
+}
+
+/* Caption sits under (or over) an image frame */
+.ps-image-caption {
+  font-family: var(--ps-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ps-muted);
+  margin-top: 8px;
+}
+
 /* ─── Browser frame (used to mock product / credential pages) ─ */
 
 .ps-browser {

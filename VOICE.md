@@ -189,7 +189,7 @@ This is the protection: not that you're always right, but that you were always h
 
 ---
 
-## Words to avoid in onboarding
+## Words to avoid
 
 Lead with these only when they earn their place, around sharing, exporting, or proof moments. Never in the first line of an onboarding screen.
 
