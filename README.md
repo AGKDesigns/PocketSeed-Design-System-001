@@ -92,6 +92,8 @@ PocketSeed-Design-System-001/
     ├── slide-template.html     ← copy-paste starting points for new decks
     ├── web-page.html           ← marketing landing page applied with the system
     ├── web-app.html            ← full Credentials list view with sidebar nav
+    ├── web-app-credential.html ← public Smart Credential detail page
+    ├── web-app-widget.html     ← embeddable credential widgets (compact + expanded)
     ├── forms.html              ← inputs, dropdowns, alerts, modal, tabs
     ├── imagery.html            ← image frames, grids, layered overlays, composition
     └── icons.html              ← Lucide icons + usage conventions
@@ -226,7 +228,7 @@ See `specimens/forms.html` for everything in isolation.
 
 - **A new sales deck**, open `specimens/slide-template.html` and copy a `<div class="ps-slide …">` block. Each slide is a 1920×1080 frame; build as many as you need.
 - **A marketing or product page**, open `specimens/web-page.html` for a full reference page (hero, three-up features, stats band, pitch on ink, footer). Copy whatever fits.
-- **A web app**, open `specimens/forms.html` for the form/menu/alert/modal/avatar/tabs vocabulary, and `specimens/web-app.html` for an end-to-end Credentials list view (sidebar nav + content area + credential cards).
+- **A web app**, open `specimens/forms.html` for the form/menu/alert/modal/avatar/tabs vocabulary, and `specimens/web-app.html` for an end-to-end Credentials list view (sidebar nav + content area + credential cards). For a public-facing proof page, see `specimens/web-app-credential.html`; for embeddable proof on a host product page, `specimens/web-app-widget.html`.
 
 If a project already has its own design tokens, import only `tokens.css` and rebuild on top. **The tokens are the contract; components are conveniences.**
 

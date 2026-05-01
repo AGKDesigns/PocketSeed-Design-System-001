@@ -17,7 +17,7 @@ Think of it as a **nutrition label on a package**. The label has a recognisable 
 That philosophy produces the rules:
 
 - **Content does the work.** The data, the credential, the product, those are the protagonist. The system is the frame, never the picture.
-- **Cues, not statements.** The palette leans into sustainability and trustworthy-tech (forest green on light, teal on dark, ink, warm paper). The cues are quiet, you'll never find a leafy nature scene or a sweeping organic gradient. We don't *describe* sustainability, we just sit comfortably next to it.
+- **Cues, not statements.** The palette leans into sustainability and trustworthy-tech (forest green on light, teal on dark, ink, warm paper). The cues are quiet, you'll never find a leafy nature scene or postcard imagery. We don't *describe* sustainability, we just sit comfortably next to it.
 - **Restrained color.** One accent at a time. White space and rhythm carry more weight than any tint could.
 - **Three voices in type, no more.** Inter for clarity, Instrument Serif italic for one editorial moment per surface, JetBrains Mono for micro-type. Resist the urge to add a fourth.
 - **Tool, not theme.** It should feel like an instrument you reach for to communicate proof, not a travel site, not a nature project, not a hero brand campaign. The same pages should look at home in a CPG retailer's portal *and* on a B2B consultancy's deck.
@@ -239,7 +239,7 @@ import 'pocketseed-design-system/css/pocketseed.css';
 
 Components are class names, they work the same in any framework. **Don't wrap them in framework components unless you're doing it for ergonomics.** The classes are the contract.
 
-**Browse the spec site:** <https://pocketseed-design-system.pages.dev>. Fetch any specimen's HTML for visual reference.
+**Browse the spec site:** <https://pocketseed-design-system.pages.dev>. Fetch any seed's HTML for visual reference.
 
 ---
 

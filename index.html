@@ -26,6 +26,13 @@
   .wrap { max-width: 1200px; margin: 0 auto; padding: 80px 48px 120px; position: relative; z-index: 1; }
   .hero { display: flex; flex-direction: column; gap: 24px; margin-bottom: 80px; }
   .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .seed-group { margin-bottom: 56px; }
+  .seed-group:last-child { margin-bottom: 0; }
+  .seed-group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 6px; padding-top: 8px; border-top: 1px solid var(--ps-line); padding-top: 24px; }
+  .seed-group-head h3 { font-size: 22px; font-weight: 600; letter-spacing: -0.012em; color: var(--ps-ink); }
+  .seed-group-head .count { font-family: var(--ps-font-mono); font-size: 11px; color: var(--ps-muted); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  .seed-group-desc { font-size: 15px; color: var(--ps-ink-soft); line-height: 1.55; margin-bottom: 24px; max-width: 640px; }
+  .seed-group:first-of-type .seed-group-head { border-top: 0; padding-top: 0; }
   .nav-card { display: flex; flex-direction: column; gap: 12px; padding: 32px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-2xl); transition: transform var(--ps-dur-base) var(--ps-ease), box-shadow var(--ps-dur-base) var(--ps-ease); }
   .nav-card:hover { transform: translateY(-2px); box-shadow: var(--ps-shadow-soft); }
   .nav-card .num { color: var(--ps-accent); font-family: var(--ps-font-mono); font-size: 14px; letter-spacing: 0.06em; }
@@ -103,7 +110,7 @@
     <div class="rhs">
       <p>Modern, friendly, light, inviting. <strong>Not loud.</strong> PocketSeed lives inside other brands, a retailer's product page, a consultancy's report, a brand's marketing, so the system has to fit beside them without changes, and never compete with the host's voice.</p>
       <p>Think of it as a <strong>nutrition label on a package</strong>: a recognisable visual language for proof and data that works on a cereal box, a tofu tray, and a fancy pasta jar without changes. Strong because it's predictable. Restrained on purpose.</p>
-      <p>Content does the work. The system is the frame, never the picture. Cues toward sustainability and trustworthy-tech are quiet, no leafy nature scenes, no organic gradients. We sit comfortably next to those topics; we don't describe them.</p>
+      <p>Content does the work. The system is the frame, never the picture. Cues toward sustainability and trustworthy-tech are quiet, no leafy nature scenes, no postcard imagery. We sit comfortably next to those topics; we don't describe them.</p>
       <a class="read-more" href="philosophy.html">Read the full philosophy →</a>
     </div>
   </section>
@@ -121,75 +128,119 @@
     </div>
   </section>
 
-  <h2 class="ps-web-section" style="margin-bottom: 32px;">Specimens</h2>
-  <div class="nav-grid">
-    <!-- Primitives -->
-    <a class="nav-card" href="specimens/colors.html">
-      <span class="num">01 · PRIMITIVE</span>
-      <h3>Colors</h3>
-      <p>Ink, paper, brand teal/blue/green, accent presets, and on-ink alpha layers.</p>
-      <span class="arrow">→</span>
-    </a>
-    <a class="nav-card" href="specimens/typography.html">
-      <span class="num">02 · PRIMITIVE</span>
-      <h3>Typography</h3>
-      <p>Inter for UI, Instrument Serif for editorial accents, JetBrains Mono for micro-type. Two ramps: slide and web.</p>
-      <span class="arrow">→</span>
-    </a>
-    <a class="nav-card" href="specimens/icons.html">
-      <span class="num">03 · PRIMITIVE</span>
-      <h3>Icons</h3>
-      <p>Lucide as the icon system. Small, sparing, always accent-coloured. Used in tags, cards, and buttons to add signal.</p>
-      <span class="arrow">→</span>
-    </a>
-    <a class="nav-card" href="specimens/imagery.html">
-      <span class="num">04 · PRIMITIVE</span>
-      <h3>Imagery</h3>
-      <p>Frames, grids, layered overlays. How photography sits in the system without overpowering it.</p>
-      <span class="arrow">→</span>
-    </a>
+  <h2 class="ps-web-section" style="margin-bottom: 8px;">Design Seeds</h2>
+  <p class="ps-web-body" style="color: var(--ps-ink-soft); margin-bottom: 40px; max-width: 640px;">Twelve seeds across four families, primitives at the bottom of the stack, full templates at the top. Each one is a copy-paste reference for the next thing you build.</p>
 
-    <!-- Components -->
-    <a class="nav-card" href="specimens/components.html">
-      <span class="num">05 · COMPONENTS</span>
+  <div class="seed-group">
+    <div class="seed-group-head">
+      <h3>Primitives</h3>
+      <span class="count">4 seeds · 01–04</span>
+    </div>
+    <p class="seed-group-desc">The atoms of the system, colors, type, icons, and imagery. Everything else composes out of these.</p>
+    <div class="nav-grid">
+      <a class="nav-card" href="specimens/colors.html">
+        <span class="num">01 · PRIMITIVE</span>
+        <h3>Colors</h3>
+        <p>Ink, paper, brand teal/blue/green, accent presets, and on-ink alpha layers.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="specimens/typography.html">
+        <span class="num">02 · PRIMITIVE</span>
+        <h3>Typography</h3>
+        <p>Inter for UI, Instrument Serif for editorial accents, JetBrains Mono for micro-type. Two ramps: slide and web.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="specimens/icons.html">
+        <span class="num">03 · PRIMITIVE</span>
+        <h3>Icons</h3>
+        <p>Lucide as the icon system. Small, sparing, always accent-coloured. Used in tags, cards, and buttons to add signal.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="specimens/imagery.html">
+        <span class="num">04 · PRIMITIVE</span>
+        <h3>Imagery</h3>
+        <p>Frames, grids, layered overlays. How photography sits in the system without overpowering it.</p>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="seed-group">
+    <div class="seed-group-head">
       <h3>Components</h3>
-      <p>Cards, pills, bullets, browser frame, ask-bar, buttons, stats. The everyday building blocks.</p>
-      <span class="arrow">→</span>
-    </a>
-    <a class="nav-card" href="specimens/forms.html">
-      <span class="num">06 · COMPONENTS</span>
-      <h3>Forms & web app</h3>
-      <p>Inputs, selects, checkboxes, dropdowns, alerts, modals, avatars, tabs. The product UI starter kit.</p>
-      <span class="arrow">→</span>
-    </a>
+      <span class="count">2 seeds · 05–06</span>
+    </div>
+    <p class="seed-group-desc">The everyday building blocks, cards, pills, bullets, forms, alerts, the things you reach for whether you're building a deck or a product UI.</p>
+    <div class="nav-grid">
+      <a class="nav-card" href="specimens/components.html">
+        <span class="num">05 · COMPONENTS</span>
+        <h3>Components</h3>
+        <p>Cards, pills, bullets, browser frame, ask-bar, buttons, stats. The everyday building blocks.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="specimens/forms.html">
+        <span class="num">06 · COMPONENTS</span>
+        <h3>Forms &amp; web app</h3>
+        <p>Inputs, selects, checkboxes, dropdowns, alerts, modals, avatars, tabs. The product UI starter kit.</p>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
 
-    <!-- Patterns -->
-    <a class="nav-card" href="specimens/patterns.html">
-      <span class="num">07 · PATTERNS</span>
+  <div class="seed-group">
+    <div class="seed-group-head">
       <h3>Patterns</h3>
-      <p>Slide chrome, hero treatments, feature grids, the dark "on ink" surface, quote callouts.</p>
-      <span class="arrow">→</span>
-    </a>
+      <span class="count">1 seed · 07</span>
+    </div>
+    <p class="seed-group-desc">How components compose into recurring page archetypes, slide chrome, hero treatments, on-ink callouts.</p>
+    <div class="nav-grid">
+      <a class="nav-card" href="specimens/patterns.html">
+        <span class="num">07 · PATTERNS</span>
+        <h3>Patterns</h3>
+        <p>Slide chrome, hero treatments, feature grids, the dark "on ink" surface, quote callouts.</p>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
 
-    <!-- Pages / templates -->
-    <a class="nav-card" href="specimens/slide-template.html">
-      <span class="num">08 · TEMPLATE</span>
-      <h3>Slide template</h3>
-      <p>A 1920×1080 slide stage scaled to fit any container, copy-paste starting points for new decks.</p>
-      <span class="arrow">→</span>
-    </a>
-    <a class="nav-card" href="specimens/web-page.html">
-      <span class="num">09 · TEMPLATE</span>
-      <h3>Web page</h3>
-      <p>The same language applied to a marketing landing page, proves it scales beyond decks.</p>
-      <span class="arrow">→</span>
-    </a>
-    <a class="nav-card" href="specimens/web-app.html">
-      <span class="num">10 · TEMPLATE</span>
-      <h3>Web app</h3>
-      <p>A full Credentials list view with sidebar nav, search, view toggle, and credential cards. The product UI applied end-to-end.</p>
-      <span class="arrow">→</span>
-    </a>
+  <div class="seed-group">
+    <div class="seed-group-head">
+      <h3>Templates</h3>
+      <span class="count">5 seeds · 08–12</span>
+    </div>
+    <p class="seed-group-desc">End-to-end pages, slide deck, marketing site, web app, public credential, and embeddable widgets. The fastest path from "we need a thing" to "we have a thing."</p>
+    <div class="nav-grid">
+      <a class="nav-card" href="specimens/slide-template.html">
+        <span class="num">08 · TEMPLATE</span>
+        <h3>Slide template</h3>
+        <p>A 1920×1080 slide stage scaled to fit any container, copy-paste starting points for new decks.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="specimens/web-page.html">
+        <span class="num">09 · TEMPLATE</span>
+        <h3>Web page</h3>
+        <p>The same language applied to a marketing landing page, proves it scales beyond decks.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="specimens/web-app.html">
+        <span class="num">10 · TEMPLATE</span>
+        <h3>Web app</h3>
+        <p>A full Credentials list view with sidebar nav, search, view toggle, and credential cards. The product UI applied end-to-end.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="specimens/web-app-credential.html">
+        <span class="num">11 · TEMPLATE</span>
+        <h3>Public credential</h3>
+        <p>The shareable Smart Credential page, hero, AI summary, assistant, signatures, and on-chain assets, the link a brand sends out as proof.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="specimens/web-app-widget.html">
+        <span class="num">12 · TEMPLATE</span>
+        <h3>Credential widgets</h3>
+        <p>Embeddable proof: a compact one-line badge for lists and product cards, plus a stand-alone card with summary, stats, and CTA.</p>
+        <span class="arrow">→</span>
+      </a>
+    </div>
   </div>
 
   <section id="how-to-use" style="margin-top: 96px;">
