@@ -143,9 +143,9 @@
 /* Accent presets, set on any element to swap accent locally
  * Example:  <div class="ps-accent-green">…</div>
  */
-.ps-accent-teal   { --ps-accent: var(--ps-blue);       --ps-accent-vivid: var(--ps-teal); }
+.ps-accent-teal   { --ps-accent: var(--ps-teal);       --ps-accent-vivid: var(--ps-teal); }
 .ps-accent-blue   { --ps-accent: var(--ps-blue);       --ps-accent-vivid: var(--ps-teal); }
 .ps-accent-green  { --ps-accent: var(--ps-green-deep); --ps-accent-vivid: var(--ps-green); }
 .ps-accent-leaf   { --ps-accent: var(--ps-green-deep); --ps-accent-vivid: var(--ps-leaf); }
-.ps-accent-purple { --ps-accent: #4a3a99;              --ps-accent-vivid: var(--ps-purple); }
+.ps-accent-purple { --ps-accent: var(--ps-purple);     --ps-accent-vivid: var(--ps-purple); }
 .ps-accent-ink    { --ps-accent: var(--ps-ink);        --ps-accent-vivid: var(--ps-ink); }
