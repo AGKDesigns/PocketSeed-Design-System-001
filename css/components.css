@@ -15,6 +15,7 @@
   background: var(--ps-ink);
   color: var(--ps-paper);
   --ps-accent: var(--ps-teal);
+  --ps-accent-vivid: var(--ps-teal);
 }
 
 .ps-bg-ink .ps-h-display,
@@ -69,6 +70,7 @@
   border-color: var(--ps-ink);
   color: var(--ps-paper);
   --ps-accent: var(--ps-teal);
+  --ps-accent-vivid: var(--ps-teal);
 }
 .ps-card-ink .ps-h-display,
 .ps-card-ink .ps-h-title,
@@ -174,9 +176,10 @@
   border-color: var(--ps-ink);
 }
 
+/* Accent pill: vivid outline + dot, deeper text — pops without shouting */
 .ps-pill.ps-pill-accent {
-  background: color-mix(in oklch, var(--ps-accent) 12%, transparent);
-  border-color: color-mix(in oklch, var(--ps-accent) 35%, transparent);
+  background: color-mix(in oklch, var(--ps-accent-vivid) 10%, transparent);
+  border-color: color-mix(in oklch, var(--ps-accent-vivid) 55%, transparent);
   color: var(--ps-accent);
 }
 
@@ -193,6 +196,9 @@
   background: currentColor;
   flex-shrink: 0;
 }
+
+/* Inside an accent pill, the dot brightens to the vivid tone */
+.ps-pill.ps-pill-accent .ps-dot-mini { background: var(--ps-accent-vivid); }
 
 .ps-slide .ps-pill .ps-dot-mini,
 .ps-stage .ps-pill .ps-dot-mini { width: 8px; height: 8px; }
