@@ -31,14 +31,14 @@ If a design choice you're about to make feels expressive, decorative, or "brande
 
 ## 1 · The accent rule (most important)
 
-`--ps-accent` is the single source of truth for "the brand color in this context". It **auto-switches by surface**:
+The system uses a **two-tone accent**. Both tokens auto-switch by surface:
 
-| Surface | Accent value | Set by |
-|---|---|---|
-| Light (`.ps-bg-paper` / `.ps-bg-warm` / `.ps-bg-card` / default body) | Forest green (`--ps-green-deep`, `#2f7a3a`) | Default in `tokens.css` |
-| Dark (`.ps-bg-ink`) | Teal (`--ps-teal`, `#2dadc7`) | Override in `components.css` |
+| Token | Use for | Light surface | Dark surface |
+|---|---|---|---|
+| `--ps-accent` | Text · eyebrow · serif italic accent · headline emphasis | Forest green `#2f7a3a` | Teal `#2dadc7` |
+| `--ps-accent-vivid` | Outlines · dots · icons · accent-pill borders | Leaf green `#4caf50` | Teal `#2dadc7` |
 
-**Always use `var(--ps-accent)`** for anything semantically "the accent", eyebrows, serif italic accents inside headlines, bullet dashes, focus rings, accent pills, primary CTAs. The switch then happens automatically.
+**Always use `var(--ps-accent)`** for anything text-shaped, eyebrows, serif italic accents inside headlines, headlines emphasis, focus rings. **Use `var(--ps-accent-vivid)`** for dots, outlines, icons, and accent-pill chrome. Both auto-switch — never reach for `--ps-teal` or `--ps-green` directly.
 
 ```html
 <!-- Right -->
@@ -50,13 +50,15 @@ If a design choice you're about to make feels expressive, decorative, or "brande
 <span class="ps-serif" style="color: var(--ps-teal);">…</span> <!-- locked to teal -->
 ```
 
-**Override only when** you need a different brand color regardless of surface. In that case use the preset modifiers: `.ps-accent-teal`, `.ps-accent-blue`, `.ps-accent-green`, `.ps-accent-leaf`, `.ps-accent-purple`, `.ps-accent-ink`.
+The two-tone is what makes accent pills and icon dots pop: outline + dot in the brighter shade, text in the deeper one.
+
+**Override only when** you need a different brand color regardless of surface. In that case use the preset modifiers, each defines its own `--ps-accent` / `--ps-accent-vivid` pair: `.ps-accent-teal`, `.ps-accent-blue`, `.ps-accent-green`, `.ps-accent-leaf`, `.ps-accent-purple`, `.ps-accent-ink`.
 
 ---
 
 ## 2 · Surfaces
 
-The system has four standard surfaces. Each one carries text-color overrides so descendants don't need explicit colors.
+The system has four standard surfaces. Each one carries text-color overrides so descendants don't need explicit colors. `.ps-bg-ink` and the stand-alone `.ps-card-ink` modifier also flip both `--ps-accent` and `--ps-accent-vivid` to teal automatically.
 
 | Class | Background | Use |
 |---|---|---|
@@ -124,7 +126,47 @@ Two ramps. Pick the one that matches the context.
 
 ---
 
-## 6 · Component vocabulary (what to reach for)
+## 6 · Icons (Lucide)
+
+[Lucide](https://lucide.dev) is the icon system. The convention has three rules baked into `.ps-icon`:
+
+1. **Small by default** — 16px. Sizers: `.ps-icon-sm` (14) · `.ps-icon-lg` (20) · `.ps-icon-xl` (28).
+2. **Always accent-coloured** via `var(--ps-accent)`, so icons auto-switch with the surface. Inside accent pills they pick up `--ps-accent-vivid` to match the dot. Inside buttons and tabs they inherit the parent's text colour (because those elements have their own active/muted states).
+3. **stroke-width: 1.75**, lighter than Lucide's default 2, so they sit quieter beside Inter.
+
+### Setup
+
+Drop the CDN tag at the end of `<body>` and call `lucide.createIcons()` once. Lucide replaces every `<i data-lucide="name">` placeholder with the matching SVG, preserving classes and attributes:
+
+```html
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+
+<span class="ps-pill ps-pill-accent">
+  <i class="ps-icon" data-lucide="check"></i>
+  Verified
+</span>
+```
+
+Inside pills, icons auto-size to match the pill's text (13/12/10 for default/sm/xs). Don't set sizes manually unless you need to break the convention.
+
+### When to use
+
+- ✅ Tags, badges, status pills (icon adds glanceable signal: `check`, `shield-check`, `sparkles`)
+- ✅ Feature-card numerator slots (replaces `01/02/03` with a concept icon: `shield-check`, `package`, `sprout`)
+- ✅ Buttons (leading icon for actions, trailing arrow for "go forward" CTAs)
+- ✅ Tabs with long admin-style strips (Overview, Evidence, Co-signers, Activity, Settings)
+- ❌ Bullets — the dash is already the cue
+- ❌ Body paragraphs — never sprinkle icons through prose
+- ❌ Decorative-only — if removing the icon doesn't lose meaning, drop it
+
+### Static contexts (no JS)
+
+For server-rendered output, PDF exports, or anywhere `lucide.createIcons()` won't run, copy the SVG inline from [lucide.dev/icons](https://lucide.dev/icons/) with `stroke="currentColor"` so it still inherits `--ps-accent`.
+
+---
+
+## 7 · Component vocabulary (what to reach for)
 
 When you need a… | …use this
 ---|---
@@ -165,7 +207,7 @@ Icon (Lucide) | `<i class="ps-icon" data-lucide="name">` (+ `.ps-icon-sm` / `-lg
 
 ---
 
-## 7 · Layout helpers
+## 8 · Layout helpers
 
 Direct, opinionated, no Tailwind:
 
@@ -175,7 +217,7 @@ For anything more complex, write inline `style` or a one-off CSS rule. Don't add
 
 ---
 
-## 8 · Adding to a project
+## 9 · Adding to a project
 
 The fastest path is the public jsDelivr CDN, no install, no copy, just one line:
 
@@ -201,7 +243,7 @@ Components are class names, they work the same in any framework. **Don't wrap th
 
 ---
 
-## 9 · Common mistakes (don't do these)
+## 10 · Common mistakes (don't do these)
 
 1. **Hardcoding hex values.** `color: #2dadc7` → use `var(--ps-teal)` or `var(--ps-accent)`.
 2. **Using `var(--ps-teal)` on light surfaces.** Wrong color (light slides should be green). Use `var(--ps-accent)` and let it switch.
@@ -216,7 +258,7 @@ Components are class names, they work the same in any framework. **Don't wrap th
 
 ---
 
-## 10 · Pattern recipes
+## 11 · Pattern recipes
 
 ### Light content slide
 ```html
@@ -287,9 +329,46 @@ Components are class names, they work the same in any framework. **Don't wrap th
 </div>
 ```
 
+### Compose, don't diagram
+
+Show how things relate by layering, not by drawing connection lines. A product image with a credential card overlapping the right edge tells the story by proximity. Use flex + a negative margin so the overlap is predictable:
+
+```html
+<div style="display: flex; align-items: center; padding: 56px 40px;
+            background: var(--ps-paper-warm); border-radius: var(--ps-radius-2xl);">
+  <div class="ps-image-frame ps-image-square" style="width: 480px; flex-shrink: 0;">
+    <img src="…/product.png" alt="Product" />
+  </div>
+  <div class="ps-browser" style="width: 420px; margin-left: -160px; margin-top: 60px;
+                                 box-shadow: 0 30px 60px -25px rgba(26,37,53,0.28);
+                                 position: relative; z-index: 2;">
+    <!-- credential card content using existing primitives -->
+  </div>
+</div>
+```
+
+The image stays dominant; the card nestles in. No SVG paths, no hand-positioned dots — the relationship is visible from the layout alone.
+
+### Annotated image
+
+For "what's special about this product" callouts, layer pins on a square frame:
+
+```html
+<div class="ps-image-stack">
+  <div class="ps-image-frame ps-image-wide">
+    <img src="…/product.png" alt="…" />
+  </div>
+  <div class="ps-image-overlay">
+    <span class="ps-pin" style="top: 18%; left: 50%;">Bamboo dropper</span>
+    <span class="ps-pin" style="top: 56%; left: 56%;">Recycled glass</span>
+    <span class="ps-pin ps-pin-ink" style="bottom: 18px; right: 18px;">3 verified credentials</span>
+  </div>
+</div>
+```
+
 ---
 
-## 11 · When the system doesn't have what you need
+## 12 · When the system doesn't have what you need
 
 1. Check `specimens/` first, there may be an example you missed.
 2. If the pattern is a one-off, write inline `style` and move on.

@@ -89,9 +89,11 @@ PocketSeed-Design-System-001/
     ├── typography.html         ← type ramp · slide & web scale
     ├── components.html         ← every component, in isolation
     ├── patterns.html           ← composed slide archetypes
-    ├── slide-template.html     ← copy-paste starting point for new decks
-    ├── web-page.html           ← same language applied to a web page
-    └── forms.html              ← inputs, dropdowns, alerts, modal, tabs · plus auth pattern
+    ├── slide-template.html     ← copy-paste starting points for new decks
+    ├── web-page.html           ← marketing landing page applied with the system
+    ├── forms.html              ← inputs, dropdowns, alerts, modal, tabs
+    ├── imagery.html            ← image frames, grids, layered overlays, composition
+    └── icons.html              ← Lucide icons + usage conventions
 ```
 
 Open `index.html` in a browser to navigate the specimens visually.
@@ -116,14 +118,18 @@ All design decisions are CSS custom properties in `css/tokens.css`. If you only 
 | `--ps-purple` | `#6a4ed8` | Used in orb gradient |
 | `--ps-green` / `--ps-green-deep` | `#4caf50` / `#2f7a3a` | Brand green, `green-deep` is the accent on **light** surfaces |
 
-### Accent rule
+### Accent rule (two-tone)
 
-`--ps-accent` switches automatically with the surface:
+The system uses a paired accent that auto-switches by surface:
 
-- **Light surfaces** (`.ps-bg-paper`, `.ps-bg-warm`, `.ps-bg-card`, default body) → forest green (`--ps-green-deep`)
-- **Dark surfaces** (`.ps-bg-ink`) → teal (`--ps-teal`)
+| Token | Use for | Light surface | Dark surface |
+|---|---|---|---|
+| `--ps-accent` | Text, eyebrow, serif italic accent, headline emphasis | Forest green (`--ps-green-deep`) | Teal (`--ps-teal`) |
+| `--ps-accent-vivid` | Outlines, dots, icons, accent-pill chrome | Leaf green (`--ps-green`) | Teal (`--ps-teal`) |
 
-Cream pages talk in green, ink pages talk in teal. Override per-component with `.ps-accent-teal`, `.ps-accent-blue`, `.ps-accent-purple`, `.ps-accent-leaf`, `.ps-accent-ink`.
+Cream pages talk in green; ink pages talk in teal. The "vivid" tone is what makes accent pills, icon dots, and outline strokes pop without shouting — text in the deeper colour, chrome in the brighter one.
+
+Override per-component with `.ps-accent-teal`, `.ps-accent-blue`, `.ps-accent-green`, `.ps-accent-leaf`, `.ps-accent-purple`, `.ps-accent-ink` — each preset defines its own pair.
 
 ### Typography
 
@@ -165,10 +171,33 @@ Spacing tokens follow a denominated scale: `--ps-space-2` through `--ps-space-10
 | `.ps-btn` | App-scale button (default · compact, rounded). Modifiers: `-primary`, `-accent`, `-ghost`, `-danger`, `-sm`, `-icon`. Add `-cta` for marketing pill-scale, `-lg` for hero. |
 | `.ps-ask-bar` | "Ask a question…" input mock |
 | `.ps-stat` + `.ps-stat-label` + `.ps-stat-value` | Tabular figures |
+| `.ps-image-frame` (+ `-square` / `-wide` / `-pano`) | Image with rounded corners and aspect-ratio variants |
+| `.ps-image-grid` (+ `-2` / `-4`) | Multi-up image rows (3-up default) |
+| `.ps-image-stack` + `.ps-image-overlay` | Layer pins or cards over an image |
+| `.ps-pin` (+ `.ps-pin-ink`) | Small annotation pill anchored on imagery |
+| `.ps-image-caption` | Mono micro-caption below an image or component |
+| `.ps-icon` | Lucide icon (`<i class="ps-icon" data-lucide="…">`). Sizers: `-sm` / `-lg` / `-xl`. Always accent-coloured · auto-sizes inside pills · inherits text color in buttons & tabs |
 
 Layout helpers (no Tailwind, these are direct, opinionated): `.ps-grid-2/3/4/5`, `.ps-flex`, `.ps-flex-col`, `.ps-items-center`, `.ps-justify-between`, `.ps-gap-{8,12,16,20,24,32,40,48,56,64}`.
 
-See `specimens/components.html` for every one in isolation.
+See `specimens/components.html` for every one in isolation, `specimens/imagery.html` for image patterns and the layered credential composition, and `specimens/icons.html` for the icon system in detail.
+
+### Icons (Lucide)
+
+[Lucide](https://lucide.dev) is the icon system. Drop the CDN script at the bottom of `<body>`:
+
+```html
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+
+<!-- usage -->
+<span class="ps-pill ps-pill-accent">
+  <i class="ps-icon" data-lucide="check"></i>
+  Verified
+</span>
+```
+
+Icons are small (16px default), always accent-coloured (auto-switches green / teal), and used **sparingly** — in tags, feature-card numerator slots, buttons, and tab strips where the label benefits from a glanceable visual cue. Never in body paragraphs, never on every bullet. See `DESIGN.md` § 6 for the full conventions.
 
 ## Web app components (`webapp.css`)
 
@@ -207,6 +236,8 @@ If a project already has its own design tokens, import only `tokens.css` and reb
 3. **Quiet by default.** Pages should breathe. Big type, big padding, restrained color. The deck is built around `100px` slide padding for a reason.
 4. **Mono is for micro.** IDs, codes, timestamps, URLs, eyebrow markers. Not paragraphs.
 5. **Respect the surface.** Light and dark surfaces flip the accent automatically, don't hardcode a color when the system would have switched it for you.
+6. **Icons amplify labels, they don't replace them.** Use Lucide sparingly inside pills, feature cards, buttons, and tab strips when the icon adds glanceable signal. Never in body paragraphs.
+7. **Compose, don't diagram.** Show how things relate by layering — product image + credential card overlapping — rather than drawing connection lines between elements.
 
 ## Versioning & releases
 
