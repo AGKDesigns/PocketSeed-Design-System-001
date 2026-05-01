@@ -14,15 +14,25 @@
   .principle-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
   .principle-card p { font-size: 14px; line-height: 1.5; color: var(--ps-ink-soft); }
 
-  /* Compose-don't-diagram stage: product image + overlapping credential mockup */
-  .relate-stage { position: relative; padding: 48px 32px; min-height: 540px; display: flex; align-items: center; justify-content: center; background: var(--ps-paper-warm); border-radius: var(--ps-radius-2xl); margin-top: 24px; }
-  .relate-product { width: 360px; flex-shrink: 0; }
-  .relate-cred { position: absolute; width: 480px; left: 50%; top: 50%; transform: translate(-10%, -45%); box-shadow: 0 30px 60px -25px rgba(26, 37, 53, 0.28); }
-  @media (max-width: 760px) {
+  /* Compose-don't-diagram stage: product image + overlapping credential mockup.
+   * Flex layout with negative margin gives the credential a controlled overlap
+   * so the bottle stays visible. */
+  .relate-stage { padding: 56px 40px; display: flex; align-items: center; justify-content: center; background: var(--ps-paper-warm); border-radius: var(--ps-radius-2xl); margin-top: 24px; min-height: 600px; }
+  .relate-product { width: 480px; flex-shrink: 0; }
+  .relate-cred {
+    width: 420px;
+    flex-shrink: 0;
+    margin-left: -160px;
+    margin-top: 60px;
+    box-shadow: 0 30px 60px -25px rgba(26, 37, 53, 0.28);
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 880px) {
     .principles { grid-template-columns: 1fr; }
-    .relate-stage { flex-direction: column; padding: 24px; gap: 16px; }
-    .relate-product { width: 100%; max-width: 320px; }
-    .relate-cred { position: static; width: 100%; transform: none; }
+    .relate-stage { flex-direction: column; padding: 24px; gap: 16px; min-height: auto; }
+    .relate-product { width: 100%; max-width: 360px; }
+    .relate-cred { width: 100%; max-width: 420px; margin: 0; }
   }
 </style>
 </head>
@@ -138,33 +148,39 @@
           <span class="ps-light" style="background: #e8a8a8;"></span>
           <span class="ps-light" style="background: #e8d68a;"></span>
           <span class="ps-light" style="background: #a8d6a0;"></span>
-          <span class="ps-url">pocketseed.io/c/cf-2026-acme</span>
+          <span class="ps-url">pocketseed.io/p/aqua-serum</span>
         </div>
         <div style="padding: 24px 26px; display: flex; flex-direction: column; gap: 14px;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="ps-mono" style="font-size: 12px; color: var(--ps-muted);">CREDENTIAL · CF-2026-ACME</span>
+            <span class="ps-mono" style="font-size: 12px; color: var(--ps-muted);">PRODUCT · AQUA-50ML</span>
             <span class="ps-pill ps-pill-accent ps-pill-sm"><span class="ps-dot-mini"></span>Verified</span>
           </div>
-          <div style="font-size: 22px; font-weight: 600; line-height: 1.15; letter-spacing: -0.015em;">2026 Carbon Footprint</div>
+          <div style="font-size: 22px; font-weight: 600; line-height: 1.15; letter-spacing: -0.015em;">Aqua Hydration Body Serum</div>
           <p style="font-size: 14px; line-height: 1.5; color: var(--ps-ink-soft); margin: 0;">
-            Acme's verified 2026 carbon footprint. Total emissions of <strong style="color: var(--ps-ink); font-weight: 600;">37,453 tCO₂e</strong> across Scope 1, 2 and 3, with reduction initiatives in logistics and tier-2 supplier energy.
+            A weightless body serum with <strong style="color: var(--ps-ink); font-weight: 600;">hyaluronic acid and Scottish sea kelp</strong>. Vegan, cruelty-free, dermatologist-tested. Bottled in UK-sourced recycled glass with a bamboo dropper.
           </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <span class="ps-pill ps-pill-sm">Vegan</span>
+            <span class="ps-pill ps-pill-sm">Cruelty-free</span>
+            <span class="ps-pill ps-pill-sm">Recycled glass</span>
+            <span class="ps-pill ps-pill-sm">Made in UK</span>
+          </div>
           <hr class="ps-rule" />
           <div style="display: flex; justify-content: space-between; font-size: 13px;">
             <div>
-              <div style="color: var(--ps-muted); margin-bottom: 4px;">Signed by</div>
-              <div style="font-weight: 600;">2 parties</div>
+              <div style="color: var(--ps-muted); margin-bottom: 4px;">Credentials</div>
+              <div style="font-weight: 600;">4 linked</div>
             </div>
             <div>
               <div style="color: var(--ps-muted); margin-bottom: 4px;">Evidence</div>
-              <div style="font-weight: 600;">14 documents</div>
+              <div style="font-weight: 600;">9 documents</div>
             </div>
             <div>
-              <div style="color: var(--ps-muted); margin-bottom: 4px;">Issued</div>
-              <div style="font-weight: 600;">Mar 12 · 2026</div>
+              <div style="color: var(--ps-muted); margin-bottom: 4px;">Updated</div>
+              <div style="font-weight: 600;">Apr 18 · 2026</div>
             </div>
           </div>
-          <div class="ps-ask-bar">Ask a question about this credential…</div>
+          <div class="ps-ask-bar">Where was the kelp sourced?</div>
         </div>
       </div>
     </div>
