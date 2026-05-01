@@ -14,19 +14,15 @@
   .principle-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
   .principle-card p { font-size: 14px; line-height: 1.5; color: var(--ps-ink-soft); }
 
-  /* Connection diagram example */
-  .connect-stage { position: relative; padding: 32px; background: var(--ps-card); border: var(--ps-border); border-radius: var(--ps-radius-2xl); min-height: 480px; }
-  .connect-grid { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 56px; align-items: center; position: relative; z-index: 1; }
-  .credential-stack { display: flex; flex-direction: column; gap: 10px; }
-  .cred-mini { padding: 12px 14px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-md); display: flex; flex-direction: column; gap: 2px; }
-  .cred-mini .ps-mono { font-size: 10px; color: var(--ps-muted); letter-spacing: 0.06em; }
-  .cred-mini .name { font-size: 13px; font-weight: 600; color: var(--ps-ink); }
-  .claim-card { padding: 20px 24px; background: var(--ps-paper); border: var(--ps-border); border-radius: var(--ps-radius-lg); }
-  .claim-card .label { font-family: var(--ps-font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ps-accent); margin-bottom: 8px; display: block; font-weight: 500; }
-  .claim-card .quote { font-family: var(--ps-font-serif); font-style: italic; font-size: 18px; line-height: 1.35; color: var(--ps-ink); }
+  /* Compose-don't-diagram stage: product image + overlapping credential mockup */
+  .relate-stage { position: relative; padding: 48px 32px; min-height: 540px; display: flex; align-items: center; justify-content: center; background: var(--ps-paper-warm); border-radius: var(--ps-radius-2xl); margin-top: 24px; }
+  .relate-product { width: 360px; flex-shrink: 0; }
+  .relate-cred { position: absolute; width: 480px; left: 50%; top: 50%; transform: translate(-10%, -45%); box-shadow: 0 30px 60px -25px rgba(26, 37, 53, 0.28); }
   @media (max-width: 760px) {
     .principles { grid-template-columns: 1fr; }
-    .connect-grid { grid-template-columns: 1fr; gap: 40px; }
+    .relate-stage { flex-direction: column; padding: 24px; gap: 16px; }
+    .relate-product { width: 100%; max-width: 320px; }
+    .relate-cred { position: static; width: 100%; transform: none; }
   }
 </style>
 </head>
@@ -128,63 +124,52 @@
   </section>
 
   <section class="spec-section">
-    <span class="spec-section-title">Connectors</span>
+    <span class="spec-section-title">Composition</span>
     <h2>Show how things relate</h2>
-    <p class="spec-desc">SVG paths drawn between elements via <code class="ps-mono">.ps-connector</code>. Use to map credentials to products, evidence to claims, or any "X feeds into Y" diagram.</p>
+    <p class="spec-desc">Layer a credential mockup over a product photo. The relationship reads from proximity and overlap, no connection lines required. Compose, don't diagram.</p>
 
-    <div class="connect-stage">
-      <div class="connect-grid">
-        <!-- LEFT: credentials -->
-        <div class="credential-stack">
-          <span class="ps-eyebrow" style="font-size: 11px; margin-bottom: 4px;">Credentials</span>
-          <div class="cred-mini" id="cred-1">
-            <span class="ps-mono">CF-2026-ACME</span>
-            <span class="name">Carbon Footprint</span>
-          </div>
-          <div class="cred-mini" id="cred-2">
-            <span class="ps-mono">LAB-118</span>
-            <span class="name">Lab Results · Batch 118</span>
-          </div>
-          <div class="cred-mini" id="cred-3">
-            <span class="ps-mono">SRC-42</span>
-            <span class="name">Ingredient Sourcing</span>
-          </div>
-        </div>
-
-        <!-- MIDDLE: product image -->
-        <div style="position: relative;">
-          <div class="ps-image-frame ps-image-square" id="product-img">
-            <img src="../assets/images/Hydrationsyrum.png" alt="Aqua Hydration Body Serum" />
-          </div>
-          <div class="ps-image-caption" style="text-align: center;">Aqua Hydration Body Serum</div>
-        </div>
-
-        <!-- RIGHT: claim -->
-        <div class="claim-card" id="claim">
-          <span class="label">Public claim</span>
-          <p class="quote">"Bottled in recycled glass, sourced from a verified UK supplier."</p>
-        </div>
+    <div class="relate-stage">
+      <div class="ps-image-frame ps-image-square relate-product">
+        <img src="../assets/images/Hydrationsyrum.png" alt="Aqua Hydration Body Serum" />
       </div>
 
-      <!-- Connector SVG layer — paths drawn between centers of items -->
-      <svg class="ps-connector" viewBox="0 0 1000 480" preserveAspectRatio="none">
-        <!-- Left credentials → product -->
-        <path d="M 220 90  C 320 90, 380 240, 480 240"  />
-        <path d="M 220 200 C 320 200, 380 240, 480 240" />
-        <path d="M 220 310 C 320 310, 380 240, 480 240" />
-        <!-- Product → claim -->
-        <path d="M 720 240 C 800 240, 820 240, 880 240" />
-        <!-- Endpoint dots -->
-        <circle class="ps-connector-dot" cx="220" cy="90"  r="3" />
-        <circle class="ps-connector-dot" cx="220" cy="200" r="3" />
-        <circle class="ps-connector-dot" cx="220" cy="310" r="3" />
-        <circle class="ps-connector-dot" cx="480" cy="240" r="4" />
-        <circle class="ps-connector-dot" cx="720" cy="240" r="4" />
-        <circle class="ps-connector-dot" cx="880" cy="240" r="3" />
-      </svg>
+      <div class="ps-browser relate-cred">
+        <div class="ps-browser-bar">
+          <span class="ps-light" style="background: #e8a8a8;"></span>
+          <span class="ps-light" style="background: #e8d68a;"></span>
+          <span class="ps-light" style="background: #a8d6a0;"></span>
+          <span class="ps-url">pocketseed.io/c/cf-2026-acme</span>
+        </div>
+        <div style="padding: 24px 26px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="ps-mono" style="font-size: 12px; color: var(--ps-muted);">CREDENTIAL · CF-2026-ACME</span>
+            <span class="ps-pill ps-pill-accent ps-pill-sm"><span class="ps-dot-mini"></span>Verified</span>
+          </div>
+          <div style="font-size: 22px; font-weight: 600; line-height: 1.15; letter-spacing: -0.015em;">2026 Carbon Footprint</div>
+          <p style="font-size: 14px; line-height: 1.5; color: var(--ps-ink-soft); margin: 0;">
+            Acme's verified 2026 carbon footprint. Total emissions of <strong style="color: var(--ps-ink); font-weight: 600;">37,453 tCO₂e</strong> across Scope 1, 2 and 3, with reduction initiatives in logistics and tier-2 supplier energy.
+          </p>
+          <hr class="ps-rule" />
+          <div style="display: flex; justify-content: space-between; font-size: 13px;">
+            <div>
+              <div style="color: var(--ps-muted); margin-bottom: 4px;">Signed by</div>
+              <div style="font-weight: 600;">2 parties</div>
+            </div>
+            <div>
+              <div style="color: var(--ps-muted); margin-bottom: 4px;">Evidence</div>
+              <div style="font-weight: 600;">14 documents</div>
+            </div>
+            <div>
+              <div style="color: var(--ps-muted); margin-bottom: 4px;">Issued</div>
+              <div style="font-weight: 600;">Mar 12 · 2026</div>
+            </div>
+          </div>
+          <div class="ps-ask-bar">Ask a question about this credential…</div>
+        </div>
+      </div>
     </div>
 
-    <p class="ps-web-small" style="margin-top: 16px; color: var(--ps-muted); max-width: 720px;">Path coordinates are illustrative — for production use, position the SVG over your real layout and either hard-code the curve or compute endpoints in JS so they track element positions on resize.</p>
+    <p class="ps-web-small" style="margin-top: 16px; color: var(--ps-muted); max-width: 720px;">The credential card uses <code class="ps-mono">.ps-browser</code> for the URL chrome and standard pill / rule / ask-bar primitives inside. Anchor it absolutely against an image frame using <code class="ps-mono">.ps-image-stack</code> or simple positioning.</p>
   </section>
 
   <section class="spec-section">
