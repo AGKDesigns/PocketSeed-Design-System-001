@@ -25,7 +25,9 @@
   }
   .wrap { max-width: 1200px; margin: 0 auto; padding: 80px 48px 120px; position: relative; z-index: 1; }
   .hero { display: flex; flex-direction: column; gap: 24px; margin-bottom: 80px; }
-  .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 880px) { .nav-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .nav-grid { grid-template-columns: 1fr; } }
   .seed-group { margin-bottom: 56px; }
   .seed-group:last-child { margin-bottom: 0; }
   .seed-group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 6px; padding-top: 8px; border-top: 1px solid var(--ps-line); padding-top: 24px; }
