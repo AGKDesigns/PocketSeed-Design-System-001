@@ -15,6 +15,12 @@
   --ps-card: #ffffff;
   --ps-bg-page: #0e1218;
 
+  /* Neutral mid-grays — for use inside white surfaces (cards, modals)
+   * where the warm paper tones would clash. Cooler / less saturated. */
+  --ps-mute-bg:    #f5f5f3;   /* subtle bg: table headers, hover states */
+  --ps-mute-bg-2:  #f0efea;   /* selected / pressed (a half-step deeper than mute-bg, kept chill) */
+  --ps-mute-line:  #e8e7e2;   /* dividers inside white-card contexts */
+
   /* ── Palette, Brand ───────────────────────────────────────── */
   --ps-teal: #2dadc7;
   --ps-blue: #1f6f96;

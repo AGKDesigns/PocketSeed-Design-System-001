@@ -310,42 +310,45 @@
 
   <section class="spec-section">
     <span class="spec-section-title">Table</span>
-    <h2>Basic data table</h2>
-    <div class="spec-frame" style="margin-top: 24px; padding: 0; overflow: hidden;">
-      <table class="ps-table">
-        <thead>
-          <tr>
-            <th>Credential</th>
-            <th>Status</th>
-            <th>Signers</th>
-            <th>Issued</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>2026 Carbon Footprint</td>
-            <td><span class="ps-pill ps-pill-accent ps-pill-sm"><span class="ps-dot-mini"></span>Verified</span></td>
-            <td>2</td>
-            <td>Mar 12 · 2026</td>
-            <td><button class="ps-btn ps-btn-ghost ps-btn-sm">Open ↗</button></td>
-          </tr>
-          <tr>
-            <td>Lab Results · Batch 118</td>
-            <td><span class="ps-pill ps-pill-accent ps-pill-sm"><span class="ps-dot-mini"></span>Verified</span></td>
-            <td>1</td>
-            <td>Mar 02 · 2026</td>
-            <td><button class="ps-btn ps-btn-ghost ps-btn-sm">Open ↗</button></td>
-          </tr>
-          <tr>
-            <td>Scope 3 Supplier Audit</td>
-            <td><span class="ps-pill ps-pill-sm"><span class="ps-dot-mini" style="background: #c69f1d;"></span>Pending</span></td>
-            <td>4</td>
-            <td>·</td>
-            <td><button class="ps-btn ps-btn-ghost ps-btn-sm">Open ↗</button></td>
-          </tr>
-        </tbody>
-      </table>
+    <h2>Data table</h2>
+    <p class="spec-desc"><code class="ps-mono">.ps-table</code> is designed to live inside a white surface, a <code class="ps-mono">.ps-card</code>, a modal, an app pane, where the mono-uppercase header row reads as a column label rather than a heading. Header bg, hover, and selected states use the new neutral <code class="ps-mono">--ps-mute-*</code> tokens so the table never picks up a cream patch that clashes with the host card.</p>
+    <div class="spec-frame" style="margin-top: 24px;">
+      <div class="ps-card" style="padding: 0; overflow: hidden;">
+        <table class="ps-table">
+          <thead>
+            <tr>
+              <th>Credential</th>
+              <th>Status</th>
+              <th>Signers</th>
+              <th>Issued</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026 Carbon Footprint</td>
+              <td><span class="ps-pill ps-pill-accent ps-pill-sm"><span class="ps-dot-mini"></span>Verified</span></td>
+              <td>2</td>
+              <td>Mar 12 · 2026</td>
+              <td><button class="ps-btn ps-btn-ghost ps-btn-sm">Open ↗</button></td>
+            </tr>
+            <tr data-state="selected">
+              <td>Lab Results · Batch 118</td>
+              <td><span class="ps-pill ps-pill-accent ps-pill-sm"><span class="ps-dot-mini"></span>Verified</span></td>
+              <td>1</td>
+              <td>Mar 02 · 2026</td>
+              <td><button class="ps-btn ps-btn-ghost ps-btn-sm">Open ↗</button></td>
+            </tr>
+            <tr>
+              <td>Scope 3 Supplier Audit</td>
+              <td><span class="ps-pill ps-pill-sm"><span class="ps-dot-mini" style="background: #c69f1d;"></span>Pending</span></td>
+              <td>4</td>
+              <td>·</td>
+              <td><button class="ps-btn ps-btn-ghost ps-btn-sm">Open ↗</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 </main>

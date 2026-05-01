@@ -67,6 +67,14 @@ The system has four standard surfaces. Each one carries text-color overrides so 
 | `.ps-bg-card` | Pure white | Stand-alone card backgrounds |
 | `.ps-bg-ink` | Deep ink `#1a2535` | Dark slide / hero pitch |
 
+**Paper vs. mute, when to use which.** The paper tokens are warm and beige; they belong on the *outer* surface (the page, the slide, the slightly-warmer-than-page card). Inside a white `.ps-card`, those warm tones read as cream patches and clash. For panel-within-a-panel work, table headers, hover states, dividers between rows, reach for the cooler neutral mid-grays instead:
+
+- `--ps-mute-bg` — subtle gray for table headers and hover states inside white surfaces.
+- `--ps-mute-bg-2` — stronger neutral for selected rows, pressed states.
+- `--ps-mute-line` — divider color inside white-card contexts.
+
+Rule of thumb: **`--ps-paper` / `--ps-paper-warm`** when the surface IS paper. **`--ps-mute-bg` / `--ps-mute-line`** when you need a subtle gray INSIDE a white card.
+
 **Logo asset rule:**
 
 - Light surfaces → `assets/pocketseed-logo.png` (dark wordmark)

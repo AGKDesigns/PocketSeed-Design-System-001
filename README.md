@@ -115,7 +115,9 @@ All design decisions are CSS custom properties in `css/tokens.css`. If you only 
 | `--ps-ink` | `#1a2535` | Default text & dark surfaces |
 | `--ps-ink-soft` | `#2d3a4d` | Body text |
 | `--ps-muted` | `#6b7280` | Captions, meta |
-| `--ps-line` / `--ps-line-soft` | `#e5e0d3` / `#efeae0` | Borders |
+| `--ps-line` / `--ps-line-soft` | `#e5e0d3` / `#efeae0` | Borders (warm — for paper surfaces) |
+| `--ps-mute-bg` / `--ps-mute-bg-2` | `#f5f5f3` / `#f0efea` | Neutral grays for table headers, hovers, selected rows **inside white cards** |
+| `--ps-mute-line` | `#e8e7e2` | Divider color **inside white cards** (cooler counterpart to `--ps-line`) |
 | `--ps-teal` | `#2dadc7` | Brand teal, accent on **dark** surfaces |
 | `--ps-blue` | `#1f6f96` | Brand blue (deep teal-blue) |
 | `--ps-purple` | `#6a4ed8` | Used in orb gradient |

@@ -586,28 +586,43 @@ details.ps-dropdown[open] > .ps-menu { display: flex; }
   border-bottom-color: var(--ps-accent);
 }
 
-/* ─── Table (basic) ─────────────────────────────────────────── */
+/* ─── Table ──────────────────────────────────────────────────
+ * Mono uppercase headers as column labels, comfortable row rhythm,
+ * neutral mute-bg on the header so it sits cleanly inside white
+ * card surfaces. Use inside .ps-card or stand-alone. */
 
-.ps-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
+.ps-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+
+.ps-table thead { background: var(--ps-mute-bg); }
 
 .ps-table th,
 .ps-table td {
   text-align: left;
   padding: 12px 16px;
-  border-bottom: 1px solid var(--ps-line-soft);
+  vertical-align: middle;
 }
 
 .ps-table th {
-  font-weight: var(--ps-w-semibold);
-  color: var(--ps-ink);
-  background: var(--ps-paper);
-  font-size: 13px;
-  letter-spacing: 0.02em;
+  font-family: var(--ps-font-mono);
+  font-size: 11px;
+  font-weight: var(--ps-w-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ps-muted);
+  border-bottom: 1px solid var(--ps-mute-line);
+  height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-.ps-table td { color: var(--ps-ink-soft); }
-.ps-table tr:last-child td { border-bottom: 0; }
+.ps-table td {
+  color: var(--ps-ink);
+  border-bottom: 1px solid var(--ps-line-soft);
+}
+
+.ps-table tbody tr {
+  transition: background var(--ps-dur-fast) var(--ps-ease);
+}
+.ps-table tbody tr:hover { background: var(--ps-mute-bg); }
+.ps-table tbody tr:last-child td { border-bottom: 0; }
+.ps-table tbody tr[data-state="selected"] { background: var(--ps-mute-bg-2); }
