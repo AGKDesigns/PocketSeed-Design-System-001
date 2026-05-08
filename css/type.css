@@ -139,8 +139,46 @@
 .ps-serif {
   font-family: var(--ps-font-serif);
   font-style: italic;
-  font-weight: var(--ps-w-regular);
+  /* Playfair Display has true italic at every weight, so we use 700 for an
+   * accent that holds its ground against the surrounding 600/700 sans
+   * headlines. No synthesis. */
+  font-weight: var(--ps-w-bold);
   letter-spacing: -0.02em;
+}
+
+/* ── Per-language overrides ────────────────────────────────────
+ * When the document (or a subtree) declares lang="ja|zh|ko", redefine
+ * --ps-font-sans to put the matching Noto Sans family at the front.
+ * Everything that uses the token — body, headlines, pills, buttons —
+ * picks it up automatically. The whole localised context reads in one
+ * harmonised family instead of mixing Inter Latin with Noto CJK. */
+
+:lang(ja) {
+  --ps-font-sans: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo', sans-serif;
+}
+:lang(zh-CN),
+:lang(zh-Hans) {
+  --ps-font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+:lang(zh-TW),
+:lang(zh-Hant),
+:lang(zh-HK) {
+  --ps-font-sans: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+:lang(ko) {
+  --ps-font-sans: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
+
+/* CJK scripts have no italic convention — and Playfair Display has no CJK
+ * coverage anyway. Inside a localised passage, drop the italic + serif and
+ * keep the accent colour as the emphasis cue (set inline at usage). */
+.ps-serif:lang(ja),
+.ps-serif:lang(zh),
+.ps-serif:lang(ko) {
+  font-family: var(--ps-font-sans);
+  font-style: normal;
+  font-weight: var(--ps-w-bold);
+  letter-spacing: 0;
 }
 
 .ps-mono {

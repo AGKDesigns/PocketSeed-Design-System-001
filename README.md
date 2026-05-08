@@ -96,7 +96,8 @@ PocketSeed-Design-System-001/
     ├── web-app-widget.html     ← embeddable credential widgets (compact + expanded)
     ├── forms.html              ← inputs, dropdowns, alerts, modal, tabs
     ├── imagery.html            ← image frames, grids, layered overlays, composition
-    └── icons.html              ← Lucide icons + usage conventions
+    ├── icons.html              ← Lucide icons + usage conventions
+    └── language.html           ← i18n strategy: layered font fallbacks + .ps-serif degrade rule
 ```
 
 Open `index.html` in a browser to navigate the specimens visually.
@@ -139,7 +140,7 @@ Override per-component with `.ps-accent-teal`, `.ps-accent-blue`, `.ps-accent-gr
 ### Typography
 
 - **Inter**, body & UI · 400/500/600/700/800
-- **Instrument Serif**, italic editorial accents inside headlines
+- **Playfair Display**, italic editorial accents inside headlines (true bold italic, weight 700)
 - **JetBrains Mono**, micro-type, IDs, timestamps, tabular figures
 
 Two ramps:

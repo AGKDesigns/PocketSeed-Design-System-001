@@ -3,7 +3,10 @@
  * Load order:  tokens.css → base.css → components.css
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Latin (Inter / Playfair Display / JetBrains Mono) + CJK fallbacks (Noto Sans
+ * JP / SC / TC / KR). Google Fonts serves CJK as separate unicode-range
+ * subsets, so a Latin-only page never downloads them. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;

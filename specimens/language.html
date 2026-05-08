@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Languages · PocketSeed Design System</title>
+<link rel="stylesheet" href="../css/pocketseed.css" />
+<link rel="stylesheet" href="_specimen.css" />
+<style>
+  /* Side-by-side row showing one component rendered in multiple scripts */
+  .lang-row {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 24px;
+    align-items: baseline;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--ps-line-soft);
+  }
+  .lang-row:last-child { border-bottom: 0; }
+  .lang-tag {
+    font-family: var(--ps-font-mono);
+    font-size: 11px;
+    color: var(--ps-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.6;
+  }
+  .lang-headline {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ps-ink);
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+  .lang-headline .ps-serif { color: var(--ps-accent); }
+  .lang-body {
+    font-size: 15px;
+    color: var(--ps-ink-soft);
+    line-height: 1.65;
+    max-width: 640px;
+  }
+  .lang-mono {
+    font-family: var(--ps-font-mono);
+    font-size: 13px;
+    color: var(--ps-ink);
+  }
+
+  /* Strategy summary card */
+  .strategy {
+    background: var(--ps-card);
+    border: 1px solid var(--ps-line);
+    border-radius: var(--ps-radius-xl);
+    padding: 24px 28px;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .strategy h3 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ps-ink);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .strategy h3 .ps-icon { --ps-icon-size: 13px; color: var(--ps-accent); }
+  .strategy p { font-size: 14px; line-height: 1.6; color: var(--ps-ink-soft); margin: 0; }
+  .strategy code { font-family: var(--ps-font-mono); font-size: 12px; color: var(--ps-ink); background: var(--ps-mute-bg); padding: 1px 6px; border-radius: var(--ps-radius-sm); }
+
+  /* Component demo strip */
+  .comp-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+
+  pre.snippet {
+    margin: 0;
+    padding: 16px 20px;
+    background: var(--ps-mute-bg);
+    border: 1px solid var(--ps-mute-line);
+    border-radius: var(--ps-radius-md);
+    font-family: var(--ps-font-mono);
+    font-size: 12px;
+    color: var(--ps-ink);
+    line-height: 1.55;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  pre.snippet .c { color: var(--ps-muted); }
+</style>
+</head>
+<body>
+<main class="spec-shell">
+  <a class="spec-back" href="../index.html">← Back to system</a>
+  <div class="spec-title">
+    <span class="ps-eyebrow" style="font-size: 12px;">Seed 05 · Primitive</span>
+    <h1 class="ps-web-title">Languages</h1>
+    <p class="ps-web-lead" style="max-width: 720px;">PocketSeed ships in English by default, but credentials live on products that travel. The font stack is layered so the same component reads cleanly in Japanese, Chinese, and Korean without redesigning anything, and the editorial italic accent gracefully steps aside in scripts where it doesn't apply.</p>
+  </div>
+
+  <!-- ─────────── Strategy ─────────── -->
+  <section class="spec-section">
+    <span class="spec-section-title">Strategy</span>
+    <h2>Switch by language, not per glyph</h2>
+    <p class="spec-desc">Inter is the default for Latin, Cyrillic, and Greek &mdash; everything else the brand normally encounters. When a page is intentionally localised, the product sets <code class="ps-mono">lang="ja"</code> (or <code class="ps-mono">zh</code>, <code class="ps-mono">ko</code>) and a <code class="ps-mono">:lang()</code> rule promotes the matching Noto Sans family. The whole localised context renders in one harmonised family, no mixing of Inter Latin with Noto CJK.</p>
+
+    <div class="strategy">
+      <h3><i class="ps-icon" data-lucide="languages"></i><code>--ps-font-sans</code></h3>
+      <p>Default = Inter + system fallbacks (incl. system CJK as a quiet hedge for stray characters in unmarked content). When <code>:lang(ja|zh|ko)</code> matches, the token is redefined to <code>'Noto Sans JP'</code> (or SC / TC / KR) at the front. Set the <code>lang</code> attribute when switching language and every component picks it up.</p>
+    </div>
+
+    <div class="strategy">
+      <h3><i class="ps-icon" data-lucide="quote"></i><code>--ps-font-serif</code> (Playfair Display)</h3>
+      <p>Covers Latin + Latin Extended + Cyrillic + Vietnamese, with proper italic at every weight up to 900. For Greek (and any glyph Playfair lacks) the cascade falls through Inter italic so the accent stays visually consistent. Italic isn't a CJK convention, so <code>.ps-serif</code> drops the italic + serif inside <code>:lang(ja|zh|ko)</code> passages and keeps the accent colour as the emphasis cue. The flourish exits gracefully; the meaning stays.</p>
+    </div>
+
+    <div class="strategy">
+      <h3><i class="ps-icon" data-lucide="braces"></i><code>--ps-font-mono</code></h3>
+      <p>JetBrains Mono for codes, IDs, timestamps &mdash; all Latin/numeric. Stays the same regardless of locale. If user-supplied content forces CJK into a mono context (rare), system mono fallbacks (Hiragino Kaku Gothic ProN, etc.) take over.</p>
+    </div>
+  </section>
+
+  <!-- ─────────── Headlines · the .ps-serif accent across scripts ─────────── -->
+  <section class="spec-section">
+    <span class="spec-section-title">Headlines</span>
+    <h2>The italic accent, every script</h2>
+    <p class="spec-desc">Same component (<code class="ps-mono">h2</code> + <code class="ps-mono">.ps-serif</code> on one word). The italic + serif treatment shows in Latin; in Japanese, Chinese, and Korean it falls back to bold weight in the accent colour, since italics don't carry the same emphasis cue in those scripts.</p>
+
+    <div class="spec-frame" style="margin-top: 24px;">
+
+      <div class="lang-row" lang="en">
+        <span class="lang-tag">EN</span>
+        <h3 class="lang-headline">We make every claim <span class="ps-serif">verifiable.</span></h3>
+      </div>
+
+      <div class="lang-row" lang="ja">
+        <span class="lang-tag">JA</span>
+        <h3 class="lang-headline">すべての主張を<span class="ps-serif">検証可能に</span>。</h3>
+      </div>
+
+      <div class="lang-row" lang="zh-CN">
+        <span class="lang-tag">ZH-CN</span>
+        <h3 class="lang-headline">让每一项声明都<span class="ps-serif">可验证</span>。</h3>
+      </div>
+
+      <div class="lang-row" lang="zh-TW">
+        <span class="lang-tag">ZH-TW</span>
+        <h3 class="lang-headline">讓每一項聲明都<span class="ps-serif">可驗證</span>。</h3>
+      </div>
+
+      <div class="lang-row" lang="ko">
+        <span class="lang-tag">KO</span>
+        <h3 class="lang-headline">모든 주장을 <span class="ps-serif">검증 가능하게</span>.</h3>
+      </div>
+
+      <div class="lang-row" lang="ru">
+        <span class="lang-tag">RU</span>
+        <h3 class="lang-headline">Мы делаем каждое утверждение <span class="ps-serif">проверяемым.</span></h3>
+      </div>
+
+      <div class="lang-row" lang="el">
+        <span class="lang-tag">EL</span>
+        <h3 class="lang-headline">Κάνουμε κάθε ισχυρισμό <span class="ps-serif">επαληθεύσιμο.</span></h3>
+      </div>
+
+    </div>
+    <p class="spec-desc" style="margin-top: 16px;">Cyrillic and Greek work because <code class="ps-mono">--ps-font-serif</code> cascades through Inter before falling to Times New Roman, so the italic accent stays in the same family as the rest of the headline.</p>
+  </section>
+
+  <!-- ─────────── Body & lead ─────────── -->
+  <section class="spec-section">
+    <span class="spec-section-title">Body & lead</span>
+    <h2>Inter and Noto, harmonised</h2>
+    <p class="spec-desc">Body copy uses <code class="ps-mono">--ps-font-sans</code>. Noto Sans is designed to share Latin-style metrics, so Japanese sits at roughly the same x-height and rhythm as Inter without manual tuning.</p>
+
+    <div class="spec-frame" style="margin-top: 24px;">
+
+      <div class="lang-row" lang="en">
+        <span class="lang-tag">EN</span>
+        <p class="lang-body">A PocketSeed credential carries the proof with the claim — issuer, evidence, and signatures travelling alongside the data so any reader can verify it themselves.</p>
+      </div>
+
+      <div class="lang-row" lang="ja">
+        <span class="lang-tag">JA</span>
+        <p class="lang-body">PocketSeedのクレデンシャルは主張とその証拠を一体で運びます。発行者、証跡、署名がデータと一緒に届くので、誰でも自分で検証できます。</p>
+      </div>
+
+      <div class="lang-row" lang="zh-CN">
+        <span class="lang-tag">ZH-CN</span>
+        <p class="lang-body">PocketSeed 凭证将主张与证据一起承载——发行方、证据和签名随数据同行,任何读者都可以自行验证。</p>
+      </div>
+
+      <div class="lang-row" lang="ko">
+        <span class="lang-tag">KO</span>
+        <p class="lang-body">PocketSeed 자격 증명은 주장과 함께 그 증거를 전달합니다. 발급자, 근거, 서명이 데이터와 함께 이동하므로 누구나 직접 검증할 수 있습니다.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────── Mono ─────────── -->
+  <section class="spec-section">
+    <span class="spec-section-title">Monospace</span>
+    <h2>Mono is for IDs, not prose</h2>
+    <p class="spec-desc">JetBrains Mono only covers Latin, Cyrillic, and Greek. Codes, IDs, hashes, and timestamps stay readable everywhere because they're already Latin/numeric. Prose should never be set in mono.</p>
+
+    <div class="spec-frame" style="margin-top: 24px;">
+      <div class="lang-row">
+        <span class="lang-tag">ID</span>
+        <span class="lang-mono">f6659d85-7e15-412b-a302-657362a48fd3</span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-tag">TIME</span>
+        <span class="lang-mono">2026-04-15T09:32:18+09:00</span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-tag">TOKEN</span>
+        <span class="lang-mono">0.0.7233037</span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-tag">DID</span>
+        <span class="lang-mono">did:web:app.pocketseed.io</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── Components ─────────── -->
+  <section class="spec-section">
+    <span class="spec-section-title">Components in context</span>
+    <h2>Pills, buttons, cards</h2>
+    <p class="spec-desc">No CSS changes per locale — the same components render natively in any script. The cascade does the work.</p>
+
+    <div class="spec-frame" style="margin-top: 24px;">
+
+      <div class="lang-row">
+        <span class="lang-tag">EN</span>
+        <div class="comp-strip">
+          <span class="ps-pill ps-pill-accent ps-pill-sm"><i class="ps-icon" data-lucide="check"></i>Issued</span>
+          <span class="ps-pill ps-pill-sm"><i class="ps-icon" data-lucide="link-2"></i>Anchored</span>
+          <span class="ps-pill ps-pill-sm"><i class="ps-icon" data-lucide="file-check"></i>Evidenced</span>
+          <button class="ps-btn ps-btn-primary ps-btn-sm"><i class="ps-icon" data-lucide="shield-check"></i>Validate</button>
+        </div>
+      </div>
+
+      <div class="lang-row" lang="ja">
+        <span class="lang-tag">JA</span>
+        <div class="comp-strip">
+          <span class="ps-pill ps-pill-accent ps-pill-sm"><i class="ps-icon" data-lucide="check"></i>発行済み</span>
+          <span class="ps-pill ps-pill-sm"><i class="ps-icon" data-lucide="link-2"></i>アンカー済み</span>
+          <span class="ps-pill ps-pill-sm"><i class="ps-icon" data-lucide="file-check"></i>証跡あり</span>
+          <button class="ps-btn ps-btn-primary ps-btn-sm"><i class="ps-icon" data-lucide="shield-check"></i>検証する</button>
+        </div>
+      </div>
+
+      <div class="lang-row" lang="zh-CN">
+        <span class="lang-tag">ZH-CN</span>
+        <div class="comp-strip">
+          <span class="ps-pill ps-pill-accent ps-pill-sm"><i class="ps-icon" data-lucide="check"></i>已签发</span>
+          <span class="ps-pill ps-pill-sm"><i class="ps-icon" data-lucide="link-2"></i>已锚定</span>
+          <span class="ps-pill ps-pill-sm"><i class="ps-icon" data-lucide="file-check"></i>有证据</span>
+          <button class="ps-btn ps-btn-primary ps-btn-sm"><i class="ps-icon" data-lucide="shield-check"></i>验证</button>
+        </div>
+      </div>
+
+      <div class="lang-row" lang="ko">
+        <span class="lang-tag">KO</span>
+        <div class="comp-strip">
+          <span class="ps-pill ps-pill-accent ps-pill-sm"><i class="ps-icon" data-lucide="check"></i>발급됨</span>
+          <span class="ps-pill ps-pill-sm"><i class="ps-icon" data-lucide="link-2"></i>앵커됨</span>
+          <span class="ps-pill ps-pill-sm"><i class="ps-icon" data-lucide="file-check"></i>증거 있음</span>
+          <button class="ps-btn ps-btn-primary ps-btn-sm"><i class="ps-icon" data-lucide="shield-check"></i>검증</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────── Implementation ─────────── -->
+  <section class="spec-section">
+    <span class="spec-section-title">Implementation</span>
+    <h2>How to use</h2>
+    <p class="spec-desc">Set the <code class="ps-mono">lang</code> attribute on the document or on the localised section. The font stack and the <code class="ps-mono">.ps-serif</code> graceful-degrade rule do the rest.</p>
+
+    <div class="spec-frame" style="margin-top: 24px;">
+      <pre class="snippet"><span class="c">&lt;!-- Whole document is Japanese --&gt;</span>
+&lt;html lang="ja"&gt;
+
+<span class="c">&lt;!-- Mixed: English page with a Japanese product name --&gt;</span>
+&lt;p&gt;Made in &lt;span lang="ja"&gt;水滴&lt;/span&gt;, Tokyo&lt;/p&gt;
+
+<span class="c">&lt;!-- The italic accent gracefully degrades inside lang(ja|zh|ko) --&gt;</span>
+&lt;h2&gt;すべての主張を&lt;span class="ps-serif"&gt;検証可能に&lt;/span&gt;。&lt;/h2&gt;</pre>
+    </div>
+
+    <p class="spec-desc" style="margin-top: 24px;">Tokens you don't need to think about &mdash; they're already wired:</p>
+
+    <div class="spec-frame">
+      <pre class="snippet"><span class="c">/* tokens.css — default stack: Inter + system fallbacks */</span>
+--ps-font-sans:
+    'Inter',
+    -apple-system, 'Hiragino Sans', 'Yu Gothic UI', 'PingFang SC',
+    'Apple SD Gothic Neo', sans-serif;
+
+<span class="c">/* type.css — set lang and the token redefines */</span>
+:lang(ja) { --ps-font-sans: 'Noto Sans JP', 'Hiragino Sans', sans-serif; }
+:lang(zh-CN) { --ps-font-sans: 'Noto Sans SC', 'PingFang SC', sans-serif; }
+:lang(zh-TW) { --ps-font-sans: 'Noto Sans TC', 'PingFang TC', sans-serif; }
+:lang(ko) { --ps-font-sans: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; }
+
+<span class="c">/* The italic accent gracefully degrades inside CJK */</span>
+.ps-serif:lang(ja),
+.ps-serif:lang(zh),
+.ps-serif:lang(ko) {
+  font-family: var(--ps-font-sans);
+  font-style: normal;
+  font-weight: var(--ps-w-bold);
+}</pre>
+    </div>
+  </section>
+
+  <!-- ─────────── Out of scope ─────────── -->
+  <section class="spec-section">
+    <span class="spec-section-title">Out of scope (for now)</span>
+    <h2>What this seed does <em>not</em> cover</h2>
+    <p class="spec-desc">Right-to-left scripts (Arabic, Hebrew) need more than a font swap &mdash; layout direction, mirroring of icons, padding flips. Thai and Indic scripts (Devanagari, Tamil) need their own Noto stack additions. Both are deliberate next steps; for now the system is robust for English, Latin Extended (Vietnamese, Polish, Turkish, &c.), Cyrillic, Greek, and East Asian locales — which covers the planned credential surfaces.</p>
+  </section>
+
+</main>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

@@ -47,9 +47,26 @@
   --ps-on-ink-fill:   rgba(247, 244, 236, 0.04);
 
   /* ── Typography ────────────────────────────────────────────── */
-  --ps-font-sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --ps-font-serif: 'Instrument Serif', 'Times New Roman', serif;
-  --ps-font-mono:  'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+  /* Default stack — Inter for Latin/Cyrillic/Greek + system CJK fonts as a
+   * quiet hedge for stray characters in an unmarked page. For an intentional
+   * language switch, set lang="ja|zh|ko" and the :lang() rules in type.css
+   * promote Noto Sans to the front of the stack. */
+  --ps-font-sans:  'Inter',
+                   -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                   'Hiragino Sans', 'Yu Gothic UI', 'Meiryo',
+                   'PingFang SC', 'Microsoft YaHei',
+                   'Apple SD Gothic Neo', 'Malgun Gothic',
+                   sans-serif;
+  /* Playfair Display covers Latin + Latin Extended + Cyrillic + Vietnamese.
+   * Greek glyphs (and any others Playfair lacks) fall through to Inter italic,
+   * which keeps the accent visually consistent with the surrounding headline
+   * instead of jumping to Times New Roman from another decade. */
+  --ps-font-serif: 'Playfair Display', 'Inter', 'Times New Roman', serif;
+  --ps-font-mono:  'JetBrains Mono', ui-monospace, 'SF Mono',
+                   'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Meiryo',
+                   'PingFang SC', 'Microsoft YaHei',
+                   'Apple SD Gothic Neo', 'Malgun Gothic',
+                   monospace;
 
   /* Weights */
   --ps-w-regular: 400;
